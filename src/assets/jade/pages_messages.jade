@@ -1,0 +1,688 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='plugins/css/summernote.css')
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.css')
+
+block body
+  body.messages-page
+    // Start: Theme Preview Pane
+    #skin-toolbox.bg-white
+      .panel
+        .panel-heading
+          span.panel-icon
+            i.fa.fa-gear.text-primary
+          span.panel-title  Theme Options
+        .panel-body.pn
+          ul.nav.nav-list.nav-list-sm.pl15.pt10(role='tablist')
+            li.active
+              a(href='#toolbox-header', role='tab', data-toggle='tab') Navbar
+            li
+              a(href='#toolbox-sidebar', role='tab', data-toggle='tab') Sidebar
+            li
+              a(href='#toolbox-settings', role='tab', data-toggle='tab') Misc
+          .tab-content.p20.ptn.pb15
+            #toolbox-header.tab-pane.active(role='tabpanel')
+              form#toolbox-header-skin
+                h4.mv20 Header Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.checkbox-disabled.fill.mb5
+                    input#headerSkin8(type='radio', name='headerSkin', checked='', value='')
+                    label(for='headerSkin8') Light
+                  .checkbox-custom.fill.checkbox-primary.mb5
+                    input#headerSkin1(type='radio', name='headerSkin', value='bg-primary')
+                    label(for='headerSkin1') Primary
+                  .checkbox-custom.fill.checkbox-info.mb5
+                    input#headerSkin3(type='radio', name='headerSkin', value='bg-info')
+                    label(for='headerSkin3') Info
+                  .checkbox-custom.fill.checkbox-warning.mb5
+                    input#headerSkin4(type='radio', name='headerSkin', value='bg-warning')
+                    label(for='headerSkin4') Warning
+                  .checkbox-custom.fill.checkbox-danger.mb5
+                    input#headerSkin5(type='radio', name='headerSkin', value='bg-danger')
+                    label(for='headerSkin5') Danger
+                  .checkbox-custom.fill.checkbox-alert.mb5
+                    input#headerSkin6(type='radio', name='headerSkin', value='bg-alert')
+                    label(for='headerSkin6') Alert
+                  .checkbox-custom.fill.checkbox-system.mb5
+                    input#headerSkin7(type='radio', name='headerSkin', value='bg-system')
+                    label(for='headerSkin7') System
+                  .checkbox-custom.fill.checkbox-success.mb5
+                    input#headerSkin2(type='radio', name='headerSkin', value='bg-success')
+                    label(for='headerSkin2') Success
+                  .checkbox-custom.fill.mb5
+                    input#headerSkin9(type='radio', name='headerSkin', value='bg-dark')
+                    label(for='headerSkin9') Dark
+            #toolbox-sidebar.tab-pane(role='tabpanel')
+              form#toolbox-sidebar-skin
+                h4.mv20 Sidebar Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.fill.mb5
+                    input#sidebarSkin3(type='radio', name='sidebarSkin', checked='', value='')
+                    label(for='sidebarSkin3') Dark
+                  .checkbox-custom.fill.checkbox-disabled.mb5
+                    input#sidebarSkin1(type='radio', name='sidebarSkin', value='sidebar-light')
+                    label(for='sidebarSkin1') Light
+                  .checkbox-custom.fill.checkbox-light.mb5
+                    input#sidebarSkin2(type='radio', name='sidebarSkin', value='sidebar-light light')
+                    label(for='sidebarSkin2') Lighter
+            #toolbox-settings.tab-pane(role='tabpanel')
+              form#toolbox-settings-misc
+                h4.mv20.mtn Layout Options
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#header-option(type='checkbox', checked='')
+                    label(for='header-option') Fixed Header
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#sidebar-option(type='checkbox', checked='')
+                    label(for='sidebar-option') Fixed Sidebar
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-option(type='checkbox')
+                    label(for='breadcrumb-option') Fixed Breadcrumbs
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-hidden(type='checkbox')
+                    label(for='breadcrumb-hidden') Hide Breadcrumbs
+
+          .form-group.mn.br-t.p15
+            a#clearLocalStorage.btn.btn-primary.btn-block.pb10.pt10(href='#') Clear LocalStorage
+    // Start: Main
+    #main
+      // Page Header
+      block header
+        include _header
+      // Start: Sidebar
+      aside#sidebar_left.nano.nano-light.affix
+        // Start: Sidebar Left Content
+        +makeSidebar('pages_messages(alt).html')
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Start: Topbar-Dropdown
+        #topbar-dropmenu.alt
+          .topbar-menu.row
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-primary.light(href='#')
+                span.glyphicon.glyphicon-inbox.text-muted
+                span.metro-title Messages
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-info.light(href='#')
+                span.glyphicon.glyphicon-user.text-muted
+                span.metro-title Users
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-success.light(href='#')
+                span.glyphicon.glyphicon-headphones.text-muted
+                span.metro-title Support
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-system.light(href='#')
+                span.glyphicon.glyphicon-facetime-video.text-muted
+                span.metro-title Videos
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-warning.light(href='#')
+                span.fa.fa-gears.text-muted
+                span.metro-title Settings
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-alert.light(href='#')
+                span.glyphicon.glyphicon-picture.text-muted
+                span.metro-title Pictures
+        // Start: Topbar
+        header#topbar.alt
+          .topbar-left
+            ol.breadcrumb
+              li.crumb-active
+                a(href='index.html') Dashboard
+              li.crumb-icon
+                a(href='index.html')
+                  span.glyphicon.glyphicon-home
+              li.crumb-link
+                a(href='index.html') Home
+              li.crumb-trail Dashboard
+          .topbar-right
+            .ib.topbar-dropdown
+              label.control-label.pr10.fs15.text-muted(for='topbar-multiple') Reporting Period
+              select#topbar-multiple.hidden
+                optgroup(label='Filter By:')
+                  option(value='1-1') Last 30 Days
+                  option(value='1-2', selected='selected') Last 60 Days
+                  option(value='1-3') Last Year
+            #toggle_sidemenu_r.ml15.ib.va-m
+              a.pl5(href='#')
+                i.fa.fa-sign-in.fs22.text-primary
+                span.badge.badge-hero.badge-danger 3
+        // Begin: Content
+        section#content.table-layout.animated.fadeIn.pl30.pr30
+          // begin: .tray-left
+          aside.tray.tray-left.tray350.bg-outer-space(data-tray-height='match')
+            // Quick Compose Button
+            a(href="")#quick-compose.fs13.text-uppercase.monserrat.text-white.mb40.reveal-block.pl7 Quick Compose
+            // Message Menu
+            .list-group.list-group-links.mt20
+              .list-group-header  Menu
+              a.list-group-item(href='#')
+                i.fa.fa-gear
+                |               Email Settings
+              a.list-group-item(href='#')
+                i.fa.fa-envelope
+                |               Messages
+
+              a.list-group-item(href='#')
+                i.fa.fa-user
+                |               Friends
+
+            // Tags Menu
+            .list-group.list-group-links
+              .list-group-header  Tags
+              a.list-group-item(href='#')
+                i.fa.fa-bookmark
+                | Executive Meeting
+
+              a.list-group-item(href='#')
+                i.fa.fa-bookmark
+                | HelpDesk Redesign
+
+              a.list-group-item(href='#')
+                i.fa.fa-bookmark
+                | Sony Board Meeting
+
+              a.list-group-item(href='#')
+                i.fa.fa-bookmark
+                | Apple Tech Conference
+
+
+          // begin: .tray-center
+          .tray.tray-center.pn.bg-light
+            .panel
+              // message menu header
+              .panel-menu.br-n.hidden
+                .row.table-layout
+                  // toolbar left btn group
+                  .hidden-xs.hidden-sm.col-md-3.va-m.pln
+                    .btn-group
+                      button.btn.btn-default.light(type='button')
+                        i.fa.fa-refresh
+                      button.btn.btn-default.light(type='button')
+                        i.fa.fa-pencil
+                  // toolbar right btn group
+                  .col-xs-12.col-md-9.text-right.prn
+                    button.btn.btn-danger.light.visible-xs-inline-block.mr10(type='button') Compose
+                    span.hidden-xs.va-m.text-muted.mr15
+                      | Showing
+                      = ' '
+                      strong 15
+                      |  of
+                      strong 253
+                    .btn-group.mr10
+                      button.btn.btn-default.light.hidden-xs(type='button')
+                        i.fa.fa-star
+                      button.btn.btn-default.light.hidden-xs(type='button')
+                        i.fa.fa-calendar
+                      button.btn.btn-default.light(type='button')
+                        i.fa.fa-trash
+                    .btn-group.mr10
+                      .btn-group
+                        button.btn.btn-default.light.dropdown-toggle.ph15(type='button', data-toggle='dropdown')
+                          span.fa.fa-tags
+                        ul.dropdown-menu.pull-right(role='menu')
+                          li
+                            a(href='#') Work
+                          li
+                            a(href='#') Important
+                          li
+                            a(href='#') Favorites
+                          li.divider
+                          li
+                            a(href='#')
+                              span.fa.fa-plus.pr5
+                              |  Create New
+                      .btn-group
+                        button.btn.btn-default.light.dropdown-toggle.ph15.br-tp-left(type='button', data-toggle='dropdown')
+                          span.fa.fa-folder
+                        ul.dropdown-menu.pull-right(role='menu')
+                          li
+                            a(href='#') Work
+                          li
+                            a(href='#') Important
+                          li
+                            a(href='#') Favorites
+                          li.divider
+                          li
+                            a(href='#')
+                              span.fa.fa-plus.pr5
+                              |  Create New
+                    .btn-group
+                      button.btn.btn-default.light(type='button')
+                        i.fa.fa-chevron-left
+                      button.btn.btn-default.light(type='button')
+                        i.fa.fa-chevron-right
+              // message toolbar header
+              .message-panel.panel-menu.br-n
+                .row
+                  .col-md-4
+                    button.btn.btn-icon.fa.fa-retweet
+                    button.btn.btn-icon.fa.fa-pencil.mr30
+                    button.btn.btn-icon.fa.fa-star
+                    button.btn.btn-icon.fa.fa-bitbucket
+                    button.btn.btn-icon.fa.fa-bullhorn
+                  .col-md-4.element-groups-xs-custom.text-center
+                    .btn-group.mr8
+                      button.fa.fa-tags.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                        span.fs13.caret.ml15
+                      ul.dropdown-menu(role='menu')
+                        li
+                          a(href='#') Action
+                        li
+                          a(href='#') Another action
+                        li
+                          a(href='#') Something else here
+                        li.divider
+                        li
+                          a(href='#') Separated link
+                    .btn-group
+                      button.fa.fa-inbox.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                        span.fs13.caret.ml15
+                      ul.dropdown-menu(role='menu')
+                        li
+                          a(href='#') Action
+                        li
+                          a(href='#') Another action
+                        li
+                          a(href='#') Something else here
+                        li.divider
+                        li
+                          a(href='#') Separated link
+
+                  .col-md-4.text-right.mt-10
+                    a(href="#").text-center.w20.fs18.fa.fa-angle-left.mr25
+                    a(href="#").text-center.w20.fs18.fa.fa-angle-right
+
+              // message listings table
+              table#message-table.table.tc-checkbox-1.admin-form.theme-warning.br-t
+                thead
+                  tr
+                    th.text-center.hidden-xs Select
+                    th.hidden-xs Star
+                    th Sender
+                    th.hidden-xs Label
+                    th Subject
+                    th.hidden-xs
+                    th.text-center Date
+                tbody
+                  tr.message-unread
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch1" name='mobileos', value='FR')
+                        label(for="ch1")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Sony Inc
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-unread
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch2" name='mobileos', value='FR')
+                        label(for="ch2")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m
+                    td Disney
+                    td.hidden-xs
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-unread
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch3" name='mobileos', value='FR')
+                        label(for="ch3")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Marvel
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-unread
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch4" name='mobileos', value='FR')
+                        label(for="ch4")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Microsoft
+                    td.hidden-xs
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch5" name='mobileos', value='FR')
+                        label(for="ch5")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch6" name='mobileos', value='FR')
+                        label(for="ch6")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch7" name='mobileos', value='FR')
+                        label(for="ch7")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch8" name='mobileos', value='FR')
+                        label(for="ch8")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch9" name='mobileos', value='FR')
+                        label(for="ch9")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch10" name='mobileos', value='FR')
+                        label(for="ch10")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch11" name='mobileos', value='FR')
+                        label(for="ch11")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch12" name='mobileos', value='FR')
+                        label(for="ch12")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch13" name='mobileos', value='FR')
+                        label(for="ch13")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+                  tr.message-read
+                    td.hidden-xs
+                      label.option.block.mn
+                      div.checkbox-custom.checkbox-custom-thin.pt8
+                        input(type='checkbox', id="ch14" name='mobileos', value='FR')
+                        label(for="ch14")
+                    td.hidden-xs
+                      span.rating.block.mn.pull-left
+                        input#r1.rating-input(type='radio', name='custom')
+                        label.rating-star(for='r1')
+                          i.fa.fa-star.va-m.text-warning
+                    td Facebook
+                    td.hidden-xs
+                      span.label.label-system WORK
+                    td Lorem ipsum dolor sit amet, adipiscing eli
+                    td.hidden-xs
+                    td.text-center 19:07
+      // Start: Right Sidebar
+      aside#sidebar_right.nano.affix
+        // Start: Sidebar Right Content
+        .sidebar-right-content.nano-content
+          .tab-block.sidebar-block.br-n
+            ul.nav.nav-tabs.tabs-border.nav-justified.hidden
+              li.active
+                a(href='#sidebar-right-tab1', data-toggle='tab') Tab 1
+              li
+                a(href='#sidebar-right-tab2', data-toggle='tab') Tab 2
+              li
+                a(href='#sidebar-right-tab3', data-toggle='tab') Tab 3
+            .tab-content.br-n
+              #sidebar-right-tab1.tab-pane.active
+                h5.title-divider.text-muted.mb20
+                  | Server Statistics
+                  span.pull-right
+                    | 2013
+                    i.fa.fa-caret-down.ml5
+                .progress.mh5
+                  .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 44%')
+                    span.fs11 DB Request
+                .progress.mh5
+                  .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 84%')
+                    span.fs11.text-left Server Load
+                .progress.mh5
+                  .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 61%')
+                    span.fs11.text-left Server Connections
+                h5.title-divider.text-muted.mt30.mb10 Traffic Margins
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 132
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  13.2%
+                h5.title-divider.text-muted.mt25.mb10 Database Request
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 212
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  25.6%
+                h5.title-divider.text-muted.mt25.mb10 Server Response
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 82.5
+                  .col-xs-7.text-right
+                    h3.text-danger.mn
+                      i.fa.fa-caret-down
+                      |  17.9%
+                h5.title-divider.text-muted.mt40.mb20
+                  | Server Statistics
+                  span.pull-right.text-primary.fw600 USA
+              #sidebar-right-tab2.tab-pane
+              #sidebar-right-tab3.tab-pane
+    // Admin Dock Quick Compose Message
+    .quick-compose-form
+      form(id='')
+        input#inputEmail.form-control(type='email', placeholder='Email')
+        input#inputSubject.form-control(type='text', placeholder='Subject')
+        .summernote-quick Compose your message here...
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        var msgListing = $('#message-table > tbody > tr > td');
+        var msgCheckbox = $('#message-table > tbody > tr input[type=checkbox]');
+        // on message table checkbox click, toggle highlighted class
+        msgCheckbox.on('click', function () {
+          $(this).parents('tr').toggleClass('highlight');
+        });
+        // on message table row click, redirect page. Unless target was a checkbox
+        msgListing.not(":first-child").on('click', function (e) {
+          // stop event bubble if clicked item is not a checkbox
+          e.stopPropagation();
+          e.preventDefault();
+          // Redirect to message compose page if clicked item is not a checkbox
+          window.location = "pages_compose.html";
+        });
+        // On button click display quick compose message form
+        $('#quick-compose').on('click', function () {
+          // Admin Dock Plugin
+          $('.quick-compose-form').dockmodal({
+            minimizedWidth: 260,
+            width: 470,
+            height: 480,
+            title: 'Compose Message',
+            initialState: "docked",
+            buttons: [{
+              html: "Send",
+              buttonClass: "btn btn-primary btn-sm",
+              click: function (e, dialog) {
+                // do something when the button is clicked
+                dialog.dockmodal("close");
+                // after dialog closes fire a success notification
+                setTimeout(function () {
+                  msgCallback();
+                }, 500);
+              }
+            }]
+          });
+        });
+        // example email compose success notification
+        function msgCallback() {
+          (new PNotify({
+            title: 'Message Success!',
+            text: 'Your message has been <b>Sent.</b>',
+            hide: false,
+            type: 'success',
+            addclass: "mt50",
+            buttons: {
+              closer: false,
+              sticker: false
+            },
+            history: {
+              history: false
+            }
+          }));
+        };
+        // Init Summernote
+        $('.summernote-quick').summernote({
+          height: 275, //set editable area's height
+          focus: false, //set focus editable area after Initialize summernote
+          toolbar: [
+            ['style', ['bold', 'italic', 'underline',]],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+          ]
+        });
+      });

@@ -1,0 +1,130 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.css')
+
+block body
+  body.external-page.external-alt.sb-l-c.sb-r-c
+    // Start: Main
+    #main.animated.fadeIn
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Begin: Content
+        section#content
+          #register.admin-form.theme-primary.mw600(style='margin-top: 3%;')
+            // Registration Logo
+            .row.table-layout
+              a(href='index.html', title='Return to Dashboard')
+                img.center-block.img-responsive(src='assets/img/logos/logo.png', title='TemplateMonster Logo', style='max-width: 275px;')
+            // Registration Panel/Form
+            .panel.mt40
+              form#contact(method='post', action='/')
+                .panel-body.bg-light.p25.pb15
+                  // Social Login Buttons
+                  .section.row.hidden
+                    .col-md-4
+                      a.button.btn-social.facebook.span-left.btn-block(href='#')
+                        span
+                          i.fa.fa-facebook
+                        | Facebook
+                    .col-md-4
+                      a.button.btn-social.twitter.span-left.btn-block(href='#')
+                        span
+                          i.fa.fa-twitter
+                        | Twitter
+                    .col-md-4
+                      a.button.btn-social.googleplus.span-left.btn-block(href='#')
+                        span
+                          i.fa.fa-google-plus
+                        | Google+
+                  // Divider
+                  .section-divider.mv30.hidden
+                    span OR
+                  .section.row
+                    .col-md-6
+                      label.field.prepend-icon(for='firstname')
+                        input#firstname.gui-input(type='text', name='firstname', placeholder='First name...')
+                        label.field-icon(for='firstname')
+                          i.fa.fa-user
+                    .col-md-6
+                      label.field.prepend-icon(for='lastname')
+                        input#lastname.gui-input(type='text', name='lastname', placeholder='Last name...')
+                        label.field-icon(for='lastname')
+                          i.fa.fa-user
+                  .section
+                    label.field.prepend-icon(for='email')
+                      input#email.gui-input(type='email', name='email', placeholder='Email address')
+                      label.field-icon(for='email')
+                        i.fa.fa-envelope
+                  .section.hidden
+                    .smart-widget.sm-right.smr-120
+                      label.field.prepend-icon(for='username')
+                        input#username.gui-input(type='text', name='username', placeholder='Choose your username')
+                        label.field-icon(for='username')
+                          i.fa.fa-user
+                      label.button(for='username') .templatemonster.com
+                  hr.alt.short
+                  .section
+                    label.field.prepend-icon(for='password')
+                      input#password.gui-input(type='password', name='password', placeholder='Create a password')
+                      label.field-icon(for='password')
+                        i.fa.fa-unlock-alt
+                  .section
+                    label.field.prepend-icon(for='confirmPassword')
+                      input#confirmPassword.gui-input(type='password', name='confirmPassword', placeholder='Retype your password')
+                      label.field-icon(for='confirmPassword')
+                        i.fa.fa-lock
+                .panel-footer.clearfix
+                  button.button.btn-primary.mr10.pull-right(type='submit') Register
+                  label.option.block.mt10
+                    input(type='checkbox', name='terms')
+                    span.checkbox
+                    | I agree to the
+                    a.theme-link(href='#')  terms of use.
+                  label.switch.block.switch-primary.mt10.hidden
+                    input#remember(type='checkbox', name='remember', checked='')
+                    label(for='remember', data-on='YES', data-off='NO')
+                    span Remember me
+            // Divider
+            hr.alt.mt40.mb30.mh70
+            // Registration Social Links
+            .section.row.center-block(style='max-width: 550px;')
+              .col-md-4
+                a.button.btn-social.facebook.span-left.btn-block(href='#')
+                  span
+                    i.fa.fa-facebook
+                  | Facebook
+              .col-md-4
+                a.button.btn-social.twitter.span-left.btn-block(href='#')
+                  span
+                    i.fa.fa-twitter
+                  | Twitter
+              .col-md-4
+                a.button.btn-social.googleplus.span-left.btn-block(href='#')
+                  span
+                    i.fa.fa-google-plus
+                  | Google+
+            // Registration Links
+            .login-links
+              p
+                a.active.hidden(href='pages_forgotpw(alt).html', title='Sign In') Forgot Password?
+              p
+                | Already registered?
+                = ' '
+                a.active(href='pages_login(alt).html', title='Sign In') Sign in here
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    // Page Javascript
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+      });

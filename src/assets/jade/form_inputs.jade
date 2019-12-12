@@ -1,0 +1,728 @@
+extends  _skeleton
+include _ui-sidebar
+
+block body
+  body.form-inputs-page
+    // Start: Theme Preview Pane
+    #skin-toolbox.bg-white
+      .panel
+        .panel-heading.br-b
+          span.panel-icon
+            i.fa.fa-gear.text-primary
+          span.panel-title  Theme Options
+        .panel-body.pn
+          ul.nav.nav-list.nav-list-sm.pl15.pt10(role='tablist')
+            li.active
+              a(href='#toolbox-header', role='tab', data-toggle='tab') Navbar
+            li
+              a(href='#toolbox-sidebar', role='tab', data-toggle='tab') Sidebar
+            li
+              a(href='#toolbox-settings', role='tab', data-toggle='tab') Misc
+          .tab-content.p20.ptn.pb15
+            #toolbox-header.tab-pane.active(role='tabpanel')
+              form#toolbox-header-skin
+                h4.mv20 Header Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.checkbox-disabled.fill.mb5
+                    input#headerSkin8(type='radio', name='headerSkin', checked='', value='')
+                    label(for='headerSkin8') Light
+                  .checkbox-custom.fill.checkbox-primary.mb5
+                    input#headerSkin1(type='radio', name='headerSkin', value='bg-primary')
+                    label(for='headerSkin1') Primary
+                  .checkbox-custom.fill.checkbox-info.mb5
+                    input#headerSkin3(type='radio', name='headerSkin', value='bg-info')
+                    label(for='headerSkin3') Info
+                  .checkbox-custom.fill.checkbox-warning.mb5
+                    input#headerSkin4(type='radio', name='headerSkin', value='bg-warning')
+                    label(for='headerSkin4') Warning
+                  .checkbox-custom.fill.checkbox-danger.mb5
+                    input#headerSkin5(type='radio', name='headerSkin', value='bg-danger')
+                    label(for='headerSkin5') Danger
+                  .checkbox-custom.fill.checkbox-alert.mb5
+                    input#headerSkin6(type='radio', name='headerSkin', value='bg-alert')
+                    label(for='headerSkin6') Alert
+                  .checkbox-custom.fill.checkbox-system.mb5
+                    input#headerSkin7(type='radio', name='headerSkin', value='bg-system')
+                    label(for='headerSkin7') System
+                  .checkbox-custom.fill.checkbox-success.mb5
+                    input#headerSkin2(type='radio', name='headerSkin', value='bg-success')
+                    label(for='headerSkin2') Success
+                  .checkbox-custom.fill.mb5
+                    input#headerSkin9(type='radio', name='headerSkin', value='bg-dark')
+                    label(for='headerSkin9') Dark
+            #toolbox-sidebar.tab-pane(role='tabpanel')
+              form#toolbox-sidebar-skin
+                h4.mv20 Sidebar Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.fill.mb5
+                    input#sidebarSkin3(type='radio', name='sidebarSkin', checked='', value='')
+                    label(for='sidebarSkin3') Dark
+                  .checkbox-custom.fill.checkbox-disabled.mb5
+                    input#sidebarSkin1(type='radio', name='sidebarSkin', value='sidebar-light')
+                    label(for='sidebarSkin1') Light
+                  .checkbox-custom.fill.checkbox-light.mb5
+                    input#sidebarSkin2(type='radio', name='sidebarSkin', value='sidebar-light light')
+                    label(for='sidebarSkin2') Lighter
+            #toolbox-settings.tab-pane(role='tabpanel')
+              form#toolbox-settings-misc
+                h4.mv20.mtn Layout Options
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#header-option(type='checkbox', checked='')
+                    label(for='header-option') Fixed Header
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#sidebar-option(type='checkbox', checked='')
+                    label(for='sidebar-option') Fixed Sidebar
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-option(type='checkbox')
+                    label(for='breadcrumb-option') Fixed Breadcrumbs
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-hidden(type='checkbox')
+                    label(for='breadcrumb-hidden') Hide Breadcrumbs
+
+          .form-group.mn.br-t.p15
+            a#clearLocalStorage.btn.btn-primary.btn-block.pb10.pt10(href='#') Clear LocalStorage
+    // Start: Main
+    #main
+      // Page Header
+      block header
+        include _header
+      // Start: Sidebar
+      aside#sidebar_left.nano.nano-light.affix
+        // Start: Sidebar Left Content
+        +makeSidebar('form_inputs.html')
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Start: Topbar-Dropdown
+        #topbar-dropmenu.alt
+          .topbar-menu.row
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-primary.light(href='#')
+                span.glyphicon.glyphicon-inbox.text-muted
+                span.metro-title Messages
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-info.light(href='#')
+                span.glyphicon.glyphicon-user.text-muted
+                span.metro-title Users
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-success.light(href='#')
+                span.glyphicon.glyphicon-headphones.text-muted
+                span.metro-title Support
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-system.light(href='#')
+                span.glyphicon.glyphicon-facetime-video.text-muted
+                span.metro-title Videos
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-warning.light(href='#')
+                span.fa.fa-gears.text-muted
+                span.metro-title Settings
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-alert.light(href='#')
+                span.glyphicon.glyphicon-picture.text-muted
+                span.metro-title Pictures
+        // Start: Topbar
+        header#topbar.bg-white.alt
+          .topbar-left
+            ol.breadcrumb.mt-10
+              li.crumb-active
+                a(href='index.html') Dashboard
+              li.crumb-icon
+                a(href='index.html')
+                  span.glyphicon.glyphicon-home
+              li.crumb-link
+                a(href='index.html') Home
+              li.crumb-trail Dashboard
+          .topbar-right
+            .ib.topbar-dropdown
+              label.control-label.pr10.fs15.text-muted(for='topbar-multiple') Reporting Period
+              select#topbar-multiple.hidden
+                optgroup(label='Filter By:')
+                  option(value='1-1') Last 30 Days
+                  option(value='1-2', selected='selected') Last 60 Days
+                  option(value='1-3') Last Year
+            #toggle_sidemenu_r.ml15.ib.va-m
+              a.pl5(href='#')
+                i.fa.fa-sign-in.fs22.text-primary
+                span.badge.badge-hero.badge-danger 3
+        // Begin: Content
+        #content.animated.fadeIn
+          .row
+            .col-md-6
+              // Input Fields
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Standard Fields
+                .panel-body
+                  form.form-horizontal(role='form')
+                    .form-group
+                      label.col-lg-3.control-label Static Field
+                      .col-lg-8
+                        .bs-component
+                          p.form-control-static.text-muted email@example.com
+                    .form-group
+                      label.col-lg-3.control-label(for='inputStandard') Standard
+                      .col-lg-8
+                        .bs-component
+                          input#inputStandard.form-control(type='text', placeholder='Type Here...')
+                    .form-group
+                      label.col-lg-3.control-label(for='inputSelect') Select List
+                      .col-lg-8
+                        .bs-component
+                          select.form-control
+                            option Option 1
+                            option Option 2
+                            option Option 3
+                    .form-group
+                      label.col-lg-3.control-label(for='disabledInput') Disabled
+                      .col-lg-8
+                        .bs-component
+                          input#disabledInput.form-control(type='text', placeholder='A Disabled Form', disabled='')
+                    .form-group
+                      label.col-lg-3.control-label(for='textArea1') Text Area Expand
+                      .col-lg-8
+                        .bs-component
+                          textarea#textArea1.form-control.textarea-grow(rows='4')
+                    .form-group
+                      label.col-lg-3.control-label(for='textArea2') Text Area
+                      .col-lg-8
+                        .bs-component
+                          textarea#textArea2.form-control(rows='3')
+                    .form-group
+                      label.col-lg-3.control-label(for='textArea3') Disabled Text Area
+                      .col-lg-8
+                        .bs-component
+                          textarea#textArea3.form-control(rows='3', disabled='')
+              // Field Validation
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Validation States
+                .panel-body
+                  form.form-horizontal(role='form')
+                    .bs-component
+                      .form-group.has-primary
+                        label.col-lg-3.control-label(for='inputPrimary') Primary Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-gear
+                          input#inputPrimary.form-control(type='text')
+                    .bs-component
+                      .form-group.has-success
+                        label.col-lg-3.control-label(for='inputSuccess') Success Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-check
+                          input#inputSuccess.form-control(type='text')
+                    .bs-component
+                      .form-group.has-info
+                        label.col-lg-3.control-label(for='inputInfo') Info Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-exclamation-circle
+                          input#inputInfo.form-control(type='text')
+                    .bs-component
+                      .form-group.has-warning
+                        label.col-lg-3.control-label(for='inputWarning') Warning Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-exclamation-triangle
+                          input#inputWarning.form-control(type='text')
+                    .bs-component
+                      .form-group.has-error
+                        label.col-lg-3.control-label(for='inputError') Error Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-remove
+                          input#inputError.form-control(type='text')
+                    .bs-component
+                      .form-group.has-alert
+                        label.col-lg-3.control-label(for='inputAlert') Alert Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-flag
+                          input#inputAlert.form-control(type='text')
+                    .bs-component
+                      .form-group.has-system
+                        label.col-lg-3.control-label(for='inputSystem') System Field
+                        .col-lg-8
+                          span.append-icon.right
+                            i.fa.fa-bell
+                          input#inputSystem.form-control(type='text')
+              // Field Icons
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Easy Icons
+                .panel-body
+                  form.form-horizontal(role='form')
+                    label.col-md-2.text-right With Icons
+                    .col-md-10.ph30
+                      .form-group
+                        .bs-component
+                          .input-group.icon-inside-input
+                            span.input-group-addon
+                              i.fa.fa-envelope-o
+                            input.form-control(type='text', placeholder='Email address')
+                      .form-group
+                        .bs-component
+                          .input-group.icon-inside-input
+                            span.input-group-addon
+                              i.fa.fa-key
+                            input.form-control(type='password', placeholder='Password')
+                      .form-group
+                        .bs-component
+                          .input-group.icon-inside-input
+                            input.form-control(type='text', placeholder='Numbers')
+                            span.input-group-addon 00
+                      .form-group
+                        .bs-component
+                          .input-group.icon-inside-input
+                            input.form-control(type='password', placeholder='Money')
+                            span.input-group-addon
+                              i.fa.fa-usd
+              // Field Options
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Fields Options
+                .panel-body
+                  form.form-horizontal(role='form')
+                    .form-group
+                      label.col-lg-2.control-label(for='inputSmall') Small
+                      .col-lg-10
+                        .bs-component
+                          input#inputSmall.form-control.input-sm(type='text', placeholder='.input-sm')
+                    .form-group
+                      label.col-lg-2.control-label(for='inputDefault') Default
+                      .col-lg-10
+                        .bs-component
+                          input#inputDefault.form-control(type='text', placeholder='default style')
+                    .form-group
+                      label.col-lg-2.control-label(for='inputLarge') Large
+                      .col-lg-10
+                        .bs-component
+                          input#inputLarge.form-control.input-lg(type='text', placeholder='.input-lg')
+                    .bs-component
+                      .row.form-group
+                        label.col-sm-2.text-right Input Lengths
+                        .col-sm-2.mt-10.mt-sm-0
+                          input.form-control(type='text', placeholder='.col-sm-2')
+                        .col-sm-3.mt-10.mt-sm-0
+                          input.form-control(type='text', placeholder='.col-sm-3')
+                        .col-sm-5.mt-10.mt-sm-0
+                          input.form-control(type='text', placeholder='.col-sm-4')
+            .col-md-6
+              // Checkboxes/Radios
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Default Checkboxes/Radios
+                .panel-body
+                  form.form-horizontal(role='form')
+                    .form-group
+                      label.col-md-3.control-label Radios
+                      .col-md-9
+                        .bs-component
+                          label.radio-inline.mr10
+                            input#inlineRadio1(type='radio', name='inlineRadioOptions', value='option1')
+                            | 1
+                          label.radio-inline.mr10
+                            input#inlineRadio2(type='radio', name='inlineRadioOptions', value='option2')
+                            | 2
+                          label.radio-inline.mr10
+                            input#inlineRadio3(type='radio', name='inlineRadioOptions', value='option3')
+                            | 3
+                          label.radio-inline.mr10
+                            input#inlineRadio4(type='radio', name='inlineRadioOptions', value='option4')
+                            | 4
+                          label.radio-inline.mr10
+                            input#inlineRadio5(type='radio', name='inlineRadioOptions', value='option5')
+                            | 5
+                    .form-group.mb25
+                      label.col-md-3.control-label Checkboxes
+                      .col-md-9
+                        .bs-component
+                          label.checkbox-inline.mr10
+                            input#inlineCheckbox1(type='checkbox', value='option1')
+                            | 1
+                          label.checkbox-inline.mr10
+                            input#inlineCheckbox2(type='checkbox', value='option2')
+                            | 2
+                          label.checkbox-inline.mr10
+                            input#inlineCheckbox3(type='checkbox', value='option3')
+                            | 3
+                          label.checkbox-inline.mr10
+                            input#inlineCheckbox4(type='checkbox', value='option4')
+                            | 4
+                          label.checkbox-inline.mr10
+                            input#inlineCheckbox5(type='checkbox', value='option5')
+                            | 5
+              // Custom Checkboxes
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Custom Checkboxes
+                .panel-body.bg-light.pt20.pbn.pl30
+                  .row
+                    .col-sm-6
+                      form.form-horizontal(method='get')
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .checkbox-custom.checkbox-disabled.mb10
+                                input#checkboxDefault1(type='checkbox', checked='', disabled='')
+                                label(for='checkboxDefault1') Checked & Disabled
+                            .bs-component
+                              .checkbox-custom.checkbox-disabled
+                                input#checkboxDefault2(type='checkbox', disabled='')
+                                label(for='checkboxExample2') Disabled
+                    .col-sm-6
+                      form.form-horizontal(method='get')
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-disabled.mb10
+                                input#checkboxDefault11(type='checkbox', checked='', disabled='')
+                                label(for='checkboxDefault11') Checked & Disabled
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-disabled
+                                input#checkboxDefault12(type='checkbox', disabled='')
+                                label(for='checkboxExample12') Disabled
+                .panel-body.pl30.pb5
+                  .row
+                    .col-sm-6
+                      form.form-horizontal(method='get')
+                        label.control-label.mb15 Checkboxes
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .checkbox-custom.mb5
+                                input#checkboxDefault3(type='checkbox', checked='')
+                                label(for='checkboxDefault3') Default
+                            .bs-component
+                              .checkbox-custom.checkbox-primary.mb5
+                                input#checkboxExample4(type='checkbox', checked='')
+                                label(for='checkboxExample4') Primary
+                            .bs-component
+                              .checkbox-custom.checkbox-success.mb5
+                                input#checkboxExample5(type='checkbox', checked='')
+                                label(for='checkboxExample5') Success
+                            .bs-component
+                              .checkbox-custom.checkbox-info.mb5
+                                input#checkboxExample6(type='checkbox', checked='')
+                                label(for='checkboxExample6') Info
+                            .bs-component
+                              .checkbox-custom.checkbox-warning.mb5
+                                input#checkboxExample7(type='checkbox', checked='')
+                                label(for='checkboxExample7') Warning
+                            .bs-component
+                              .checkbox-custom.checkbox-danger.mb5
+                                input#checkboxExample8(type='checkbox', checked='')
+                                label(for='checkboxExample8') Danger
+                            .bs-component
+                              .checkbox-custom.checkbox-alert.mb5
+                                input#checkboxExample9(type='checkbox', checked='')
+                                label(for='checkboxExample9') Alert
+                            .bs-component
+                              .checkbox-custom.checkbox-system.mb5
+                                input#checkboxExample10(type='checkbox', checked='')
+                                label(for='checkboxExample10') System
+                    .col-sm-6
+                      form.form-horizontal(method='get')
+                        label.control-label.mb15 Checkboxes
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .checkbox-custom.fill.mb5
+                                input#checkboxDefault13(type='checkbox', checked='')
+                                label(for='checkboxDefault13') Default
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-primary.mb5
+                                input#checkboxExample14(type='checkbox', checked='')
+                                label(for='checkboxExample14') Primary
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-success.mb5
+                                input#checkboxExample15(type='checkbox', checked='')
+                                label(for='checkboxExample15') Success
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-info.mb5
+                                input#checkboxExample16(type='checkbox', checked='')
+                                label(for='checkboxExample16') Info
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-warning.mb5
+                                input#checkboxExample17(type='checkbox', checked='')
+                                label(for='checkboxExample17') Warning
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-danger.mb5
+                                input#checkboxExample18(type='checkbox', checked='')
+                                label(for='checkboxExample18') Danger
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-alert.mb5
+                                input#checkboxExample19(type='checkbox', checked='')
+                                label(for='checkboxExample19') Alert
+                            .bs-component
+                              .checkbox-custom.fill.checkbox-system.mb5
+                                input#checkboxExample20(type='checkbox', checked='')
+                                label(for='checkboxExample20') System
+              // Custom Radios
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Custom Radios
+                .panel-body.bg-light.pt20.pbn.pl30
+                  .row
+                    .col-sm-6
+                      form.form-horizontal(method='get')
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .radio-custom.radio-disabled.mb10
+                                input#radioExample1(type='radio', name='radioExample', disabled='', checked='')
+                                label(for='radioExample1') Checked & Disabled
+                            .bs-component
+                              .radio-custom.radio-disabled
+                                input#radioExample2(type='radio', name='radioExample', disabled='')
+                                label(for='radioExample2') Disabled
+                    .col-sm-6
+                      form.form-horizontal(method='get')
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .radio-custom.square.radio-disabled.mb10
+                                input#radioExample11(type='radio', name='radioExample', disabled='', checked='')
+                                label(for='radioExample11') Checked & Disabled
+                            .bs-component
+                              .radio-custom.square.radio-disabled
+                                input#radioExample12(type='radio', name='radioExample', disabled='')
+                                label(for='radioExample12') Disabled
+                .panel-body.pl30.pb15
+                  .row
+                    .col-sm-6
+                      form.form-horizontal.form-bordered(method='get')
+                        label.control-label.mb15 Radios
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .radio-custom.mb5
+                                input#radioExample3(type='radio', name='radioExample')
+                                label(for='radioExample3') Default
+                            .bs-component
+                              .radio-custom.radio-primary.mb5
+                                input#radioExample4(type='radio', name='radioExample')
+                                label(for='radioExample4') Primary
+                            .bs-component
+                              .radio-custom.radio-success.mb5
+                                input#radioExample5(type='radio', name='radioExample')
+                                label(for='radioExample5') Success
+                            .bs-component
+                              .radio-custom.radio-info.mb5
+                                input#radioExample6(type='radio', name='radioExample')
+                                label(for='radioExample6') Info
+                            .bs-component
+                              .radio-custom.radio-warning.mb5
+                                input#radioExample7(type='radio', name='radioExample')
+                                label(for='radioExample7') Warning
+                            .bs-component
+                              .radio-custom.radio-danger.mb5
+                                input#radioExample8(type='radio', name='radioExample')
+                                label(for='radioExample8') Danger
+                            .bs-component
+                              .radio-custom.radio-alert.mb5
+                                input#radioExample9(type='radio', name='radioExample')
+                                label(for='radioExample9') Alert
+                            .bs-component
+                              .radio-custom.radio-system.mb5
+                                input#radioExample10(type='radio', name='radioExample')
+                                label(for='radioExample10') System
+                    .col-sm-6
+                      form.form-horizontal.form-bordered(method='get')
+                        label.control-label.mb15 Checkbox
+                        .form-group
+                          .col-sm-12.pl15
+                            .bs-component
+                              .radio-custom.square.mb5
+                                input#radioExample13(type='radio', name='radioExample')
+                                label(for='radioExample13') Default
+                            .bs-component
+                              .radio-custom.square.radio-primary.mb5
+                                input#radioExample14(type='radio', name='radioExample')
+                                label(for='radioExample14') Primary
+                            .bs-component
+                              .radio-custom.square.radio-success.mb5
+                                input#radioExample15(type='radio', name='radioExample')
+                                label(for='radioExample15') Success
+                            .bs-component
+                              .radio-custom.square.radio-info.mb5
+                                input#radioExample16(type='radio', name='radioExample')
+                                label(for='radioExample16') Info
+                            .bs-component
+                              .radio-custom.square.radio-warning.mb5
+                                input#radioExample17(type='radio', name='radioExample')
+                                label(for='radioExample17') Warning
+                            .bs-component
+                              .radio-custom.square.radio-danger.mb5
+                                input#radioExample18(type='radio', name='radioExample')
+                                label(for='radioExample18') Danger
+                            .bs-component
+                              .radio-custom.square.radio-alert.mb5
+                                input#radioExample19(type='radio', name='radioExample')
+                                label(for='radioExample19') Alert
+                            .bs-component
+                              .radio-custom.square.radio-system.mb5
+                                input#radioExample20(type='radio', name='radioExample')
+                                label(for='radioExample20') System
+              // Custom Switches
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Custom Switches
+                .panel-body
+                  form.form-horizontal(role='form')
+                    .form-group
+                      label.col-md-3.control-label Switches
+                      .col-md-9
+                        .bs-component
+                          .switch.switch-info.switch-inline
+                            input#exampleCheckboxSwitch1(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch1')
+                          .switch.switch-primary.switch-inline
+                            input#exampleCheckboxSwitch2(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch2')
+                          .switch.switch-warning.switch-inline
+                            input#exampleCheckboxSwitch3(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch3')
+                          .switch.switch-alert.switch-inline
+                            input#exampleCheckboxSwitch4(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch4')
+                          .switch.switch-success.switch-inline
+                            input#exampleCheckboxSwitch5(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch5')
+                    .form-group
+                      label.col-md-3.control-label Round Switches
+                      .col-md-9
+                        .bs-component
+                          .switch.switch-info.round.switch-inline
+                            input#exampleCheckboxSwitch6(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch6')
+                          .switch.switch-primary.round.switch-inline
+                            input#exampleCheckboxSwitch7(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch7')
+                          .switch.switch-warning.round.switch-inline
+                            input#exampleCheckboxSwitch8(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch8')
+                          .switch.switch-alert.round.switch-inline
+                            input#exampleCheckboxSwitch9(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch9')
+                          .switch.switch-success.round.switch-inline
+                            input#exampleCheckboxSwitch10(type='checkbox', checked='')
+                            label(for='exampleCheckboxSwitch10')
+                    .form-group
+                      label.col-md-3.control-label Radio Switches
+                      .col-md-9
+                        .bs-component
+                          .switch.switch-info.switch-inline
+                            input#exampleRadioSwitch11(type='radio', name='testGroup', checked='')
+                            label(for='exampleRadioSwitch11')
+                          .switch.switch-primary.switch-inline
+                            input#exampleRadioSwitch12(type='radio', name='testGroup')
+                            label(for='exampleRadioSwitch12')
+                          .switch.switch-warning.switch-inline
+                            input#exampleRadioSwitch13(type='radio', name='testGroup')
+                            label(for='exampleRadioSwitch13')
+                          .switch.switch-alert.switch-inline
+                            input#exampleRadioSwitch14(type='radio', name='testGroup')
+                            label(for='exampleRadioSwitch14')
+                          .switch.switch-success.switch-inline
+                            input#exampleRadioSwitch15(type='radio', name='testGroup')
+                            label(for='exampleRadioSwitch15')
+              // Field Help Text
+              .panel
+                .panel-heading.br-b
+                  span.panel-title Fields Options
+                .panel-body
+                  form.form-horizontal(role='form')
+                    .form-group
+                      label.col-lg-2.control-label(for='inputInline') Inline Help
+                      .bs-component
+                        .col-lg-5
+                          input#inputInline.form-control(type='text', placeholder='Text Field')
+                        .col-lg-5
+                          span.help-block.mt5
+                            i.fa.fa-bell
+                            |  A block of help text!
+                    hr.short.alt
+                    .form-group.mbn
+                      label.col-lg-2.control-label(for='inputHelp') Block Help
+                      .col-lg-10
+                        .bs-component
+                          input#inputHelp.form-control(type='text', placeholder='Text Field')
+                          span.help-block.mt5
+                            i.fa.fa-bell
+                            |  A block of help text that can help the user
+      // Start: Right Sidebar
+      aside#sidebar_right.nano.affix
+        // Start: Sidebar Right Content
+        .sidebar-right-content.nano-content
+          .tab-block.sidebar-block.br-n
+            ul.nav.nav-tabs.tabs-border.nav-justified.hidden
+              li.active
+                a(href='#sidebar-right-tab1', data-toggle='tab') Tab 1
+              li
+                a(href='#sidebar-right-tab2', data-toggle='tab') Tab 2
+              li
+                a(href='#sidebar-right-tab3', data-toggle='tab') Tab 3
+            .tab-content.br-n
+              #sidebar-right-tab1.tab-pane.active
+                h5.title-divider.text-muted.mb20
+                  | Server Statistics
+                  span.pull-right
+                    | 2013
+                    i.fa.fa-caret-down.ml5
+                .progress.mh5
+                  .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 44%')
+                    span.fs11 DB Request
+                .progress.mh5
+                  .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 84%')
+                    span.fs11.text-left Server Load
+                .progress.mh5
+                  .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 61%')
+                    span.fs11.text-left Server Connections
+                h5.title-divider.text-muted.mt30.mb10 Traffic Margins
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 132
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  13.2%
+                h5.title-divider.text-muted.mt25.mb10 Database Request
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 212
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  25.6%
+                h5.title-divider.text-muted.mt25.mb10 Server Response
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 82.5
+                  .col-xs-7.text-right
+                    h3.text-danger.mn
+                      i.fa.fa-caret-down
+                      |  17.9%
+                h5.title-divider.text-muted.mt40.mb20
+                  | Server Statistics
+                  span.pull-right.text-primary.fw600 USA
+              #sidebar-right-tab2.tab-pane
+              #sidebar-right-tab3.tab-pane
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+      });

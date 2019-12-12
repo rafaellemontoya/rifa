@@ -1,0 +1,1307 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='assets/fonts/zocial/zocial.css')
+
+block body
+  body.ui-buttons-page
+    // Start: Theme Preview Pane
+    #skin-toolbox.bg-white
+      .panel
+        .panel-heading
+          span.panel-icon
+            i.fa.fa-gear.text-primary
+          span.panel-title  Theme Options
+        .panel-body.pn
+          ul.nav.nav-list.nav-list-sm.pl15.pt10(role='tablist')
+            li.active
+              a(href='#toolbox-header', role='tab', data-toggle='tab') Navbar
+            li
+              a(href='#toolbox-sidebar', role='tab', data-toggle='tab') Sidebar
+            li
+              a(href='#toolbox-settings', role='tab', data-toggle='tab') Misc
+          .tab-content.p20.ptn.pb15
+            #toolbox-header.tab-pane.active(role='tabpanel')
+              form#toolbox-header-skin
+                h4.mv20 Header Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.checkbox-disabled.fill.mb5
+                    input#headerSkin8(type='radio', name='headerSkin', checked='', value='')
+                    label(for='headerSkin8') Light
+                  .checkbox-custom.fill.checkbox-primary.mb5
+                    input#headerSkin1(type='radio', name='headerSkin', value='bg-primary')
+                    label(for='headerSkin1') Primary
+                  .checkbox-custom.fill.checkbox-info.mb5
+                    input#headerSkin3(type='radio', name='headerSkin', value='bg-info')
+                    label(for='headerSkin3') Info
+                  .checkbox-custom.fill.checkbox-warning.mb5
+                    input#headerSkin4(type='radio', name='headerSkin', value='bg-warning')
+                    label(for='headerSkin4') Warning
+                  .checkbox-custom.fill.checkbox-danger.mb5
+                    input#headerSkin5(type='radio', name='headerSkin', value='bg-danger')
+                    label(for='headerSkin5') Danger
+                  .checkbox-custom.fill.checkbox-alert.mb5
+                    input#headerSkin6(type='radio', name='headerSkin', value='bg-alert')
+                    label(for='headerSkin6') Alert
+                  .checkbox-custom.fill.checkbox-system.mb5
+                    input#headerSkin7(type='radio', name='headerSkin', value='bg-system')
+                    label(for='headerSkin7') System
+                  .checkbox-custom.fill.checkbox-success.mb5
+                    input#headerSkin2(type='radio', name='headerSkin', value='bg-success')
+                    label(for='headerSkin2') Success
+                  .checkbox-custom.fill.mb5
+                    input#headerSkin9(type='radio', name='headerSkin', value='bg-dark')
+                    label(for='headerSkin9') Dark
+            #toolbox-sidebar.tab-pane(role='tabpanel')
+              form#toolbox-sidebar-skin
+                h4.mv20 Sidebar Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.fill.mb5
+                    input#sidebarSkin3(type='radio', name='sidebarSkin', checked='', value='')
+                    label(for='sidebarSkin3') Dark
+                  .checkbox-custom.fill.checkbox-disabled.mb5
+                    input#sidebarSkin1(type='radio', name='sidebarSkin', value='sidebar-light')
+                    label(for='sidebarSkin1') Light
+                  .checkbox-custom.fill.checkbox-light.mb5
+                    input#sidebarSkin2(type='radio', name='sidebarSkin', value='sidebar-light light')
+                    label(for='sidebarSkin2') Lighter
+            #toolbox-settings.tab-pane(role='tabpanel')
+              form#toolbox-settings-misc
+                h4.mv20.mtn Layout Options
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#header-option(type='checkbox', checked='')
+                    label(for='header-option') Fixed Header
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#sidebar-option(type='checkbox', checked='')
+                    label(for='sidebar-option') Fixed Sidebar
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-option(type='checkbox')
+                    label(for='breadcrumb-option') Fixed Breadcrumbs
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-hidden(type='checkbox')
+                    label(for='breadcrumb-hidden') Hide Breadcrumbs
+
+          .form-group.mn.br-t.p15
+            a#clearLocalStorage.btn.btn-primary.btn-block.pb10.pt10(href='#') Clear LocalStorage
+    // Start: Main
+    #main
+      // Page Header
+      block header
+        include _header
+      // Start: Sidebar
+      aside#sidebar_left.nano.nano-light.affix
+        // Start: Sidebar Left Content
+        +makeSidebar('ui_buttons.html')
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Start: Topbar-Dropdown
+        #topbar-dropmenu.alt
+          .topbar-menu.row
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-primary.light(href='#')
+                span.glyphicon.glyphicon-inbox.text-muted
+                span.metro-title Messages
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-info.light(href='#')
+                span.glyphicon.glyphicon-user.text-muted
+                span.metro-title Users
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-success.light(href='#')
+                span.glyphicon.glyphicon-headphones.text-muted
+                span.metro-title Support
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-system.light(href='#')
+                span.glyphicon.glyphicon-facetime-video.text-muted
+                span.metro-title Videos
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-warning.light(href='#')
+                span.fa.fa-gears.text-muted
+                span.metro-title Settings
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-alert.light(href='#')
+                span.glyphicon.glyphicon-picture.text-muted
+                span.metro-title Pictures
+        // Start: Topbar
+        header#topbar.alt
+          .topbar-left
+            ol.breadcrumb
+              li.crumb-active
+                a(href='index.html') Dashboard
+              li.crumb-icon
+                a(href='index.html')
+                  span.glyphicon.glyphicon-home
+              li.crumb-link
+                a(href='index.html') Home
+              li.crumb-trail Dashboard
+          .topbar-right
+            .ib.topbar-dropdown
+              label.control-label.pr10.fs15.text-muted(for='topbar-multiple') Reporting Period
+              select#topbar-multiple.hidden
+                optgroup(label='Filter By:')
+                  option(value='1-1') Last 30 Days
+                  option(value='1-2', selected='selected') Last 60 Days
+                  option(value='1-3') Last Year
+            #toggle_sidemenu_r.ml15.ib.va-m
+              a.pl5(href='#')
+                i.fa.fa-sign-in.fs22.text-primary
+                span.badge.badge-hero.badge-danger 3
+
+          .text-center.mt70.mb20
+            h3.mt20.mb10.fw400 Loading Buttons
+            p.mb25
+              code .ladda-button
+
+            .row.mt20.text-center.element-groups-custom
+              .bs-component
+                button.btn.ladda-button.btn-dark(type='button', data-style='expand-right')
+                  span.ladda-label Load Right
+
+              .bs-component
+                button.btn.ladda-button.btn-primary(type='button', data-style='expand-down')
+                  span.ladda-label Load Down
+
+              .bs-component
+                button.btn.ladda-button.btn-success(type='button', data-style='expand-left')
+                  span.ladda-label Load Left
+
+              .bs-component
+                button.btn.ladda-button.btn-warning(type='button', data-style='zoom-in')
+                  span.ladda-label Zoom In
+              .bs-component
+                button.btn.ladda-button.btn-danger(type='button', data-style='zoom-out')
+                  span.ladda-label Zoom Out
+              .bs-component
+                button.btn.ladda-button.btn-alert(type='button', data-style='zoom-out')
+                  span.ladda-label Progress
+              .bs-component
+                button.btn.ladda-button.btn-system(type='button', data-style='expand-right')
+                  span.ladda-label Progress 2
+
+        #content.pn.pb30.animated.fadeIn
+          // Start: Color Variations
+          .hero-content.pv30.br-b.br-grey
+            .col-adjust-8
+              .row.mb10.text-center
+                h3.mtn.mb30.fw400 Color Variations
+                .col-xs-4.col-sm-2
+                  code .btn-default
+                .col-xs-4.col-sm-2
+                  code .btn-dark
+                .col-xs-4.col-sm-2
+                  code .btn-primary
+                .col-xs-4.col-sm-2
+                  code .btn-success
+                .col-xs-4.col-sm-2
+                  code .btn-info
+                .col-xs-4.col-sm-2
+                  code .btn-warning
+                .col-xs-4.col-sm-2
+                  code .btn-danger
+                .col-xs-4.col-sm-2
+                  code .btn-alert
+                .col-xs-4.col-sm-2
+                  code .btn-system
+                .clearfix
+              .row
+                .col-xs-4.col-sm-2
+                  .bg-light.light.br-b.br-lighter.pv20.fw600.text-center
+                  .bg-light.br-b.br-light.pv20.fw600.text-center
+                  .bg-light.dark.pv20.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-dark.light.pv20.text-white.fw600.text-center
+                  .bg-dark.pv20.text-white.fw600.text-center
+                  .bg-dark.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-primary.light.pv20.text-white.fw600.text-center
+                  .bg-primary.pv20.text-white.fw600.text-center
+                  .bg-primary.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-success.light.pv20.text-white.fw600.text-center
+                  .bg-success.pv20.text-white.fw600.text-center
+                  .bg-success.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-info.light.pv20.text-white.fw600.text-center
+                  .bg-info.pv20.text-white.fw600.text-center
+                  .bg-info.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-warning.light.pv20.text-white.fw600.text-center
+                  .bg-warning.pv20.text-white.fw600.text-center
+                  .bg-warning.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-danger.light.pv20.text-white.fw600.text-center
+                  .bg-danger.pv20.text-white.fw600.text-center
+                  .bg-danger.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-alert.light.pv20.text-white.fw600.text-center
+                  .bg-alert.pv20.text-white.fw600.text-center
+                  .bg-alert.dark.pv20.text-white.fw600.text-center
+                .col-xs-4.col-sm-2
+                  .bg-system.light.pv20.text-white.fw600.text-center
+                  .bg-system.pv20.text-white.fw600.text-center
+                  .bg-system.dark.pv20.text-white.fw600.text-center
+          // Start: Button States
+          .mb30
+            .row.mt20.text-center
+              h3.mt20.mb10.fw400 Button States
+              p.mb25
+                code .disabled .active
+              .element-groups-lg-custom
+                .bs-component
+                  button.btn.btn-default.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-dark.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-primary.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-success.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-info.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-warning.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-danger.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-alert.btn-block(type='button') Button
+
+                .bs-component
+                  button.btn.btn-system.btn-block(type='button') Button
+            .mt20.text-center.element-groups-lg-custom
+                .bs-component
+                  button.btn.btn-hover.btn-default.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-dark.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-primary.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-success.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-info.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-warning.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-danger.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-alert.btn-block(type='button') Hover
+                .bs-component
+                  button.btn.btn-hover.btn-system.btn-block(type='button') Hover
+            .row.mt20.text-center.element-groups-lg-custom
+                .bs-component
+                  button.btn.active.btn-default.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-dark.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-primary.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-success.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-info.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-warning.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-danger.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-alert.btn-block(type='button') Active
+                .bs-component
+                  button.btn.active.btn-system.btn-block(type='button') Active
+            .row.mt20.text-center.element-groups-lg-custom
+                .bs-component
+                  button.btn.disabled.btn-default.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-dark.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-primary.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-success.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-info.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-warning.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-danger.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-alert.btn-block(type='button') Disabled
+                .bs-component
+                  button.btn.disabled.btn-system.btn-block(type='button') Disabled
+          // button sizes
+          div.mt-70.text-center
+            h3.mt20.mb10.fw400 Button Sizes
+            p.mb25
+              code .btn-xs .btn-sm .btn-lg
+            .mt20.text-center.element-groups-custom
+
+                .bs-component
+                  button.btn.btn-xs.btn-default.btn-block(type='button') Default
+
+                .bs-component
+                  button.btn.btn-xs.btn-dark.btn-block(type='button') Dark
+
+                .bs-component
+                  button.btn.btn-xs.btn-primary.btn-block(type='button') Primary
+
+                .bs-component
+                  button.btn.btn-xs.btn-success.btn-block(type='button') Success
+
+                .bs-component
+                  button.btn.btn-xs.btn-info.btn-block(type='button') Info
+
+                .bs-component
+                  button.btn.btn-xs.btn-warning.btn-block(type='button') Warning
+
+                .bs-component
+                  button.btn.btn-xs.btn-danger.btn-block(type='button') Danger
+
+                .bs-component
+                  button.btn.btn-xs.btn-alert.btn-block(type='button') Alert
+
+                .bs-component
+                  button.btn.btn-xs.btn-system.btn-block(type='button') System
+            .mt20.text-center.element-groups-custom
+
+                .bs-component
+                  button.btn.btn-sm.btn-default.btn-block(type='button') Default
+
+                .bs-component
+                  button.btn.btn-sm.btn-dark.btn-block(type='button') Dark
+
+                .bs-component
+                  button.btn.btn-sm.btn-primary.btn-block(type='button') Primary
+
+                .bs-component
+                  button.btn.btn-sm.btn-success.btn-block(type='button') Success
+
+                .bs-component
+                  button.btn.btn-sm.btn-info.btn-block(type='button') Info
+
+                .bs-component
+                  button.btn.btn-sm.btn-warning.btn-block(type='button') Warning
+
+                .bs-component
+                  button.btn.btn-sm.btn-danger.btn-block(type='button') Danger
+
+                .bs-component
+                  button.btn.btn-sm.btn-alert.btn-block(type='button') Alert
+
+                .bs-component
+                  button.btn.btn-sm.btn-system.btn-block(type='button') System
+            .mt20.text-center.element-groups-custom
+
+                .bs-component
+                  button.btn.btn-default.btn-block(type='button') Default
+
+                .bs-component
+                  button.btn.btn-dark.btn-block(type='button') Dark
+
+                .bs-component
+                  button.btn.btn-primary.btn-block(type='button') Primary
+
+                .bs-component
+                  button.btn.btn-success.btn-block(type='button') Success
+
+                .bs-component
+                  button.btn.btn-info.btn-block(type='button') Info
+
+                .bs-component
+                  button.btn.btn-warning.btn-block(type='button') Warning
+
+                .bs-component
+                  button.btn.btn-danger.btn-block(type='button') Danger
+
+                .bs-component
+                  button.btn.btn-alert.btn-block(type='button') Alert
+
+                .bs-component
+                  button.btn.btn-system.btn-block(type='button') System
+            .mt20.text-center.element-groups-custom
+
+                .bs-component
+                  button.btn.btn-lg.btn-default.btn-block(type='button') Default
+
+                .bs-component
+                  button.btn.btn-lg.btn-dark.btn-block(type='button') Dark
+
+                .bs-component
+                  button.btn.btn-lg.btn-primary.btn-block(type='button') Primary
+
+                .bs-component
+                  button.btn.btn-lg.btn-success.btn-block(type='button') Success
+
+                .bs-component
+                  button.btn.btn-lg.btn-info.btn-block(type='button') Info
+
+                .bs-component
+                  button.btn.btn-lg.btn-warning.btn-block(type='button') Warning
+
+                .bs-component
+                  button.btn.btn-lg.btn-danger.btn-block(type='button') Danger
+
+                .bs-component
+                  button.btn.btn-lg.btn-alert.btn-block(type='button') Alert
+
+                .bs-component
+                  button.btn.btn-lg.btn-system.btn-block(type='button') System
+            // button options
+            .mb30.mt70.text-center
+              h3.mt20.mb10.fw400 Button Options
+              p.mb25
+                code .btn-rounded .btn-gradient
+            .row.mt20.text-center.element-groups-custom
+              .bs-component
+                button.btn.btn-rounded.btn-default.btn-block(type='button') Default
+
+              .bs-component
+                button.btn.btn-rounded.btn-dark.btn-block(type='button') Dark
+
+              .bs-component
+                button.btn.btn-rounded.btn-primary.btn-block(type='button') Primary
+
+              .bs-component
+                button.btn.btn-rounded.btn-success.btn-block(type='button') Success
+
+              .bs-component
+                button.btn.btn-rounded.btn-info.btn-block(type='button') Info
+
+              .bs-component
+                button.btn.btn-rounded.btn-warning.btn-block(type='button') Warning
+
+              .bs-component
+                button.btn.btn-rounded.btn-danger.btn-block(type='button') Danger
+
+              .bs-component
+                button.btn.btn-rounded.btn-alert.btn-block(type='button') Alert
+
+              .bs-component
+                button.btn.btn-rounded.btn-system.btn-block(type='button') System
+            .row.mt20.text-center.element-groups-custom
+                .bs-component
+                  button.btn.btn-default.btn-gradient.dark.btn-block(type='button') Default
+
+                .bs-component
+                  button.btn.btn-dark.btn-gradient.dark.btn-block(type='button') Dark
+
+                .bs-component
+                  button.btn.btn-primary.btn-gradient.dark.btn-block(type='button') Primary
+
+                .bs-component
+                  button.btn.btn-success.btn-gradient.dark.btn-block(type='button') Success
+
+                .bs-component
+                  button.btn.btn-info.btn-gradient.dark.btn-block(type='button') Info
+
+                .bs-component
+                  button.btn.btn-warning.btn-gradient.dark.btn-block(type='button') Warning
+
+                .bs-component
+                  button.btn.btn-danger.btn-gradient.dark.btn-block(type='button') Danger
+
+                .bs-component
+                  button.btn.btn-alert.btn-gradient.dark.btn-block(type='button') Alert
+
+                .bs-component
+                  button.btn.btn-system.btn-gradient.dark.btn-block(type='button') System
+          // loading buttons
+          .mb30.demo-btn-ladda
+            .row.mt20.text-center.element-groups-custom
+                .bs-component
+                  button.btn.ladda-button.btn-default.progress-button(type='button', data-style='expand-up')
+                    span.ladda-label Up
+                .bs-component
+                  button.btn.ladda-button.btn-dark.progress-button(type='button', data-style='expand-right')
+                    span.ladda-label Right
+                .bs-component
+                  button.btn.ladda-button.btn-primary.progress-button(type='button', data-style='expand-down')
+                    span.ladda-label Down
+                .bs-component
+                  button.btn.ladda-button.btn-success.progress-button(type='button', data-style='expand-left')
+                    span.ladda-label Left
+                .bs-component
+                  button.btn.ladda-button.btn-info.progress-button(type='button', data-style='contract')
+                    span.ladda-label Progress
+                .bs-component
+                  button.btn.ladda-button.btn-warning.progress-button(type='button', data-style='zoom-in')
+                    span.ladda-label In
+                .bs-component
+                  button.btn.ladda-button.btn-danger.progress-button(type='button', data-style='zoom-out')
+                    span.ladda-label Out
+                .bs-component
+                  button.btn.ladda-button.btn-alert.progress-button.progress-button(type='button', data-style='zoom-out')
+                    span.ladda-label Progress
+                .bs-component
+                  button.btn.ladda-button.btn-system.progress-button.progress-button(type='button', data-style='expand-right')
+                    span.ladda-label Progress 2
+
+          // icon/button groups
+          .mb30.mt70.demo-btn-groups.text-center
+            h3.mt20.mb10.fw400 Icon/Button Groups
+            p.mb25
+              code Multiple .btns wrapped in .btn-group
+            .row.mt20.text-center.element-groups-custom
+                .bs-component
+                  .btn-group
+                    button.btn.btn-default(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-dark(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-primary(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-success(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-info(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-warning(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-danger(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-alert(type='button')
+                      i.fa.fa-home
+                .bs-component
+                  .btn-group
+                    button.btn.btn-system(type='button')
+                      i.fa.fa-home
+            .row.mt20.text-center.element-groups-custom
+                .bs-component
+                  .btn-group
+                    button.btn.btn-default(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-default.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-dark(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-dark.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-primary(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-primary.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-success(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-success.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-info(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-info.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-warning(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-warning.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-danger(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-danger.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-alert(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-alert.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-system(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-system.dark(type='button')
+                      i.fa.fa-coffee
+            .row.mt20.text-center.element-groups-custom
+                .bs-component
+                  .btn-group
+                    button.btn.btn-default.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-default(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-default.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-dark.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-dark(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-dark.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-primary.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-primary(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-primary.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-success.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-success(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-success.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-info.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-info(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-info.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-warning.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-warning(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-warning.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-danger.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-danger(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-danger.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-alert.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-alert(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-alert.dark(type='button')
+                      i.fa.fa-coffee
+                .bs-component
+                  .btn-group
+                    button.btn.btn-system.light(type='button')
+                      i.fa.fa-envelope
+                    button.btn.btn-system(type='button')
+                      i.fa.fa-home
+                    button.btn.btn-system.dark(type='button')
+                      i.fa.fa-coffee
+          .mb30.mt70.demo-btn-dropdowns.text-center
+            h3.mt20.mb10.fw400 Button Dropdowns
+            p.mb25
+              code .dropdown-toggle
+
+            .row.mt20.text-center.element-groups-custom
+                .bs-component
+                  .btn-group
+                    button.btn.btn-default(type='button') Default
+                    button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-dark(type='button') Dark
+                    button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-primary(type='button') Primary
+                    button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-success(type='button') Success
+                    button.btn.btn-success.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-info(type='button') Info
+                    button.btn.btn-info.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-warning(type='button') Warning
+                    button.btn.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-danger(type='button') Danger
+                    button.btn.btn-danger.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-alert(type='button') Alert
+                    button.btn.btn-alert.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+                .bs-component
+                  .btn-group
+                    button.btn.btn-system(type='button') System
+                    button.btn.btn-system.dropdown-toggle(type='button', data-toggle='dropdown')
+                      span.caret
+                      span.sr-only Toggle Dropdown
+                    ul.dropdown-menu(role='menu')
+                      li
+                        a(href='#') Action
+                      li
+                        a(href='#') Another action
+                      li
+                        a(href='#') Something else here
+                      li.divider
+                      li
+                        a(href='#') Separated link
+
+          // social buttons
+          .mt50.text-center
+            h3.mt20.mb10.fw400 Social Buttons
+            p.mb25
+              code .zocial .name(eg facebook)
+          .mh30.p20.bg-dark.lighter.text-center
+            .bs-component.ib
+              button.zocial.icon.facebook Sign in with Facebook
+            .bs-component.ib
+              button.zocial.icon.googleplus Sign in with Google+
+            .bs-component.ib
+              button.zocial.icon.twitter Sign in with Twitter
+            .bs-component.ib
+              button.zocial.icon.google Sign in with Google
+            .bs-component.ib
+              button.zocial.icon.linkedin Sign in with LinkedIn
+            .bs-component.ib
+              button.zocial.icon.paypal Pay with Paypal
+            .bs-component.ib.ib
+              button.zocial.icon.amazon Sign in with Amazon
+            .bs-component.ib.ib
+              button.zocial.icon.dropbox Sync with Dropbox
+            .bs-component.ib
+              button.zocial.icon.evernote Clip to Evernote
+            .bs-component.ib
+              button.zocial.icon.skype Call me on Skype
+            .bs-component.ib
+              button.zocial.icon.guest Sign in as guest
+            .bs-component.ib
+              button.zocial.icon.spotify Play on Spotify
+            .bs-component.ib
+              button.zocial.icon.lastfm Sign in with Last.fm
+            .bs-component.ib
+              button.zocial.icon.songkick Sign in with Songkick
+            .bs-component.ib
+              button.zocial.icon.forrst Follow me on Forrst
+            .bs-component.ib
+              button.zocial.icon.dribbble Sign in with Dribbble
+            .bs-component.ib
+              button.zocial.icon.cloudapp Sign in to CloudApp
+            .bs-component.ib
+              button.zocial.icon.github Fork me on Github
+            .bs-component.ib
+              button.zocial.pinterest.icon Follow me on Pinterest
+            .bs-component.ib
+              button.zocial.quora.icon Follow me on Quora
+            .bs-component.ib
+              button.zocial.pinboard.icon Bookmark with Pinboard
+            .bs-component.ib
+              button.zocial.lanyrd.icon Attend on Lanyrd
+            .bs-component.ib
+              button.zocial.icon.itunes Download on iTunes
+            .bs-component.ib
+              button.zocial.icon.android Download on Android
+            .bs-component.ib
+              button.zocial.icon.disqus Sign in with Disqus
+            .bs-component.ib
+              button.zocial.icon.yahoo Sign in with Yahoo
+            .bs-component.ib
+              button.zocial.icon.vimeo Upload to Vimeo
+            .bs-component.ib
+              button.zocial.icon.chrome Add to Chrome
+            .bs-component.ib
+              button.zocial.icon.ie Get a new browser
+            .bs-component.ib
+              button.zocial.icon.html5 Made from HTML5
+            .bs-component.ib
+              button.zocial.icon.instapaper Read It Later
+            .bs-component.ib
+              button.zocial.icon.scribd Read more on Scribd
+            .bs-component.ib
+              button.zocial.icon.wikipedia View on Wikipedia
+            .bs-component.ib
+              button.zocial.icon.flattr Tip with Flattr
+            .bs-component.ib
+              button.zocial.icon.tumblr Follow me on Tumblr
+            .bs-component.ib
+              button.zocial.icon.posterous Subscribe to my Posterous
+            .bs-component.ib
+              button.zocial.icon.gowalla Check in with Gowalla
+            .bs-component.ib
+              button.zocial.icon.foursquare Check in with foursquare
+            .bs-component.ib
+              button.zocial.icon.yelp Write a review on Yelp
+            .bs-component.ib
+              button.zocial.icon.soundcloud Follow me on Soundcloud
+            .bs-component.ib
+              button.zocial.icon.smashing Read on Smashing Magazine
+            .bs-component.ib
+              button.zocial.icon.wordpress Sign in with WordPress
+            .bs-component.ib
+              button.zocial.icon.intensedebate Sign in with IntenseDebate
+            .bs-component.ib
+              button.zocial.icon.openid Sign in with OpenID
+            .bs-component.ib
+              button.zocial.icon.gmail Sign in with Gmail
+            .bs-component.ib
+              button.zocial.icon.eventbrite Sign in with Eventbrite
+            .bs-component.ib
+              button.zocial.icon.eventasaurus Sign in with Eventasaurus
+            .bs-component.ib
+              button.zocial.icon.meetup Sign in with Meetup.com
+            .bs-component.ib
+              button.zocial.icon.aol Sign in with AIM
+            .bs-component.ib
+              button.zocial.icon.plancast Follow me on Plancast
+            .bs-component.ib
+              button.zocial.icon.youtube Subscribe on YouTube
+            .bs-component.ib
+              button.zocial.icon.appstore Available on the Mac App Store
+            .bs-component.ib
+              button.zocial.icon.creativecommons View Creative Commons Licence
+            .bs-component.ib
+              button.zocial.icon.rss Subscribe to RSS
+            .bs-component.ib
+              button.zocial.weibo.icon Follow me on Weibo
+            .bs-component.ib
+              button.zocial.plurk.icon Follow me on Plurk
+            .bs-component.ib
+              button.zocial.grooveshark.icon Follow me on Grooveshark
+            .bs-component.ib
+              button.zocial.blogger.icon Post on Blogger
+            .bs-component.ib
+              button.zocial.viadeo.icon Sign in with Viadeo
+            .bs-component.ib
+              button.zocial.podcast.icon Subscribe to this Podcast
+            .bs-component.ib
+              button.zocial.fivehundredpx.icon View Portfolio on 500px
+            .bs-component.ib
+              button.zocial.bitcoin.icon Bitcoin accepted here
+            .bs-component.ib
+              button.zocial.ninetyninedesigns.icon View Portfolio on 99Designs
+            .bs-component.ib
+              button.zocial.stumbleupon.icon Stumble!
+            .bs-component.ib
+              button.zocial.itunes.icon Download on iTunes
+            .bs-component.ib
+              button.zocial.myspace.icon Find me on Myspace
+            .bs-component.ib
+              button.zocial.windows.icon Sign in with Windows Live
+            .bs-component.ib
+              button.zocial.eventful.icon Find Events with Eventful
+            .bs-component.ib
+              button.zocial.klout.icon Influence with Klout
+            .bs-component.ib
+              button.zocial.xing.icon Sign in with Xing
+            .bs-component.ib
+              button.zocial.flickr.icon Upload to Flickr
+            .bs-component.ib
+              button.zocial.delicious.icon Sign in with Del.icio.us
+            .bs-component.ib
+              button.zocial.googleplay.icon Download from Google Play
+            .bs-component.ib
+              button.zocial.opentable.icon Reserve with OpenTable
+            .bs-component.ib
+              button.zocial.digg.icon Digg this
+            .bs-component.ib
+              button.zocial.reddit.icon Share on Reddit
+            .bs-component.ib
+              button.zocial.angellist.icon Fund us on AngelList
+            .bs-component.ib
+              button.zocial.instagram.icon Sign in with Instagram
+            .bs-component.ib
+              button.zocial.steam.icon Sign in with Steam
+            .bs-component.ib
+              button.zocial.vk.icon Sign in with VKontakte
+            .bs-component.ib
+              button.zocial.appnet.icon Sign in with App.net
+            .bs-component.ib
+              button.zocial.stripe.icon Sign in with Stripe
+            .bs-component.ib
+              button.zocial.dwolla.icon Sign in with Dwolla
+            .bs-component.ib
+              button.zocial.drupal.icon Built with Drupal
+            .bs-component.ib
+              button.zocial.statusnet.icon Share with Status.net/Indenti.ca
+            .bs-component.ib
+              button.zocial.pocket.icon Save for later
+            .bs-component.ib
+              button.zocial.acrobat.icon Download Adobe Acrobat
+            .bs-component.ib
+              button.zocial.bitbucket.icon Fork from Bitbucket
+            .bs-component.ib
+              button.zocial.buffer.icon Buffer
+            .bs-component.ib
+              button.zocial.lego.icon Make me out of Lego
+            .bs-component.ib
+              button.zocial.logmein.icon Log in
+            .bs-component.ib
+              button.zocial.ycombinator.icon Hacker News
+            .bs-component.ib
+              button.zocial.stackoverflow.icon Sign in with Stackoverflow
+            br
+          .mh30.p20.bg-dark.light.text-center
+            .bs-component.ib
+              button.zocial.facebook Sign in with Facebook
+            .bs-component.ib
+              button.zocial.tumblr Follow me on Tumblr
+            .bs-component.ib
+              button.zocial.twitter Sign in with Twitter
+            .bs-component.ib
+              button.zocial.linkedin Sign in with LinkedIn
+            .bs-component.ib
+              button.zocial.google Sign in with Google
+            .bs-component.ib
+              button.zocial.googleplus Sign in with Google+
+            .bs-component.ib
+              button.zocial.pinterest Follow me on Pinterest
+            .bs-component.ib
+              button.zocial.github Fork me on Github
+            .bs-component.ib
+              button.zocial.dribbble Sign in with Dribbble
+            .bs-component.ib
+              button.zocial.gmail Sign in with Gmail
+            .bs-component.ib
+              button.zocial.soundcloud Follow me on Soundcloud
+            .bs-component.ib
+              button.zocial.itunes Available on iTunes
+            .bs-component.ib
+              button.zocial.paypal Pay with Paypal
+            .bs-component.ib
+              button.zocial.amazon Sign in with Amazon
+            .bs-component.ib
+              button.zocial.skype Call me on Skype
+            .bs-component.ib
+              button.zocial.cloudapp Sign in to CloudApp
+            .bs-component.ib
+              button.zocial.forrst Follow me on Forrst
+            .bs-component.ib
+              button.zocial.spotify Play on Spotify
+            .bs-component.ib
+              button.zocial.instapaper Read It Later
+            .bs-component.ib
+              button.zocial.smashing Read on Smashing Magazine
+            .bs-component.ib
+              button.zocial.dropbox Sync with Dropbox
+            .bs-component.ib
+              button.zocial.appstore Available on the App Store
+            .bs-component.ib
+              button.zocial.macstore Available on the Mac App Store
+            .bs-component.ib
+              button.zocial.android Available on Android Market
+            .bs-component.ib
+              button.zocial.evernote Clip to Evernote
+            .bs-component.ib
+              button.zocial.quora Follow me on Quora
+            .bs-component.ib
+              button.zocial.lanyrd Attend on Lanyrd
+            .bs-component.ib
+              button.zocial.lastfm Sign in with Last.fm
+            .bs-component.ib
+              button.zocial.yelp Write a review on Yelp
+            .bs-component.ib
+              button.zocial.foursquare Check in with foursquare
+            .bs-component.ib
+              button.zocial.klout Influence with Klout
+            .bs-component.ib
+              button.zocial.wikipedia View on Wikipedia
+            .bs-component.ib
+              button.zocial.disqus Sign in with Disqus
+            .bs-component.ib
+              button.zocial.intensedebate Sign in with IntenseDebate
+            .bs-component.ib
+              button.zocial.vimeo Upload to Vimeo
+            .bs-component.ib
+              button.zocial.scribd Read more on Scribd
+            .bs-component.ib
+              button.zocial.wordpress Sign in with WordPress
+            .bs-component.ib
+              button.zocial.songkick Sign in with Songkick
+            .bs-component.ib
+              button.zocial.posterous Sign in with Posterous
+            .bs-component.ib
+              button.zocial.eventbrite Sign in with Eventbrite
+            .bs-component.ib
+              button.zocial.flattr Tip with Flattr
+            .bs-component.ib
+              button.zocial.plancast Follow me on Plancast
+            .bs-component.ib
+              button.zocial.youtube Subscribe on YouTube
+        // content
+      // Start: Right Sidebar
+      aside#sidebar_right.nano.affix
+        // Start: Sidebar Right Content
+        .sidebar-right-content.nano-content
+          .tab-block.sidebar-block.br-n
+            ul.nav.nav-tabs.tabs-border.nav-justified.hidden
+              li.active
+                a(href='#sidebar-right-tab1', data-toggle='tab') Tab 1
+              li
+                a(href='#sidebar-right-tab2', data-toggle='tab') Tab 2
+              li
+                a(href='#sidebar-right-tab3', data-toggle='tab') Tab 3
+            .tab-content.br-n
+              #sidebar-right-tab1.tab-pane.active
+                h5.title-divider.text-muted.mb20
+                  | Server Statistics
+                  span.pull-right
+                    | 2013
+                    i.fa.fa-caret-down.ml5
+                .progress.mh5
+                  .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 44%')
+                    span.fs11 DB Request
+                .progress.mh5
+                  .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 84%')
+                    span.fs11.text-left Server Load
+                .progress.mh5
+                  .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 61%')
+                    span.fs11.text-left Server Connections
+                h5.title-divider.text-muted.mt30.mb10 Traffic Margins
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 132
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  13.2%
+                h5.title-divider.text-muted.mt25.mb10 Database Request
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 212
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  25.6%
+                h5.title-divider.text-muted.mt25.mb10 Server Response
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 82.5
+                  .col-xs-7.text-right
+                    h3.text-danger.mn
+                      i.fa.fa-caret-down
+                      |  17.9%
+                h5.title-divider.text-muted.mt40.mb20
+                  | Server Statistics
+                  span.pull-right.text-primary.fw600 USA
+              #sidebar-right-tab2.tab-pane
+              #sidebar-right-tab3.tab-pane
+    style.
+      /* Demo Page Styles */
+      .hero-content .btn {
+        border-radius: 0 !important;
+        padding: 12px 0 !important;
+      }
+
+      .col-adjust-8 {
+        padding: 0 30px;
+      }
+
+      .col-adjust-8 > .row > div {
+        width: 11.1%;
+        padding-left: 7px;
+        padding-right: 7px;
+      }
+
+      .col-adjust-8 > .row > div > .btn {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .col-adjust-8 > .row > div > .btn-group > .btn {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      /* Responsive Demo Page Styles */
+      @media (max-width: 700px) {
+        .col-adjust-8 code {
+          display: none;
+        }
+
+        .col-adjust-8 > .row > div {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        .hero-content {
+          border-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+
+        .hero-content .col-adjust-8 h3,
+        .hero-content .col-adjust-8 > .row:first-child > div {
+          margin-bottom: 0px !important;
+        }
+
+        .col-adjust-8.demo-btn-groups > .row > div,
+        .col-adjust-8.demo-btn-dropdowns > .row > div,
+        .col-adjust-8.demo-btn-ladda > .row > div {
+          width: 33%;
+          margin-bottom: 10px;
+        }
+
+        .col-adjust-8.demo-btn-ladda > .row > div > .btn {
+          min-width: 100px;
+        }
+      }
+
+      /* Zocal Demo Page Styles*/
+      button.zocial {
+        margin: 6px;
+      }
+
+      /* Ladd Demo Page Styles*/
+      .ladda-button[data-loading] {
+        overflow: visible;
+      }
+
+      .ladda-button[data-style=contract][data-loading] {
+        width: 35px;
+      }
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        // Init Ladda Plugin on buttons
+        Ladda.bind('.ladda-button', {
+          timeout: 2000
+        });
+        // Bind progress buttons and simulate loading progress. Note: Button still requires ".ladda-button" class.
+        Ladda.bind('.progress-button', {
+          callback: function (instance) {
+            var progress = 0;
+            var interval = setInterval(function () {
+              progress = Math.min(progress + Math.random() * 0.1, 1);
+              instance.setProgress(progress);
+              if (progress === 1) {
+                instance.stop();
+                clearInterval(interval);
+              }
+            }, 200);
+          }
+        });
+      });

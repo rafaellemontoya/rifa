@@ -1,0 +1,891 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='plugins/css/fullcalendar.min.css')
+  link(rel='stylesheet', type='text/css', href='plugins/css/summernote.css')
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.min.css')
+
+block body
+  body.widgets-panel-page(data-spy='scroll', data-target='#nav-spy', data-offset='300')
+    // Start: Theme Preview Pane
+    #skin-toolbox.bg-white
+      .panel
+        .panel-heading
+          span.panel-icon
+            i.fa.fa-gear.text-primary
+          span.panel-title  Theme Options
+        .panel-body.pn
+          ul.nav.nav-list.nav-list-sm.pl15.pt10(role='tablist')
+            li.active
+              a(href='#toolbox-header', role='tab', data-toggle='tab') Navbar
+            li
+              a(href='#toolbox-sidebar', role='tab', data-toggle='tab') Sidebar
+            li
+              a(href='#toolbox-settings', role='tab', data-toggle='tab') Misc
+          .tab-content.p20.ptn.pb15
+            #toolbox-header.tab-pane.active(role='tabpanel')
+              form#toolbox-header-skin
+                h4.mv20 Header Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.checkbox-disabled.fill.mb5
+                    input#headerSkin8(type='radio', name='headerSkin', checked='', value='')
+                    label(for='headerSkin8') Light
+                  .checkbox-custom.fill.checkbox-primary.mb5
+                    input#headerSkin1(type='radio', name='headerSkin', value='bg-primary')
+                    label(for='headerSkin1') Primary
+                  .checkbox-custom.fill.checkbox-info.mb5
+                    input#headerSkin3(type='radio', name='headerSkin', value='bg-info')
+                    label(for='headerSkin3') Info
+                  .checkbox-custom.fill.checkbox-warning.mb5
+                    input#headerSkin4(type='radio', name='headerSkin', value='bg-warning')
+                    label(for='headerSkin4') Warning
+                  .checkbox-custom.fill.checkbox-danger.mb5
+                    input#headerSkin5(type='radio', name='headerSkin', value='bg-danger')
+                    label(for='headerSkin5') Danger
+                  .checkbox-custom.fill.checkbox-alert.mb5
+                    input#headerSkin6(type='radio', name='headerSkin', value='bg-alert')
+                    label(for='headerSkin6') Alert
+                  .checkbox-custom.fill.checkbox-system.mb5
+                    input#headerSkin7(type='radio', name='headerSkin', value='bg-system')
+                    label(for='headerSkin7') System
+                  .checkbox-custom.fill.checkbox-success.mb5
+                    input#headerSkin2(type='radio', name='headerSkin', value='bg-success')
+                    label(for='headerSkin2') Success
+                  .checkbox-custom.fill.mb5
+                    input#headerSkin9(type='radio', name='headerSkin', value='bg-dark')
+                    label(for='headerSkin9') Dark
+            #toolbox-sidebar.tab-pane(role='tabpanel')
+              form#toolbox-sidebar-skin
+                h4.mv20 Sidebar Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.fill.mb5
+                    input#sidebarSkin3(type='radio', name='sidebarSkin', checked='', value='')
+                    label(for='sidebarSkin3') Dark
+                  .checkbox-custom.fill.checkbox-disabled.mb5
+                    input#sidebarSkin1(type='radio', name='sidebarSkin', value='sidebar-light')
+                    label(for='sidebarSkin1') Light
+                  .checkbox-custom.fill.checkbox-light.mb5
+                    input#sidebarSkin2(type='radio', name='sidebarSkin', value='sidebar-light light')
+                    label(for='sidebarSkin2') Lighter
+            #toolbox-settings.tab-pane(role='tabpanel')
+              form#toolbox-settings-misc
+                h4.mv20.mtn Layout Options
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#header-option(type='checkbox', checked='')
+                    label(for='header-option') Fixed Header
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#sidebar-option(type='checkbox', checked='')
+                    label(for='sidebar-option') Fixed Sidebar
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-option(type='checkbox')
+                    label(for='breadcrumb-option') Fixed Breadcrumbs
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-hidden(type='checkbox')
+                    label(for='breadcrumb-hidden') Hide Breadcrumbs
+
+          .form-group.mn.br-t.p15
+            a#clearLocalStorage.btn.btn-primary.btn-block.pb10.pt10(href='#') Clear LocalStorage
+    // Start: Main
+    #main
+      // Page Header
+      block header
+        include _header
+      // Start: Sidebar Left
+      aside#sidebar_left.nano.nano-light.affix
+        // Start: Sidebar Left Content
+        +makeSidebar('widgets_panel.html')
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Start: Topbar-Dropdown
+        #topbar-dropmenu.alt
+          .topbar-menu.row
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-primary.light(href='#')
+                span.glyphicon.glyphicon-inbox.text-muted
+                span.metro-title Messages
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-info.light(href='#')
+                span.glyphicon.glyphicon-user.text-muted
+                span.metro-title Users
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-success.light(href='#')
+                span.glyphicon.glyphicon-headphones.text-muted
+                span.metro-title Support
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-system.light(href='#')
+                span.glyphicon.glyphicon-facetime-video.text-muted
+                span.metro-title Videos
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-warning.light(href='#')
+                span.fa.fa-gears.text-muted
+                span.metro-title Settings
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-alert.light(href='#')
+                span.glyphicon.glyphicon-picture.text-muted
+                span.metro-title Pictures
+        // Start: Topbar
+        header#topbar.alt
+          .topbar-left
+            ol.breadcrumb
+              li.crumb-active
+                a(href='index.html') Dashboard
+              li.crumb-icon
+                a(href='index.html')
+                  span.glyphicon.glyphicon-home
+              li.crumb-link
+                a(href='index.html') Home
+              li.crumb-trail Dashboard
+          .topbar-right
+            .ib.topbar-dropdown
+              label.control-label.pr10.fs15.text-muted(for='topbar-multiple') Reporting Period
+              select#topbar-multiple.hidden
+                optgroup(label='Filter By:')
+                  option(value='1-1') Last 30 Days
+                  option(value='1-2', selected='selected') Last 60 Days
+                  option(value='1-3') Last Year
+            #toggle_sidemenu_r.ml15.ib.va-m
+              a.pl5(href='#')
+                i.fa.fa-sign-in.fs22.text-primary
+                span.badge.badge-hero.badge-danger 3
+        // Begin: Content
+        section#content.table-layout.animated.fadeIn
+          // begin: .tray-left
+          aside.tray.tray-left.tray290(data-tray-height='match')
+            #nav-spy
+              ul.nav.tray-nav.tray-nav-border(data-smoothscroll='-145', data-spy='affix', data-offset-top='200')
+                li.active
+                  a(href='#spy1')
+                    | Calendar Widget
+                li
+                  a(href='#spy1')
+                    | Task-List Widget
+                li
+                  a(href='#spy2')
+                    | Chat Widget
+                li
+                  a(href='#spy2')
+                    | Timeline Widget
+                li
+                  a(href='#spy3')
+                    | Compose Widget
+                li
+                  a(href='#spy3')
+                    | Quick-Compose Widget
+                li
+                  a(href='#spy4')
+                    | Utility Widgets
+                li
+                  a(href='#spy4')
+                    | User Index Widget
+          // begin: .tray-center
+          .tray.tray-center
+            .page-tabs
+              ul.nav.nav-tabs
+                li
+                  a(href='widgets_tile.html') Tile Widgets
+                li.active
+                  a(href='widgets_panel.html') Panel Widgets
+                li
+                  a(href='widgets_scroller.html') Scroller Widgets
+                li
+                  a(href='widgets_data.html') Admin Widgets
+            div(style='max-width: 1200px;')
+              #spy1.row.mb15
+                // Calendar Widget
+                .col-md-6
+                  .panel.panel-widget.calendar-widget
+                    .panel-heading
+                      span.panel-icon
+                        i.fa.fa-pencil
+                      span.panel-title  Calendar Widget
+                    .panel-body
+                      #calendar-widget
+                // Task Widget
+                .col-md-6
+                  // Task Widget
+                  .panel.panel-widget.task-widget
+                    .panel-heading
+                      span.panel-icon
+                        i.fa.fa-cog
+                      span.panel-title  Task-List Widget
+                    .panel-body.pn
+                      ul.task-list.task-current
+                        li.task-label Current Tasks
+                        li.task-item.success
+                          .task-handle
+                            .checkbox-custom
+                              input#task1(type='checkbox')
+                              label(for='task1')
+                          .task-desc Create documentation for launch
+                          .task-menu
+                        li.task-item.primary
+                          .task-handle
+                            .checkbox-custom
+                              input#task2(type='checkbox')
+                              label(for='task2')
+                          .task-desc Add new servers to design board
+                          .task-menu
+                        li.task-item.info
+                          .task-handle
+                            .checkbox-custom
+                              input#task3(type='checkbox')
+                              label(for='task3')
+                          .task-desc Finish building prototype for Sony
+                          .task-menu
+                        li.task-item.warning
+                          .task-handle
+                            .checkbox-custom
+                              input#task4(type='checkbox')
+                              label(for='task4')
+                          .task-desc Order new building supplies for Microsoft
+                          .task-menu
+                        li.task-item.system
+                          .task-handle
+                            .checkbox-custom
+                              input#task5(type='checkbox')
+                              label(for='task5')
+                          .task-desc Add new servers to design board
+                          .task-menu
+                      ul.task-list.task-completed
+                        li.task-label Completed Tasks
+                        li.task-item.danger.item-checked
+                          .task-handle
+                            .checkbox-custom
+                              input#task7(type='checkbox', checked='')
+                              label(for='task7')
+                          .task-desc Finish building prototype for Sony
+                          .task-menu
+                        li.task-item.system.item-checked
+                          .task-handle
+                            .checkbox-custom
+                              input#task8(type='checkbox', checked='')
+                              label(for='task8')
+                          .task-desc Order new building supplies for Microsoft
+                          .task-menu
+                        li.task-item.item-alert.item-checked
+                          .task-handle
+                            .checkbox-custom
+                              input#task9(type='checkbox', checked='')
+                              label(for='task9')
+                          .task-desc Finish building prototype for Sony
+                          .task-menu
+                        li.task-item.info.item-checked
+                          .task-handle
+                            .checkbox-custom
+                              input#task10(type='checkbox', checked='')
+                              label(for='task10')
+                          .task-desc Order new building supplies for Microsoft
+                          .task-menu
+              #spy2.row.mb15
+                // Chat Widget
+                .col-md-6
+                  .panel.panel-widget.chat-widget
+                    .panel-heading
+                      span.panel-icon
+                        i.fa.fa-pencil
+                      span.panel-title  Chat Widget
+                    .panel-body.bg-light.dark.panel-scroller.scroller-lg.pn
+                      .media
+                        .media-left
+                          a(href='#')
+                            img.media-object(alt='64x64', src='assets/img/avatars/2.jpg')
+                        .media-body
+                          span.media-status
+                          h5.media-heading
+                            | Courtney Faught
+                            small  - 12:30am
+                          |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                      .media
+                        .media-body
+                          span.media-status.offline
+                          h5.media-heading
+                            | Joe Gibbons
+                            small  - 12:30am
+                          |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                        .media-right
+                          a(href='#')
+                            img.media-object(alt='64x64', src='assets/img/avatars/1.jpg')
+                      .media
+                        .media-left
+                          a(href='#')
+                            img.media-object(alt='64x64', src='assets/img/avatars/2.jpg')
+                        .media-body
+                          span.media-status.online
+                          h5.media-heading
+                            | Courtney Faught
+                            small  - 12:30am
+                          |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                      .media
+                        .media-body
+                          span.media-status.offline
+                          h5.media-heading
+                            | Joe Gibbons
+                            small  - 12:30am
+                          |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                        .media-right
+                          a(href='#')
+                            img.media-object(alt='64x64', src='assets/img/avatars/1.jpg')
+                      .media
+                        .media-left
+                          a(href='#')
+                            img.media-object(alt='64x64', src='assets/img/avatars/2.jpg')
+                        .media-body
+                          span.media-status.online
+                          h5.media-heading
+                            | Courtney Faught
+                            small  - 12:30am
+                          |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                      .media
+                        .media-body
+                          span.media-status.offline
+                          h5.media-heading
+                            | Joe Gibbons
+                            small  - 12:30am
+                          |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                        .media-right
+                          a(href='#')
+                            img.media-object(alt='64x64', src='assets/img/avatars/1.jpg')
+                    .panel-footer
+                      .input-group
+                        input.br-n.form-control(type='text', placeholder='Enter your message here...')
+                        span.br-l.input-group-btn
+                          button.br-n.btn.btn-default.btn-gradient(type='button') Send Message
+                      // /input-group
+                // Timline Widget
+                .col-md-6
+                  .bs-component
+                    .panel
+                      .panel-heading
+                        span.panel-icon
+                          i.fa.fa-clock-o
+                        span.panel-title  Activity/Timeline Widget
+                      .panel-body.ptn.pbn.p10
+                        ol.timeline-list
+                          li.timeline-item
+                            .timeline-icon.bg-dark.light
+                              span.fa.fa-tags
+                            .timeline-desc
+                              b Michael
+                              |  Added to his store:
+                              = ' '
+                              a(href='#') Ipod
+                            .timeline-date 1:25am
+                          li.timeline-item
+                            .timeline-icon.bg-dark.light
+                              span.fa.fa-tags
+                            .timeline-desc
+                              b Sara
+                              |  Added his store:
+                              = ' '
+                              a(href='#') Notebook
+                            .timeline-date 3:05am
+                          li.timeline-item
+                            .timeline-icon.bg-success
+                              span.fa.fa-usd
+                            .timeline-desc
+                              b Admin
+                              |  created invoice for:
+                              = ' '
+                              a(href='#') Software
+                            .timeline-date 4:15am
+                          li.timeline-item
+                            .timeline-icon.bg-success
+                              span.fa.fa-usd
+                            .timeline-desc
+                              b Admin
+                              |  created invoice for:
+                              = ' '
+                              a(href='#') Apple
+                            .timeline-date 7:45am
+                          li.timeline-item
+                            .timeline-icon.bg-success
+                              span.fa.fa-usd
+                            .timeline-desc
+                              b Admin
+                              |  created invoice for:
+                              = ' '
+                              a(href='#') Software
+                            .timeline-date 4:15am
+                          li.timeline-item
+                            .timeline-icon.bg-success
+                              span.fa.fa-usd
+                            .timeline-desc
+                              b Admin
+                              |  created invoice for:
+                              = ' '
+                              a(href='#') Apple
+                            .timeline-date 7:45am
+                          li.timeline-item
+                            .timeline-icon.bg-dark.light
+                              span.fa.fa-tags
+                            .timeline-desc
+                              b Michael
+                              |  Added his store:
+                              = ' '
+                              a(href='#') Ipod
+                            .timeline-date 8:25am
+                          li.timeline-item
+                            .timeline-icon.bg-system
+                              span.fa.fa-fire
+                            .timeline-desc
+                              b Admin
+                              |  created invoice for:
+                              = ' '
+                              a(href='#') Software
+                            .timeline-date 4:15am
+                          li.timeline-item
+                            .timeline-icon.bg-dark.light
+                              span.fa.fa-tags
+                            .timeline-desc
+                              b Sara
+                              |  Added to his store:
+                              = ' '
+                              a(href='#') Notebook
+                            .timeline-date 3:05am
+              #spy3.row.mb15
+                // Quick Post Widget
+                .col-md-6
+                  .panel.panel-widget.compose-widget
+                    .panel-heading
+                      span.panel-icon
+                        i.fa.fa-pencil
+                      span.panel-title  Quick Post
+                    .panel-body
+                      .summernote-quick Compose your message here...
+                    .panel-footer.text-right
+                      button.btn.btn-default.btn-sm.ph15.mr5(type='button') Draft
+                      button.btn.btn-primary.btn-sm.ph15(type='button') Send
+                // Draft Widget
+                .col-md-6
+                  .bs-component
+                    .panel.panel-widget.draft-widget
+                      .panel-heading
+                        span.panel-icon
+                          i.fa.fa-pencil
+                        span.panel-title  Quick Draft
+                      .panel-body.p20
+                        .admin-form.theme-primary
+                          .section.mb20
+                            input#draft-title.gui-input.bg-light(type='text', placeholder='Title')
+                          .section
+                            label.field
+                              textarea#comment.gui-textarea.bg-light(name='comment', placeholder='Message here...')
+                      .panel-footer.text-right
+                        button.btn.btn-primary.btn-sm.ph15(type='button') Save Draft
+              #spy4.row.mb15
+                .col-md-6
+                  // Tag Cloud Widget
+                  .bs-component
+                    .panel.tagcloud-widget
+                      .panel-heading
+                        span.panel-icon
+                          i.fa.fa-pencil
+                        span.panel-title  Tag Cloud
+                      .panel-body
+                        span.label.label-primary Photoshop
+
+                        = ' '
+                        span.label.label-primary Fireworks
+
+                        = ' '
+                        span.label.label-primary Dreamweaver
+
+                        = ' '
+                        span.label.label-primary Sublime
+
+                        = ' '
+                        span.label.label-primary Firefox
+
+                        = ' '
+                        span.label.label-primary Chrome
+
+                        = ' '
+                        span.label.label-primary Microsoft
+
+                        = ' '
+                        span.label.label-primary Apple
+
+                        = ' '
+                        span.label.label-primary Google
+
+                        = ' '
+                        span.label.label-primary Facebook
+
+                        = ' '
+                        span.label.label-primary Twitter
+
+                        = ' '
+                        span.label.label-primary LinkedIn
+
+                        = ' '
+                        span.label.label-primary Design
+                  .panel.panel-widget.newsletter-widget
+                    .panel-heading
+                      span.panel-title  Newsletter Widget
+                    .panel-body.bg-light.dark.pb25
+                      p.mb15
+                        | Sign up for TemplateMonster
+                        = ' '
+                        b Newsletter
+                        | .
+                      .input-group
+                        input.form-control(type='text', placeholder='Enter your message here...')
+                        span.input-group-btn
+                          button.br-n.btn.btn-default.btn-gradient(type='button') Sign Up!
+                  // List-Group Tag Widget
+                  .bs-component
+                    .panel.listgroup-widget
+                      .panel-heading
+                        span.panel-icon
+                          i.fa.fa-tag
+                        span.panel-title  Tag Group
+                      ul.list-group
+                        li.list-group-item
+                          span.badge.badge-primary 14
+                          |                         Entertainment
+                        li.list-group-item
+                          span.badge.badge-success 9
+                          |                         Movies
+                        li.list-group-item
+                          span.badge.badge-info 11
+                          |                         TV Shows
+                        li.list-group-item
+                          span.badge.badge-warning 18
+                          |                         Celebs & Gossip
+                        li.list-group-item
+                          span.badge.badge-danger 22
+                          |                         Video Games
+                        li.list-group-item
+                          span.badge.badge-alert 9
+                          |                         Sports & Events
+                .col-md-6
+                  // User Group Widget
+                  .panel.user-group-widget
+                    .panel-heading
+                      span.panel-icon
+                        i.fa.fa-users
+                      span.panel-title  Recent User Activity
+                    .panel-menu
+                      .input-group
+                        span.input-group-addon
+                          i.fa.fa-search
+                        input.form-control(type='text', placeholder='Search user...')
+                    .panel-body.panel-scroller.pn(style='max-height: 513px;')
+                      .row
+                        .col-xs-3
+                          img.w134.user-avatar(src='assets/img/avatars/1.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/2.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/3.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/4.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                      .row.mt15
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/5.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/6.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.w134.user-avatar(src='assets/img/avatars/1.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/2.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                      .row.mt15
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/3.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/4.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/5.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/6.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                      .row.mt15
+                        .col-xs-3
+                          img.w134.user-avatar(src='assets/img/avatars/1.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/2.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/3.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/4.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                      .row.mt15
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/5.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/6.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.w134.user-avatar(src='assets/img/avatars/1.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+                        .col-xs-3
+                          img.user-avatar(src='assets/img/avatars/2.jpg')
+                          .caption
+                            h5
+                              | Mike Pavlov
+                              br
+                              small  Designer
+      // Start: Right Sidebar
+      aside#sidebar_right.nano.nano-primary
+        // Start: Sidebar Right Content
+        .sidebar-right-content.nano-content
+          .tab-block.sidebar-block.br-n
+            ul.nav.nav-tabs.tabs-border.nav-justified.hidden
+              li.active
+                a(href='#sidebar-right-tab1', data-toggle='tab') Tab 1
+              li
+                a(href='#sidebar-right-tab2', data-toggle='tab') Tab 2
+              li
+                a(href='#sidebar-right-tab3', data-toggle='tab') Tab 3
+            .tab-content.br-n
+              #sidebar-right-tab1.tab-pane.active
+                h5.title-divider.text-muted.mb20
+                  | Server Statistics
+                  span.pull-right
+                    | 2013
+                    i.fa.fa-caret-down.ml5
+                .progress.mh5
+                  .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 44%')
+                    span.fs11 DB Request
+                .progress.mh5
+                  .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 84%')
+                    span.fs11.text-left Server Load
+                .progress.mh5
+                  .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 61%')
+                    span.fs11.text-left Server Connections
+                h5.title-divider.text-muted.mt30.mb10 Traffic Margins
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 132
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  13.2%
+                h5.title-divider.text-muted.mt25.mb10 Database Request
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 212
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  25.6%
+                h5.title-divider.text-muted.mt25.mb10 Server Response
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 82.5
+                  .col-xs-7.text-right
+                    h3.text-danger.mn
+                      i.fa.fa-caret-down
+                      |  17.9%
+                h5.title-divider.text-muted.mt40.mb20
+                  | Server Statistics
+                  span.pull-right.text-primary.fw600 USA
+              #sidebar-right-tab2.tab-pane
+              #sidebar-right-tab3.tab-pane
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        // Init plugins for ".calendar-widget"
+        // plugins: FullCalendar
+        //
+        $('#calendar-widget').fullCalendar({
+          contentHeight: 397,
+          editable: true,
+          events: [{
+            title: 'Sony Meeting',
+            start: '2015-04-2',
+            end: '2015-04-4',
+            className: 'fc-event-success',
+          }, {
+            title: 'Conference',
+            start: '2015-04-13',
+            end: '2015-04-15',
+            className: 'fc-event-primary'
+          }, {
+            title: 'Lunch Testing',
+            start: '2015-04-23',
+            end: '2015-04-25',
+            className: 'fc-event-danger'
+          },],
+          eventRender: function (event, element) {
+            // create event tooltip using bootstrap tooltips
+            $(element).attr("data-original-title", event.title);
+            $(element).tooltip({
+              container: 'body',
+              delay: {
+                "show": 100,
+                "hide": 200
+              }
+            });
+            // create a tooltip auto close timer
+            $(element).on('show.bs.tooltip', function () {
+              var autoClose = setTimeout(function () {
+                $('.tooltip').fadeOut();
+              }, 3500);
+            });
+          }
+        });
+        // Init plugins for ".compose-widget"
+        // plugins: Summernote
+        //
+        $('.summernote-quick').summernote({
+          height: 179, //set editable area's height
+          focus: false, //set focus editable area after Initialize summernote
+          toolbar: [
+            ['style', ['bold', 'italic', 'underline',]],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+          ]
+        });
+        // Init plugins for ".task-widget"
+        // plugins: Custom Functions + jQuery Sortable
+        //
+        var taskWidget = $('div.task-widget');
+        var taskItems = taskWidget.find('li.task-item');
+        var currentItems = taskWidget.find('ul.task-current');
+        var completedItems = taskWidget.find('ul.task-completed');
+        // Init jQuery Sortable on Task Widget
+        taskWidget.sortable({
+          items: taskItems, // only init sortable on list items (not labels)
+          handle: '.task-menu',
+          axis: 'y',
+          connectWith: ".task-list",
+          update: function (event, ui) {
+            var Item = ui.item;
+            var ParentList = Item.parent();
+            // If item is already checked move it to "current items list"
+            if (ParentList.hasClass('task-current')) {
+              Item.removeClass('item-checked').find('input[type="checkbox"]').prop('checked', false);
+            }
+            if (ParentList.hasClass('task-completed')) {
+              Item.addClass('item-checked').find('input[type="checkbox"]').prop('checked', true);
+            }
+          }
+        });
+        // Custom Functions to handle/assign list filter behavior
+        taskItems.on('click', function (e) {
+          e.preventDefault();
+          var This = $(this);
+          var Target = $(e.target);
+          if (Target.is('.task-menu') && Target.parents('.task-completed').length) {
+            This.remove();
+            return;
+          }
+          if (Target.parents('.task-handle').length) {
+            // If item is already checked move it to "current items list"
+            if (This.hasClass('item-checked')) {
+              This.removeClass('item-checked').find('input[type="checkbox"]').prop('checked', false);
+            }
+            // Otherwise move it to the "completed items list"
+            else {
+              This.addClass('item-checked').find('input[type="checkbox"]').prop('checked', true);
+            }
+          }
+        });
+      });

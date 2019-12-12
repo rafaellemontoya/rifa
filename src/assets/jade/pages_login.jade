@@ -1,0 +1,125 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.css')
+
+block body
+  body.external-page.sb-l-c.sb-r-c
+    // Start: Main
+    #main.animated.fadeIn
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // begin canvas animation bg
+        #canvas-wrapper
+          canvas#demo-canvas
+        // Begin: Content
+        section#content
+          #login1.admin-form.theme-info
+            .row.mb15.table-layout
+              .col-xs-6.va-m.pln
+                a(href='index.html', title='Return to Dashboard')
+                  img.img-responsive.w250(src='assets/img/logos/logo_white.png', title='TemplateMonster Logo')
+              .col-xs-6.text-right.va-b.pr5
+                .login-links
+                  a.active(href='pages_login.html', title='Sign In') Sign In
+                  = ' '
+                  span.text-white &#124;
+                  = ' '
+                  a(href='pages_register.html', title='Register') Register
+            .panel.panel-info.mt10.br-n
+              .panel-heading.heading-border.bg-white
+                span.panel-title.hidden
+                  i.fa.fa-sign-in
+                  | Register
+                .section.row.mn
+                  .col-sm-4
+                    a.button.btn-social.facebook.span-left.mr5.btn-block(href='#')
+                      span
+                        i.fa.fa-facebook
+                      | Facebook
+                  .col-sm-4
+                    a.button.btn-social.twitter.span-left.mr5.btn-block(href='#')
+                      span
+                        i.fa.fa-twitter
+                      | Twitter
+                  .col-sm-4
+                    a.button.btn-social.googleplus.span-left.btn-block(href='#')
+                      span
+                        i.fa.fa-google-plus
+                      | Google+
+              form#contact(method='post', action='/')
+                .panel-body.bg-light.p30
+                  .row
+                    .col-sm-7.pr30
+                      .section.row.hidden
+                        .col-md-4
+                          a.button.btn-social.facebook.span-left.mr5.btn-block(href='#')
+                            span
+                              i.fa.fa-facebook
+                            | Facebook
+                        .col-md-4
+                          a.button.btn-social.twitter.span-left.mr5.btn-block(href='#')
+                            span
+                              i.fa.fa-twitter
+                            | Twitter
+                        .col-md-4
+                          a.button.btn-social.googleplus.span-left.btn-block(href='#')
+                            span
+                              i.fa.fa-google-plus
+                            | Google+
+                      .section
+                        label.field-label.text-muted.fs18.mb10(for='username') Username
+                        label.field.prepend-icon(for='username')
+                          input#username.gui-input(type='text', name='username', placeholder='Enter username')
+                          label.field-icon(for='username')
+                            i.fa.fa-user
+                      .section
+                        label.field-label.text-muted.fs18.mb10(for='username') Password
+                        label.field.prepend-icon(for='password')
+                          input#password.gui-input(type='password', name='password', placeholder='Enter password')
+                          label.field-icon(for='password')
+                            i.fa.fa-lock
+                    .col-sm-5.br-l.br-grey.pl30
+                      h3.mb25  You'll Have Access To Your:
+                      p.mb15
+                        span.fa.fa-check.text-success.pr5
+                        |  Unlimited Email Storage
+                      p.mb15
+                        span.fa.fa-check.text-success.pr5
+                        |  Unlimited Photo Sharing/Storage
+                      p.mb15
+                        span.fa.fa-check.text-success.pr5
+                        |  Unlimited Downloads
+                      p.mb15
+                        span.fa.fa-check.text-success.pr5
+                        |  Unlimited Service Tickets
+                .panel-footer.clearfix.p10.ph15
+                  button.button.btn-primary.mr10.pull-right(type='submit') Sign In
+                  label.switch.ib.switch-primary.pull-left.input-align.mt10
+                    input#remember(type='checkbox', name='remember', checked='')
+                    label(for='remember', data-on='YES', data-off='NO')
+                    = ' '
+                    span Remember me
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    // Page Javascript
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        // Init CanvasBG and pass target starting location
+        CanvasBG.init({
+          Loc: {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 3.3
+          },
+        });
+      });

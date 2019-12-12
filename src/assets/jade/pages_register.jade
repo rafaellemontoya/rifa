@@ -1,0 +1,123 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.css')
+
+block body
+  body.external-page.sb-l-c.sb-r-c
+    // Start: Main
+    #main.animated.fadeIn
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // begin canvas animation bg
+        #canvas-wrapper
+          canvas#demo-canvas
+        // Begin: Content
+        section#content
+          #login1.admin-form.theme-info.mw700(style='margin-top: 3%;')
+            .row.mb15.table-layout
+              .col-xs-6.va-m.pln
+                a(href='index.html', title='Return to Dashboard')
+                  img.img-responsive.w250(src='assets/img/logos/logo_white.png', title='TemplateMonster Logo')
+              .col-xs-6.text-right.va-b.pr5
+                .login-links
+                  a(href='pages_login.html', title='Sign In') Sign In
+                  = ' '
+                  span.text-white &#124;
+                  = ' '
+                  a.active(href='pages_register.html', title='Register') Register
+            .panel.panel-info.mt10.br-n
+              .panel-heading.heading-border.bg-white
+                .section.row.mn
+                  .col-sm-4
+                    a.button.btn-social.facebook.span-left.mr5.btn-block(href='#')
+                      span
+                        i.fa.fa-facebook
+                      | Facebook
+                  .col-sm-4
+                    a.button.btn-social.twitter.span-left.mr5.btn-block(href='#')
+                      span
+                        i.fa.fa-twitter
+                      | Twitter
+                  .col-sm-4
+                    a.button.btn-social.googleplus.span-left.btn-block(href='#')
+                      span
+                        i.fa.fa-google-plus
+                      | Google+
+              form#account2(method='post', action='/')
+                .panel-body.p25.bg-light
+                  .section-divider.mt10.mb40
+                    span Set up your account
+                  // .section-divider
+                  .section.row
+                    .col-md-6
+                      label.field.prepend-icon(for='firstname')
+                        input#firstname.gui-input(type='text', name='firstname', placeholder='First name...')
+                        label.field-icon(for='firstname')
+                          i.fa.fa-user
+                    .col-md-6
+                      label.field.prepend-icon(for='lastname')
+                        input#lastname.gui-input(type='text', name='lastname', placeholder='Last name...')
+                        label.field-icon(for='lastname')
+                          i.fa.fa-user
+                  .section
+                    label.field.prepend-icon(for='email')
+                      input#email.gui-input(type='email', name='email', placeholder='Email address')
+                      label.field-icon(for='email')
+                        i.fa.fa-envelope
+                  .section
+                    .smart-widget.sm-right.smr-190
+                      label.field.prepend-icon(for='username')
+                        input#username.gui-input(type='text', name='username', placeholder='Choose your username')
+                        label.field-icon(for='username')
+                          i.fa.fa-user
+                      label.button(for='username') .templatemonster.com
+                  .section
+                    label.field.prepend-icon(for='password')
+                      input#password.gui-input(type='password', name='password', placeholder='Create a password')
+                      label.field-icon(for='password')
+                        i.fa.fa-unlock-alt
+                  .section
+                    label.field.prepend-icon(for='confirmPassword')
+                      input#confirmPassword.gui-input(type='password', name='confirmPassword', placeholder='Retype your password')
+                      label.field-icon(for='confirmPassword')
+                        i.fa.fa-lock
+                  .section-divider.mv40
+                    span Review the Terms
+                  // .section-divider
+                  .section.mb15
+                    label.option.block
+                      input(type='checkbox', name='trial')
+                      span.checkbox
+                      | Sign me up for a
+                      a.theme-link(href='#')  7-day free PRO trial.
+                    label.option.block.mt15
+                      input(type='checkbox', name='terms')
+                      span.checkbox
+                      | I agree to the
+                      a.theme-link(href='#')  terms of use.
+                .panel-footer.clearfix
+                  button.button.btn-primary.pull-right(type='submit') Create Account
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    // Page Javascript
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        // Init CanvasBG and pass target starting location
+        CanvasBG.init({
+          Loc: {
+            x: window.innerWidth / 2.1,
+            y: window.innerHeight / 4.2
+          },
+        });
+      });

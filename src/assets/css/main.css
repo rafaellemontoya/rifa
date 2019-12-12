@@ -1,0 +1,142 @@
+/*! HTML5 Boilerplate v7.2.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+@font-face {
+  font-family: "HelveticaNeueRegular";
+  src: url('../fonts/HelveticaNeueRegular.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: "HelveticaNeueBold";
+  src: url('../fonts/HarryP.TTF'); /* IE9 Compat Modes */
+}
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color: brown;
+  font-family: HelveticaNeueBold;
+  height: 95vh;
+  padding:0;
+}
+/*header*/
+div.background{
+  background-image: url(../img/pantalla_ganador.png);
+  height: 98vh;
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+  padding:0;
+}
+
+/*barra*/
+div.barra{
+  width: 100%;
+  background-color: transparent;
+  height: 14vh;
+  margin-top: -8px;
+
+  margin-bottom: 10vh;
+}
+div.logo{
+  width: 15%;
+  background-color: #FFE600;
+  height: 15vh;
+  line-height: 15vh;
+
+}
+img.logo {
+  display: block;
+  padding-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*ventas*/
+section.contenedor-ventas{
+  width: 90%;
+  margin-top: 35vh;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20vh;
+  text-align: center;
+
+}
+h1{
+  font-size: 100px;
+  
+}
+.texto-aparece{
+-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 11.1 */
+            animation: fadein 1s;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.blur {
+ 
+
+  filter: blur(6px);
+  width: 99%;
+   height: 98vh;
+   position: absolute;
+
+}
+.video-active{
+  margin: 0 auto ;
+  position: absolute;
+   
+  width: 99%;
+  height: 99vh;
+}
+.video-active2{
+  margin-left: auto;
+margin-right: auto;
+margin-top: auto;
+margin-bottom: auto;
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+  
+  width: 98%;
+  height: 98%;
+  z-index: -1;
+}

@@ -1,0 +1,669 @@
+-
+  var Sidebar = [
+    {
+      groupName: '',
+      items: [
+        {
+          'name': 'Calendar',
+          'link': 'pages_calendar.html',
+          'icon': 'fa fa-calendar'
+        },
+        {
+          'name': 'Documentation',
+          'link': 'documentation/',
+          'icon': 'fa fa-file-text-o'
+        },
+        {
+          'name': 'Dashboard',
+          'link': 'index.html',
+          'icon': 'fa fa-home'
+        }
+      ]
+    },
+
+    {
+      groupName: '',
+      items: [
+        {
+          'name': 'Admin Plugins',
+          'link': '#',
+          'icon': 'glyphicon glyphicon-fire',
+          'subMenu': [
+            {
+              'name': 'Admin Modals',
+              'link': 'admin_plugins-modals.html',
+              'icon': 'glyphicon glyphicon-modal-window',
+            },
+            {
+              'name': 'Admin Dock',
+              'link': 'admin_plugins-dock.html',
+              'icon': 'glyphicon glyphicon-equalizer',
+            },
+          ]
+        },
+
+        {
+          'name': 'Admin Forms',
+          'link': '#',
+          'icon': 'glyphicon glyphicon-check',
+          'subMenu': [
+            {
+              'name': 'Admin Elements',
+              'link': 'admin_forms-elements.html',
+              'icon': 'glyphicon glyphicon-shopping-cart',
+            },
+            {
+              'name': 'Admin Widgets',
+              'link': 'admin_forms-widgets.html',
+              'icon': 'glyphicon glyphicon-calendar',
+            },
+            {
+              'name': 'Admin Layouts',
+              'link': 'admin_forms-layouts.html',
+              'icon': 'fa fa-desktop',
+            },
+            {
+              'name': 'Admin Wizard',
+              'link': 'admin_forms-wizard.html',
+              'icon': 'fa fa-clipboard',
+            },
+            {
+              'name': 'Admin Validation',
+              'link': 'admin_forms-validation.html',
+              'icon': 'glyphicon glyphicon-check',
+            },
+          ]
+        },
+
+        {
+          'name': 'Admin Layouts',
+          'link': '#',
+          'icon': 'fa fa-columns',
+          'subMenu': [
+            {
+              'name': 'Sidebars',
+              'link': '#',
+              'icon': 'fa fa-arrows-h',
+              'subMenuLevel2': [
+                {
+                  'name': 'Left Static',
+                  'link': 'layout_sidebar-left-static.html',
+                },
+                {
+                  'name': 'Left Fixed',
+                  'link': 'layout_sidebar-left-fixed.html',
+                },
+                {
+                  'name': 'Left Widgets',
+                  'link': 'layout_sidebar-left-widgets.html',
+                },
+                {
+                  'name': 'Left Minified',
+                  'link': 'layout_sidebar-left-minified.html',
+                },
+                {
+                  'name': 'Left White',
+                  'link': 'layout_sidebar-left-light.html',
+                },
+                {
+                  'name': 'Right Static',
+                  'link': 'layout_sidebar-right-static.html',
+                },
+                {
+                  'name': 'Right Fixed',
+                  'link': 'layout_sidebar-right-fixed.html',
+                },
+                {
+                  'name': 'Right w/Menu',
+                  'link': 'layout_sidebar-right-menu.html',
+                },
+              ]
+            },
+
+            {
+              'name': 'Navbar',
+              'link': '#',
+              'icon': 'fa fa-arrows-v',
+              'subMenuLevel2': [
+                {
+                  'name': 'Navbar Static',
+                  'link': 'layout_navbar-static.html',
+                },
+                {
+                  'name': 'Navbar Fixed',
+                  'link': 'layout_navbar-fixed.html',
+                },
+                {
+                  'name': 'Navbar Menus',
+                  'link': 'layout_navbar-menus.html',
+                },
+                {
+                  'name': 'Contextual Example',
+                  'link': 'layout_navbar-contextual.html',
+                },
+                {
+                  'name': 'Search Alt Style',
+                  'link': 'layout_navbar-search-alt.html',
+                },
+              ]
+            },
+
+            {
+              'name': 'Topbar',
+              'link': '#',
+              'icon': 'fa fa-hand-o-up',
+              'subMenuLevel2': [
+                {
+                  'name': 'Default Style',
+                  'link': 'layout_topbar.html',
+                },
+                {
+                  'name': 'Default w/Menu',
+                  'link': 'layout_topbar-menu.html',
+                },
+                {
+                  'name': 'Alternate Style',
+                  'link': 'layout_topbar-alt.html',
+                }
+              ]
+            },
+
+            {
+              'name': 'Content Body',
+              'link': '#',
+              'icon': 'fa fa-arrows-v',
+              'subMenuLevel2': [
+                {
+                  'name': 'Blank Starter',
+                  'link': 'layout_content-blank.html',
+                },
+                {
+                  'name': 'Fixed Window',
+                  'link': 'layout_content-fixed.html',
+                },
+                {
+                  'name': 'Content Heading',
+                  'link': 'layout_content-heading.html',
+                },
+                {
+                  'name': 'Content Tabs',
+                  'link': 'layout_content-tabs.html',
+                },
+              ]
+            },
+
+            {
+              'name': 'Content Trays',
+              'link': '#',
+              'icon': 'fa fa-pause',
+              'subMenuLevel2': [
+                {
+                  'name': 'Tray Left Static',
+                  'link': 'layout_tray-left.html',
+                },
+                {
+                  'name': 'Tray Left Fixed',
+                  'link': 'layout_tray-left-fixed.html',
+                },
+                {
+                  'name': 'Tray Right Static',
+                  'link': 'layout_tray-right.html',
+                },
+                {
+                  'name': 'Left + Right Static',
+                  'link': 'layout_tray-both.html',
+                },
+                {
+                  'name': 'Left + Right Fixed',
+                  'link': 'layout_tray-both-fixed.html',
+                },
+              ]
+            },
+
+            {
+              'name': 'Boxed Layout',
+              'link': '#',
+              'icon': 'fa fa-plus-square-o',
+              'subMenuLevel2': [
+                {
+                  'name': 'Default',
+                  'link': 'layout_boxed.html',
+                },
+                {
+                  'name': 'Horizontal Menu',
+                  'link': 'layout_boxed-horizontal.html',
+                }
+              ]
+            },
+
+            {
+              'name': 'Horizontal Menu',
+              'link': '#',
+              'icon': 'fa fa-arrow-circle-o-up',
+              'subMenuLevel2': [
+                {
+                  'name': 'Small Size',
+                  'link': 'layout_horizontal-sm.html',
+                },
+                {
+                  'name': 'Medium Size',
+                  'link': 'layout_horizontal-md.html',
+                },
+                {
+                  'name': 'Large Size',
+                  'link': 'layout_horizontal-lg.html',
+                },
+                {
+                  'name': 'Light Skin',
+                  'link': 'layout_horizontal-light.html',
+                },
+                {
+                  'name': 'With Topbar',
+                  'link': 'layout_horizontal-topbar.html',
+                },
+                {
+                  'name': 'With Alt Topbar',
+                  'link': 'layout_horizontal-topbar-alt.html',
+                },
+                {
+                  'name': 'Collapsed onLoad',
+                  'link': 'layout_horizontal-collapsed.html',
+                },
+                {
+                  'name': 'In Boxed Layout',
+                  'link': 'layout_horizontal-boxed.html',
+                },
+              ]
+            },
+
+          ]
+        },
+
+      ]
+    },
+
+
+    {
+      groupName: '',
+      items: [
+        {
+          'name': 'Information Panels',
+          'link': '#',
+          'icon': 'fa fa-bar-chart',
+          'subMenu': [
+            {
+              'name': 'Tile Widgets',
+              'link': 'widgets_tile.html',
+              'icon': 'fa fa-arrows-h'
+            },
+            {
+              'name': 'Panel Widgets',
+              'link': 'widgets_panel.html',
+              'icon': 'fa fa-arrows-h'
+            },
+            {
+              'name': 'Scroller Widgets',
+              'link': 'widgets_scroller.html',
+              'icon': 'fa fa-arrows-h'
+            },
+            {
+              'name': 'Admin Widgets',
+              'link': 'widgets_data.html',
+              'icon': 'fa fa-arrows-h'
+            },
+          ]
+        },
+
+        {
+          'name': 'Ecommerce',
+          'link': '#',
+          'icon': 'fa fa-shopping-basket',
+          'subMenu': [
+            {
+              'name': 'Dashboard',
+              'link': 'ecommerce_dashboard.html',
+              'icon': 'glyphicon glyphicon-shopping-cart'
+            },
+            {
+              'name': 'Products',
+              'link': 'ecommerce_products.html',
+              'icon': 'glyphicon glyphicon-tags'
+            },
+            {
+              'name': 'Orders',
+              'link': 'ecommerce_orders.html',
+              'icon': 'fa fa-money'
+            },
+            {
+              'name': 'Customers',
+              'link': 'ecommerce_customers.html',
+              'icon': 'fa fa-users'
+            },
+            {
+              'name': 'Store Settings',
+              'link': 'ecommerce_settings.html',
+              'icon': 'fa fa-gears'
+            },
+          ]
+        }
+      ]
+    },
+
+    {
+      groupName: '',
+      items: [
+        {
+          'name': 'UI Elements',
+          'link': '#',
+          'icon': 'fa fa-diamond',
+          'subMenu': [
+            {
+              'name': 'Alerts',
+              'link': 'ui_alerts.html',
+              'icon': 'fa fa-warning'
+            },
+            {
+              'name': 'Animations',
+              'link': 'ui_animations.html',
+              'icon': 'fa fa-spinner'
+            },
+            {
+              'name': 'Buttons',
+              'link': 'ui_buttons.html',
+              'icon': 'fa fa-plus-square-o'
+            },
+            {
+              'name': 'Typography',
+              'link': 'ui_typography.html',
+              'icon': 'fa fa-text-width'
+            },
+            {
+              'name': 'Portlets',
+              'link': 'ui_portlets.html',
+              'icon': 'fa fa-archive'
+            },
+            {
+              'name': 'Progress Bars',
+              'link': 'ui_progress-bars.html',
+              'icon': 'fa fa-bars'
+            },
+            {
+              'name': 'Tabs',
+              'link': 'ui_tabs.html',
+              'icon': 'fa fa-toggle-off'
+            },
+            {
+              'name': 'Icons',
+              'link': 'ui_icons.html',
+              'icon': 'fa fa-hand-o-right'
+            },
+            {
+              'name': 'Grid',
+              'link': 'ui_grid.html',
+              'icon': 'fa fa-th-large'
+            },
+          ]
+        },
+
+        {
+          'name': 'Form Elements',
+          'link': '#',
+          'icon': 'fa fa-navicon',
+          'subMenu': [
+            {
+              'name': 'Basic Inputs',
+              'link': 'form_inputs.html',
+              'icon': 'fa fa-magic'
+            },
+            {
+              'name': 'Plugin Inputs',
+              'link': 'form_plugins.html',
+              'icon': 'fa fa-bell-o'
+            },
+            {
+              'name': 'Editors',
+              'link': 'form_editors.html',
+              'icon': 'fa fa-clipboard'
+            },
+            {
+              'name': 'Treeview',
+              'link': 'form_treeview.html',
+              'icon': 'fa fa-tree'
+            },
+            {
+              'name': 'Nestable',
+              'link': 'form_nestable.html',
+              'icon': 'fa fa-tasks'
+            },
+            {
+              'name': 'Image Tools',
+              'link': 'form_image-tools.html',
+              'icon': 'fa fa-file-image-o'
+            },
+            {
+              'name': 'Uploaders',
+              'link': 'form_uploaders.html',
+              'icon': 'fa fa-cloud-upload'
+            },
+            {
+              'name': 'Notifications',
+              'link': 'form_notifications.html',
+              'icon': 'fa fa-bell-o'
+            },
+            {
+              'name': 'Content Sliders',
+              'link': 'form_content-sliders.html',
+              'icon': 'fa fa-exchange'
+            },
+          ]
+        },
+
+        {
+          'name': 'Plugins',
+          'link': '#',
+          'icon': 'fa fa-cog',
+          'subMenu': [
+            {
+              'name': 'Maps',
+              'link': '#',
+              'icon': 'glyphicon glyphicon-globe',
+              'subMenuLevel2': [
+                {
+                  'name': 'Basic Maps',
+                  'link': 'maps_basic.html',
+                },
+                {
+                  'name': 'Vector Maps',
+                  'link': 'maps_vector.html',
+                },
+                {
+                  'name': 'Full Map',
+                  'link': 'maps_full.html',
+                },
+              ]
+            },
+
+            {
+              'name': 'Charts',
+              'link': '#',
+              'icon': 'fa fa-area-chart',
+              'subMenuLevel2': [
+                {
+                  'name': 'Highcharts',
+                  'link': 'charts_highcharts.html',
+                },
+                {
+                  'name': 'D3 Charts',
+                  'link': 'charts_d3.html',
+                },
+                {
+                  'name': 'Flot Charts',
+                  'link': 'charts_flot.html',
+                }
+              ]
+            },
+
+            {
+              'name': 'Tables',
+              'link': '#',
+              'icon': 'fa fa-table',
+              'subMenuLevel2': [
+                {
+                  'name': 'Basic Tables',
+                  'link': 'tables_basic.html',
+                },
+                {
+                  'name': 'FooTables',
+                  'link': 'tables_footable.html',
+                },
+                {
+                  'name': 'Pricing Tables',
+                  'link': 'tables_pricing.html',
+                }
+              ]
+            },
+
+            {
+              'name': 'Misc',
+              'link': '#',
+              'icon': 'fa fa-flask',
+              'subMenuLevel2': [
+                {
+                  'name': 'Site Tour',
+                  'link': 'misc_tour.html',
+                },
+                {
+                  'name': 'Session Timeout',
+                  'link': 'misc_timeout.html',
+                },
+                {
+                  'name': 'Page Progress Loader',
+                  'link': 'misc_nprogress.html',
+                }
+              ]
+            },
+          ]
+        },
+
+        {
+          'name': 'Pages',
+          'link': '#',
+          'icon': 'fa fa-paste',
+          'subMenu': [
+            {
+              'name': 'Utility',
+              'link': '#',
+              'icon': 'fa fa-gears',
+              'subMenuLevel2': [
+                {
+                  'name': 'Confirmation',
+                  'link': 'pages_confirmation.html',
+                },
+                {
+                  'name': 'Login',
+                  'link': 'pages_login.html',
+                },
+                {
+                  'name': 'Login Alt',
+                  'link': 'pages_login(alt).html',
+                },
+                {
+                  'name': 'Register',
+                  'link': 'pages_register.html',
+                },
+                {
+                  'name': 'Register Alt',
+                  'link': 'pages_register(alt).html',
+                },
+                {
+                  'name': 'Screenlock',
+                  'link': 'pages_screenlock.html',
+                },
+                {
+                  'name': 'Screenlock Alt',
+                  'link': 'pages_screenlock(alt).html',
+                },
+                {
+                  'name': 'Forgot Password',
+                  'link': 'pages_forgotpw.html',
+                },
+                {
+                  'name': 'Forgot Pass Alt',
+                  'link': 'pages_forgotpw(alt).html',
+                },
+                {
+                  'name': 'Coming Soon',
+                  'link': 'pages_coming-soon.html',
+                },
+                {
+                  'name': '404 Error',
+                  'link': 'pages_404.html',
+                },
+                {
+                  'name': '500 Error',
+                  'link': 'pages_500.html',
+                },
+                {
+                  'name': '404 Error Alt',
+                  'link': 'pages_404(alt).html',
+                },
+                {
+                  'name': '500 Error Alt',
+                  'link': 'pages_500(alt).html',
+                },
+              ]
+            },
+
+            {
+              'name': 'Basic',
+              'link': '#',
+              'icon': 'fa fa-desktop',
+              'subMenuLevel2': [
+                {
+                  'name': 'Search Results',
+                  'link': 'pages_search-results.html',
+                },
+                {
+                  'name': 'Profile',
+                  'link': 'pages_profile.html',
+                },
+                {
+                  'name': 'Timeline Split',
+                  'link': 'pages_timeline.html',
+                },
+                {
+                  'name': 'Timeline Single',
+                  'link': 'pages_timeline-single.html',
+                },
+                {
+                  'name': 'FAQ Page',
+                  'link': 'pages_faq.html',
+                },
+                {
+                  'name': 'Calendar',
+                  'link': 'pages_calendar.html',
+                },
+                {
+                  'name': 'Messages',
+                  'link': 'pages_messages.html',
+                },
+                {
+                  'name': 'Messages Alt',
+                  'link': 'pages_messages(alt).html',
+                },
+                {
+                  'name': 'Gallery',
+                  'link': 'pages_gallery.html',
+                },
+                {
+                  'name': 'Printable Invoice',
+                  'link': 'pages_invoice.html',
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+  ]

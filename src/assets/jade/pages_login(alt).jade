@@ -1,0 +1,92 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.css')
+
+block body
+  body.external-page.external-alt.sb-l-c.sb-r-c
+    // Start: Main
+    #main.animated.fadeIn
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Begin: Content
+        section#content
+          #login.admin-form.theme-info.mw500
+            // Login Logo
+            .row.table-layout
+              a(href='index.html', title='Return to Dashboard')
+                img.center-block.img-responsive(src='assets/img/logos/logo.png', title='TemplateMonster Logo', style='max-width: 275px;')
+            // Login Panel/Form
+            .panel.mt30.mb25
+              form#contact(method='post', action='/')
+                .panel-body.bg-light.p25.pb15
+                  // Social Login Buttons
+                  .section.row
+                    .col-md-6
+                      a.button.btn-social.facebook.span-left.btn-block(href='#')
+                        span
+                          i.fa.fa-facebook
+                        | Facebook
+                    .col-md-6
+                      a.button.btn-social.googleplus.span-left.btn-block(href='#')
+                        span
+                          i.fa.fa-google-plus
+                        | Google+
+                    .col-md-6.hidden
+                      a.button.btn-social.twitter.span-left.btn-block(href='#')
+                        span
+                          i.fa.fa-twitter
+                        | Twitter
+                  // Divider
+                  .section-divider.mv30
+                    span OR
+                  // Username Input
+                  .section
+                    label.field-label.text-muted.fs18.mb10(for='username') Username
+                    label.field.prepend-icon(for='username')
+                      input#username.gui-input(type='text', name='username', placeholder='Enter username')
+                      label.field-icon(for='username')
+                        i.fa.fa-user
+                  // Password Input
+                  .section
+                    label.field-label.text-muted.fs18.mb10(for='username') Password
+                    label.field.prepend-icon(for='password')
+                      input#password.gui-input(type='password', name='password', placeholder='Enter password')
+                      label.field-icon(for='password')
+                        i.fa.fa-lock
+                .panel-footer.clearfix
+                  button.button.btn-primary.mr10.pull-right(type='submit') Sign In
+                  label.switch.ib.switch-primary.mt10
+                    input#remember(type='checkbox', name='remember', checked='')
+                    label(for='remember', data-on='YES', data-off='NO')
+                    = ' '
+                    span Remember me
+            // Registration Links
+            .login-links
+              p
+                a.active(href='pages_forgotpw(alt).html', title='Sign In') Forgot Password?
+              p
+                | Haven't yet Registered?
+                = ' '
+                a(href='pages_register(alt).html', title='Sign In') Sign up here
+            // Registration Links(alt)
+            .login-links.hidden
+              a.active(href='pages_login-alt.html', title='Sign In') Sign In
+              |  |
+              a(href='pages_register-alt.html', title='Register') Register
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    // Page Javascript
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+      });

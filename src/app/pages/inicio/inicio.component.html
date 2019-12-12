@@ -1,0 +1,220 @@
+<div class="admin-elements-page">
+  <!-- Start: Content-Wrapper-->
+  <section id="content_wrapper">
+    <!-- Start: Topbar-Dropdown-->
+
+    <!-- Start: Topbar-->
+    <header id="topbar" class="alt">
+      <div class="topbar-left">
+        <ol class="breadcrumb">
+
+          <li class="crumb-icon"><a routerLink="/inicio"><span class="glyphicon glyphicon-home"></span></a></li>
+
+          <li class="crumb-trail">Dashboard video</li>
+        </ol>
+      </div>
+
+    </header>
+    <!-- Begin: Content-->
+    <section id="content" class="table-layout animated fadeIn">
+      <!-- begin: .tray-center-->
+      <div class="tray tray-center">
+        <div class="mw1000 center-block">
+          <!-- Begin: Content Header-->
+          <div class="content-header">
+            <h2> <b style="color:#2e2e2e;">Rifa</b>
+            </h2>
+            <p class="lead"></p>
+          </div>
+
+
+
+          <!-- Begin: Admin Form-->
+          <div class="admin-form">
+            <div class="panel heading-border">
+
+              <!-- Panel formulario-->
+              <div class="panel-body bg-light">
+                <form (ngSubmit)="crearItem()" (keydown.enter)="$event.preventDefault()" #itemForm="ngForm">
+
+
+
+
+
+                  <div id="spy3" class="section-divider mv40"><span style="color:#2e2e2e;">Video </span></div>
+                  <div [hidden]="!imgError">
+                    <h2>{{mensajeErrorImg}}</h2>
+
+                  </div>
+                  <!-- .section-divider-->
+                  <!-- File Uploaders-->
+
+                  <!-- imagen 1 -->
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="section">
+                        <label class="field prepend-icon append-button file"><span
+                            class="button btn-primary">Seleccionar</span>
+                          <input id="file1" type="file" name="file1" (change)="getFile($event) "
+                            onchange="document.getElementById('up1').value = this.value;" class="gui-file"
+                            (loadedmetadata)="getDuration($event)">
+                          <input id="up1" type="text" placeholder="Video mp4" class="gui-input">
+                          <label class="field-icon"><i class="fa fa-upload"></i></label>
+                        </label>
+                        <video #video style="display: none;" *ngIf="itemVideo.url" width="320" height="240" controls
+                          [attr.src]="itemVideo.url" (loadedmetadata)="getDuration($event)">
+                        </video>
+
+
+
+
+                        <div [hidden]="!imgError" class="alert alert-danger alert-dismissable">
+                          <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i
+                            class="fa fa-remove pr10"></i><strong>Error en el video!</strong> {{mensajeErrorImg}}.
+                        </div>
+
+
+
+                        <div [hidden]="!estadoCargaImg" class="progress mt10">
+                          <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                            [ngStyle]="{'width': porcentajeCargaImg + '%'}" [ngClass]="claseCargaImg">
+                            {{porcentajeCargaImg}}%</div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="section">
+
+
+                        <div [hidden]="!submitted" class=" animated fadeIn">
+
+
+                          <div class="alert alert-success alert-dismissable mb30" style="background-color: #70ca63;">
+                            <!-- <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button> -->
+                            <h3 class="mt5">Video {{itemVideo.nombre}} cargado exitosamente!</h3>
+                            <div class="element-groups-sm-custom"><button type="button"
+                                (click)="submitted=false; estadoCargaImg=false; "
+                                class="btn btn-default">Aceptar</button></div>
+                          </div>
+
+
+                        </div>
+
+                        <!--
+                          <div [hidden]="!imgError" class="alert alert-danger alert-dismissable">
+                            <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><strong>Error en la imagen!</strong> {{mensajeErrorImg}}.
+                          </div>
+
+
+
+                          <div [hidden]="!estadoCargaImg" class="progress mt10">
+                            <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': porcentajeCargaImg + '%'}"  [ngClass]="claseCargaImg">{{porcentajeCargaImg}}%</div>
+                          </div>
+                        -->
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+
+
+                </form>
+              </div>
+
+
+              <div class="panel-body pn">
+                <div class="table-responsive of-y-a">
+                  <button class="btn btn-danger " (click)="reiniciar()" style="margin-top: 10px;margin-bottom: 10px;">Reiniciar</button>
+                  <h1>Número de rifa: {{numeroRifa}}</h1>
+                  <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                    <thead style="background-color: #2e2e2e; color: #fff;">
+                      <tr class="">
+
+
+                        <th>Nombre. </th>
+                        <th>Duración</th>
+                        <th class="text-right">Estado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of itemsVideosGuardados | async">
+
+
+
+                        <td>{{item.nombre }}</td>
+                        <td>{{item.duracionVideo}}</td>
+
+                        <td class="text-right">
+                          <div class="btn-group text-right">
+                            <button type="button" data-toggle="dropdown" aria-expanded="false"
+                              [disabled]="reproduciendo" [ngClass]="claseReproduccion">{{estadoReproduccion}} <span
+                                class="caret ml15"></span></button>
+                            <ul role="menu" class="dropdown-menu">
+                              <li><a (click)="reproducirVideo(item)">Reproducir</a></li>
+                              <li><a (click)="eliminar(item.id, item)">Eliminar</a></li>
+
+
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- begin: .tray-right-->
+
+    </section>
+  </section>
+</div>
+
+
+
+
+
+<!-- No hay permisos--
+<section  [hidden]="empleadoActual.permisos.empleados" id="content_wrapper">
+
+
+
+<header id="topbar" class="bg-white alt">
+  <div class="topbar-left">
+    <ol class="breadcrumb mt-10">
+      <li class="crumb-active"><a routerLink="/inicio">Sistema Memphis</a></li>
+    
+    </ol>
+  </div>
+
+</header>
+
+<div id="content" class="animated fadeIn">
+
+  
+  <div class="row">
+    <div class="col-md-12">
+
+
+      <hr class="mt20 mb30">
+     
+     
+      <div class="">
+        <div class="alert alert-danger alert-dismissable mb30">
+
+          <h5 class="mt5">Error</h5>
+          <h3 class="mt5">No tienes acceso a ésta sección</h3>
+          <p>Ponte en contacto con el administrador.</p><br>
+          <div class="element-groups-sm-custom"><a (click)="cancel()" class="btn btn-white">REGRESAR</a></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</section>-->

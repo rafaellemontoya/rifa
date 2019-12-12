@@ -1,0 +1,208 @@
+/*! HTML5 Boilerplate v7.2.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+@font-face {
+  font-family: "HelveticaNeueRegular";
+  src: url('../fonts/HelveticaNeueRegular.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: "HelveticaNeueBold";
+  src: url('../fonts/HelveticaNeueBold.otf'); /* IE9 Compat Modes */
+}
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color: #FFE600;
+  font-family: HelveticaNeueBold;
+  height: 95vh;
+}
+/*header*/
+div.background{
+  background-image: url(../img/background.jpg);
+  height: 98vh;
+  background-position: center;
+  background-size: cover;
+  width: 99%;
+  margin: 0 auto;
+}
+.contenedor-izq{
+  background-image: url(../img/background.jpg);
+  border:1px solid black;
+	width:49.5%;
+	display:inline-block;
+	height:98%;
+	overflow:hidden;
+}
+.contenedor-der{
+  background-image: url(../img/background.jpg);
+  border:1px solid black;
+	width:49.5%;
+	display:inline-block;
+	height:98%;
+	overflow:hidden;
+}
+
+.titulo{
+  width: 100%;
+
+  height:20%;
+  margin-top: 5%;
+}
+.img-titulo{
+display:block;
+margin:auto;
+}
+
+.cobradores-contenedor{
+  width: 100%;
+
+  height:20%;
+  margin-top: 5%;
+}
+.contenedor-texto{
+  border-bottom-style: solid;
+  border-bottom-color: coral;
+  display:inline-block;
+  width: 65%;
+}
+.foto-cobradores-contenedor{
+  width: 32%;
+display:inline-block;
+  height:20%;
+  margin-top: 5%;
+}
+.nombre-cobradores-contenedor{
+  width: 49%;
+display:inline-block;
+  height:20%;
+  margin-top: 5%;
+}
+.cantidad-cobradores-contenedor{
+  width: 49%;
+display:inline-block;
+  height:20%;
+  margin-top: 5%;
+}
+
+
+.contenedor-texto-ventas{
+  border-bottom-style: solid;
+  border-bottom-color: coral;
+  display:inline-block;
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.nombre-cobradores-contenedor{
+  width: 49%;
+display:inline-block;
+  height:20%;
+  margin-top: 5%;
+}
+.cantidad-cobradores-contenedor{
+  width: 49%;
+display:inline-block;
+  height:20%;
+  margin-top: 5%;
+}
+
+footer{
+  margin-bottom: 1vh;
+  height: 1%;
+  width: 95%;
+  margin: 0 0 0 5%;
+}
+footer .footer-clima{
+  width: 33%;
+  float: left;
+}
+div .clima-actual{
+  background-color: #004A8E;
+  width: 99.2%;
+}
+.icono-clima{
+  float: left;
+  width: 33%;
+  height: 15vh;
+  background-color: #004A8E;
+}
+.descripcion-clima{
+  float: left;
+  width: 33%;
+  height: 15vh;
+  padding-top: 4vh;
+  color: #fff;
+  font-size: 3vh;
+  background-color: #004A8E;
+  text-align: center;
+}
+.temperatura{
+  float: left;
+  width: 33%;
+  height: 15vh;
+  padding-top: 2.5vh;
+  padding-bottom:  2.5vh;
+  padding-right:   2.5vh;
+  background-color: #004A8E;
+}
+.contenido-temperatura{
+  text-align: center;
+  font-size: 8vh;
+  background-color: #FFE600;
+  color: #004A8E;
+}
+footer .footer-noticias{
+  background-color: #FFE600;
+  width: 55%;
+  float: left;
+  margin-top: 14.5vh;
+
+  height: 14vh;
+  font-size: 4vh;
+  color: #004A8E;
+}
+footer .footer-logo{
+  background-color: #004A8E;
+  margin-left: .5vh;
+  width: 11%;
+  float: left;
+  margin-top: 13.5vh;
+  height: 15vh;
+}
+.clima-proximo{
+  width: 100%;
+}
+.climas-siguientes{
+  margin-top: .5vh;
+  float: left;
+  width: 32.2%;
+  height: 13vh;
+  background-color: #004A8E;
+}
+.climas-siguientes2{
+  margin-left: .5vh;
+  margin-top: .5vh;
+  float: left;
+  width: 32.2%;
+  height: 13vh;
+  background-color: #004A8E;
+}
+.climas-siguientes3{
+  margin-left: .5vh;
+  margin-top: .5vh;
+  float: left;
+  width: 32.2%;
+  height: 13vh;
+  background-color: #004A8E;
+}

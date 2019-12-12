@@ -1,0 +1,482 @@
+block header_dropdown-right
+  // Start: Header
+  header.navbar.navbar-fixed-top
+    .navbar-branding
+      a.navbar-brand(href='index.html')
+        b Template
+        | Monster
+      span#toggle_sidemenu_l.fa.fa-bars
+    ul.nav.navbar-nav.navbar-left
+    form.navbar-form.navbar-left.navbar-search(role='search')
+      .form-group
+        input.form-control(type='text', placeholder='Search...')
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown.menu-merge.hidden
+        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+          | Dropdown
+          = ' '
+          span.caret.caret-tp
+        ul.dropdown-menu(role='menu')
+          li
+            a(href='#') Action
+          li
+            a(href='#') Another action
+          li
+            a(href='#') Something else here
+          li.divider
+          li
+            a(href='#') Separated link
+      li
+        .navbar-btn.btn-group
+          button.btn.btn-sm.request-fullscreen
+            span.fa.fa-arrows-alt.fs15
+      li
+        .navbar-btn.btn-group
+          a.topbar-menu-toggle.btn.btn-sm(href='#')
+            span.fa.fa-magic
+      li.dropdown.menu-merge
+        .navbar-btn.btn-group
+          button.btn.btn-sm.dropdown-toggle(data-toggle='dropdown')
+            span.fa.fa-bell-o.fs14.va-m
+            span.badge.badge-danger 9
+          .dropdown-menu.dropdown-persist.w350.animated.animated-shorter.fadeIn(role='menu')
+            .panel.mbn
+              .panel-menu
+                span.panel-icon
+                  i.fa.fa-clock-o
+                span.panel-title.fw600  Recent Activity
+              .w100p.panel-body.panel-scroller.scroller-navbar.scroller-overlay.scroller-pn.pn
+                ol.timeline-list
+                  li.timeline-item
+                    .timeline-icon.bg-dark.light
+                      span.fa.fa-tags
+                    .timeline-desc
+                      b Michael
+                      |  Added to his store:
+                      a(href='#') Ipod
+                    .timeline-date 1:25am
+                  li.timeline-item
+                    .timeline-icon.bg-dark.light
+                      span.fa.fa-tags
+                    .timeline-desc
+                      b Sara
+                      |  Added his store:
+                      a(href='#') Notebook
+                    .timeline-date 3:05am
+                  li.timeline-item
+                    .timeline-icon.bg-success
+                      span.fa.fa-usd
+                    .timeline-desc
+                      b Admin
+                      |  created invoice for:
+                      a(href='#') Software
+                    .timeline-date 4:15am
+                  li.timeline-item
+                    .timeline-icon.bg-success
+                      span.fa.fa-usd
+                    .timeline-desc
+                      b Admin
+                      |  created invoice for:
+                      a(href='#') Apple
+                    .timeline-date 7:45am
+                  li.timeline-item
+                    .timeline-icon.bg-success
+                      span.fa.fa-usd
+                    .timeline-desc
+                      b Admin
+                      |  created invoice for:
+                      a(href='#') Software
+                    .timeline-date 4:15am
+                  li.timeline-item
+                    .timeline-icon.bg-success
+                      span.fa.fa-usd
+                    .timeline-desc
+                      b Admin
+                      |  created invoice for:
+                      a(href='#') Apple
+                    .timeline-date 7:45am
+                  li.timeline-item
+                    .timeline-icon.bg-dark.light
+                      span.fa.fa-tags
+                    .timeline-desc
+                      b Michael
+                      |  Added his store:
+                      a(href='#') Ipod
+                    .timeline-date 8:25am
+                  li.timeline-item
+                    .timeline-icon.bg-system
+                      span.fa.fa-fire
+                    .timeline-desc
+                      b Admin
+                      |  created invoice for:
+                      a(href='#') Software
+                    .timeline-date 4:15am
+                  li.timeline-item
+                    .timeline-icon.bg-dark.light
+                      span.fa.fa-tags
+                    .timeline-desc
+                      b Sara
+                      |  Added to his store:
+                      a(href='#') Notebook
+                    .timeline-date 3:05am
+              .panel-footer.text-center.p7
+                a.link-unstyled(href='#')  View All
+      li.dropdown.menu-merge
+        .navbar-btn.btn-group
+          button.btn.btn-sm.dropdown-toggle(data-toggle='dropdown')
+            span.fa.fa-flag.fs14.va-m
+            span.badge 5
+          .dropdown-menu.dropdown-persist.w350.animated.animated-shorter.fadeIn(role='menu')
+            .panel.mbn
+              .panel-menu
+                .btn-group.btn-group-justified.btn-group-nav(role='tablist')
+                  a.pn.pv10.fs11.btn.btn-default.btn-sm.active(href='#nav-tab1', data-toggle='tab') Notifications
+                  a.pn.pv10.fs11.btn.btn-default.btn-sm(href='#nav-tab2', data-toggle='tab') Messages
+                  a.pn.pv10.fs11.btn.btn-default.btn-sm(href='#nav-tab3', data-toggle='tab') Activity
+              .panel-body.panel-scroller.scroller-navbar.pn
+                .tab-content.br-n
+                  #nav-tab1.tab-pane.alerts-widget.active(role='tabpanel')
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-user.text-info
+                      .media-body
+                        h5.media-heading
+                          | New Registration
+                          small.text-muted
+                        |  Tyler Durden - 16 hours ago
+                      .media-right
+                        .media-response  Approve?
+                        .btn-group
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-check.text-success
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-remove
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-shopping-cart.text-success
+                      .media-body
+                        h5.media-heading
+                          | New Order
+                          small.text-muted
+                        a(href='#') Apple Ipod
+                        |  - 4 hours ago
+                      .media-right
+                        .media-response  Confirm?
+                        .btn-group
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-check.text-success
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-print
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-comment.text-system
+                      .media-body
+                        h5.media-heading
+                          | New Comment
+                          small.text-muted
+                        |  Mike - I loved your article!
+                      .media-right
+                        .media-response.text-right  Moderate?
+                        .btn-group
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-pencil
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-check.text-success
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-star.text-warning
+                      .media-body
+                        h5.media-heading
+                          | New Review
+                          small.text-muted
+                        |  Sammy Hilton - 4 hours ago
+                      .media-right
+                        .media-response  Approve?
+                        .btn-group
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-check.text-success
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-remove
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-user.text-info
+                      .media-body
+                        h5.media-heading
+                          | New Registration
+                          small.text-muted
+                        |  Michael Sober - 7 hours ago
+                      .media-right
+                        .media-response  Approve?
+                        .btn-group
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-check.text-success
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-remove
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-usd.text-alert
+                      .media-body
+                        h5.media-heading
+                          | New Invoice
+                          small.text-muted
+                        a(href='#') Apple Ipod
+                        |  - 4 hours ago
+                      .media-right
+                        .media-response.single #518358
+                    .media
+                      a.media-left(href='#')
+                        span.glyphicon.glyphicon-shopping-cart.text-success
+                      .media-body
+                        h5.media-heading
+                          | New Order
+                          small.text-muted
+                        a(href='#') Apple Ipod
+                        |  - 4 hours ago
+                      .media-right
+                        .media-response  Confirm?
+                        .btn-group
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-check.text-success
+                          button.btn.btn-default.btn-xs.light(type='button')
+                            i.fa.fa-print
+                  #nav-tab2.tab-pane.chat-widget(role='tabpanel')
+                    .media
+                      .media-left
+                        a(href='#')
+                          img.media-object(alt='64x64', src='assets/img/avatars/3.jpg')
+                      .media-body
+                        span.media-status.online
+                        h5.media-heading
+                          | Courtney Faught
+                          small  - 12:30am
+                        |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                    .media
+                      .media-body
+                        span.media-status.offline
+                        h5.media-heading
+                          | Joe Gibbons
+                          small  - 12:30am
+                        |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.
+                      .media-right
+                        a(href='#')
+                          img.media-object(alt='64x64', src='assets/img/avatars/1.jpg')
+                    .media
+                      .media-left
+                        a(href='#')
+                          img.media-object(alt='64x64', src='assets/img/avatars/2.jpg')
+                      .media-body
+                        span.media-status.online
+                        h5.media-heading
+                          | Courtney Faught
+                          small  - 12:30am
+                        |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metuscommodo.
+                    .media
+                      .media-body
+                        span.media-status.offline
+                        h5.media-heading
+                          | Joe Gibbons
+                          small  - 12:30am
+                        |  Cras sit amet nibh libero, in Nulla vel metus scelerisque antecommodo.
+                      .media-right
+                        a(href='#')
+                          img.media-object(alt='64x64', src='assets/img/avatars/1.jpg')
+                    .media
+                      .media-left
+                        a(href='#')
+                          img.media-object(alt='64x64', src='assets/img/avatars/2.jpg')
+                      .media-body
+                        span.media-status.online
+                        h5.media-heading
+                          | Courtney Faught
+                          small  - 12:30am
+                        |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque soltudino.
+                    .media
+                      .media-body
+                        span.media-status.offline
+                        h5.media-heading
+                          | Joe Gibbons
+                          small  - 12:30am
+                        |  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                      .media-right
+                        a(href='#')
+                          img.media-object(alt='64x64', src='assets/img/avatars/1.jpg')
+                  #nav-tab3.tab-pane.scroller-nm(role='tabpanel')
+                    ul.media-list(role='menu')
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/5.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading
+                            | Article
+                            small.text-muted - 08/16/22
+                          |  Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/2.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading.mv5
+                            | Article
+                            small  - 08/16/22
+                          |                               Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/3.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading
+                            | Article
+                            small.text-muted - 08/16/22
+                          |  Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/4.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading.mv5
+                            | Article
+                            small.text-muted - 08/16/22
+                          |  Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/5.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading
+                            | Article
+                            small.text-muted - 08/16/22
+                          |  Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/2.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading.mv5
+                            | Article
+                            small  - 08/16/22
+                          |                               Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                      li.media
+                        a.media-left(href='#')
+                          img.mw40(src='assets/img/avatars/3.jpg', alt='avatar')
+                        .media-body
+                          h5.media-heading
+                            | Article
+                            small.text-muted - 08/16/22
+                          |  Last Updated 36 days ago by
+                          a.text-system(href='#')  Max
+                    table.table.table-striped.hidden
+                      thead
+                        tr
+                          th First Name
+                          th Last Name
+                          th Username
+                      tbody
+                        tr
+                          td Mark
+                          td Otto
+                          td @mdo
+                        tr
+                          td Jacob
+                          td Thornton
+                          td @fat
+                        tr
+                          td Larry
+                          td the Bird
+                          td @twitter
+                        tr
+                          td Sussy
+                          td Watcher
+                          td @thehawk
+                        tr
+                          td Mark
+                          td Otto
+                          td @mdo
+                        tr
+                          td Sussy
+                          td Watcher
+                          td @thehawk
+                        tr
+                          td Jacob
+                          td Thornton
+                          td @fat
+                        tr
+                          td Larry
+                          td the Bird
+                          td @twitter
+                        tr
+                          td Sussy
+                          td Watcher
+                          td @thehawk
+                        tr
+                          td Mark
+                          td Otto
+                          td @mdo
+                        tr
+                          td Jacob
+                          td Thornton
+                          td @fat
+              .panel-footer.text-center.p7
+                a.link-unstyled(href='#')  View All
+      li.dropdown.menu-merge.mr20
+        .navbar-btn.btn-group
+          button.btn.btn-sm.dropdown-toggle(data-toggle='dropdown')
+            span.flag-xs.flag-us
+            // <span class="caret"></span>
+          ul.dropdown-menu.pv5.animated.animated-short.flipInX(role='menu')
+            li
+              a(href='javascript:void(0);')
+                span.flag-xs.flag-in.mr10
+                |  Hindu
+            li
+              a(href='javascript:void(0);')
+                span.flag-xs.flag-tr.mr10
+                |  Turkish
+            li
+              a(href='javascript:void(0);')
+                span.flag-xs.flag-es.mr10
+                |  Spanish
+      li.menu-divider.hidden
+        i.fa.fa-circle
+      li.dropdown.menu-merge
+        a.dropdown-toggle.fw600.p15(href='#', data-toggle='dropdown')
+          img.hidden.mw30.br64(src='assets/img/avatars/1.jpg', alt='avatar')
+          span.hidden.pl15  Michael .R
+          = ' '
+          span.mn.caret.caret-tp
+        ul.dropdown-menu.list-group.dropdown-persist.w250(role='menu')
+          li.dropdown-header.clearfix
+            .pull-left.ml10
+              select#user-status
+                optgroup(label='Current Status:')
+                  option(value='1-1') Away
+                  option(value='1-2') Offline
+                  option(value='1-3', selected='selected') Online
+            .pull-right.mr10
+              select#user-role
+                optgroup(label='Logged in As:')
+                  option(value='1-1') Client
+                  option(value='1-2') Editor
+                  option(value='1-3', selected='selected') Admin
+          li.list-group-item
+            a.animated.animated-short.fadeInUp(href='#')
+              span.fa.fa-envelope
+              |  Messages
+              span.label.label-warning 2
+          li.list-group-item
+            a.animated.animated-short.fadeInUp(href='#')
+              span.fa.fa-user
+              |  Friends
+              span.label.label-warning 6
+          li.list-group-item
+            a.animated.animated-short.fadeInUp(href='#')
+              span.fa.fa-bell
+              |  Notifications
+          li.list-group-item
+            a.animated.animated-short.fadeInUp(href='#')
+              span.fa.fa-gear
+              |  Settings
+          li.dropdown-footer
+            a(href='#')
+              span.fa.fa-power-off.pr5
+              |  Logout

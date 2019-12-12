@@ -1,0 +1,573 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='assets/admin-tools/admin-forms/css/admin-forms.css')
+
+block body
+  body.charts-highcharts-page(data-spy='scroll', data-target='#nav-spy', data-offset='100')
+    // Start: Theme Preview Pane
+    #skin-toolbox.bg-white
+      .panel
+        .panel-heading
+          span.panel-icon
+            i.fa.fa-gear.text-primary
+          span.panel-title  Theme Options
+        .panel-body.pn
+          ul.nav.nav-list.nav-list-sm.pl15.pt10(role='tablist')
+            li.active
+              a(href='#toolbox-header', role='tab', data-toggle='tab') Navbar
+            li
+              a(href='#toolbox-sidebar', role='tab', data-toggle='tab') Sidebar
+            li
+              a(href='#toolbox-settings', role='tab', data-toggle='tab') Misc
+          .tab-content.p20.ptn.pb15
+            #toolbox-header.tab-pane.active(role='tabpanel')
+              form#toolbox-header-skin
+                h4.mv20 Header Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.checkbox-disabled.fill.mb5
+                    input#headerSkin8(type='radio', name='headerSkin', checked='', value='')
+                    label(for='headerSkin8') Light
+                  .checkbox-custom.fill.checkbox-primary.mb5
+                    input#headerSkin1(type='radio', name='headerSkin', value='bg-primary')
+                    label(for='headerSkin1') Primary
+                  .checkbox-custom.fill.checkbox-info.mb5
+                    input#headerSkin3(type='radio', name='headerSkin', value='bg-info')
+                    label(for='headerSkin3') Info
+                  .checkbox-custom.fill.checkbox-warning.mb5
+                    input#headerSkin4(type='radio', name='headerSkin', value='bg-warning')
+                    label(for='headerSkin4') Warning
+                  .checkbox-custom.fill.checkbox-danger.mb5
+                    input#headerSkin5(type='radio', name='headerSkin', value='bg-danger')
+                    label(for='headerSkin5') Danger
+                  .checkbox-custom.fill.checkbox-alert.mb5
+                    input#headerSkin6(type='radio', name='headerSkin', value='bg-alert')
+                    label(for='headerSkin6') Alert
+                  .checkbox-custom.fill.checkbox-system.mb5
+                    input#headerSkin7(type='radio', name='headerSkin', value='bg-system')
+                    label(for='headerSkin7') System
+                  .checkbox-custom.fill.checkbox-success.mb5
+                    input#headerSkin2(type='radio', name='headerSkin', value='bg-success')
+                    label(for='headerSkin2') Success
+                  .checkbox-custom.fill.mb5
+                    input#headerSkin9(type='radio', name='headerSkin', value='bg-dark')
+                    label(for='headerSkin9') Dark
+            #toolbox-sidebar.tab-pane(role='tabpanel')
+              form#toolbox-sidebar-skin
+                h4.mv20 Sidebar Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.fill.mb5
+                    input#sidebarSkin3(type='radio', name='sidebarSkin', checked='', value='')
+                    label(for='sidebarSkin3') Dark
+                  .checkbox-custom.fill.checkbox-disabled.mb5
+                    input#sidebarSkin1(type='radio', name='sidebarSkin', value='sidebar-light')
+                    label(for='sidebarSkin1') Light
+                  .checkbox-custom.fill.checkbox-light.mb5
+                    input#sidebarSkin2(type='radio', name='sidebarSkin', value='sidebar-light light')
+                    label(for='sidebarSkin2') Lighter
+            #toolbox-settings.tab-pane(role='tabpanel')
+              form#toolbox-settings-misc
+                h4.mv20.mtn Layout Options
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#header-option(type='checkbox', checked='')
+                    label(for='header-option') Fixed Header
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#sidebar-option(type='checkbox', checked='')
+                    label(for='sidebar-option') Fixed Sidebar
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-option(type='checkbox')
+                    label(for='breadcrumb-option') Fixed Breadcrumbs
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-hidden(type='checkbox')
+                    label(for='breadcrumb-hidden') Hide Breadcrumbs
+
+          .form-group.mn.br-t.p15
+            a#clearLocalStorage.btn.btn-primary.btn-block.pb10.pt10(href='#') Clear LocalStorage
+    // Start: Main
+    #main
+      // Page Header
+      block header
+        include _header
+      // Start: Sidebar
+      aside#sidebar_left.nano.nano-light.affix
+        // Start: Sidebar Left Content
+        +makeSidebar('charts_highcharts.html')
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Start: Topbar-Dropdown
+        #topbar-dropmenu.alt
+          .topbar-menu.row
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-primary.light(href='#')
+                span.glyphicon.glyphicon-inbox.text-muted
+                span.metro-title Messages
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-info.light(href='#')
+                span.glyphicon.glyphicon-user.text-muted
+                span.metro-title Users
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-success.light(href='#')
+                span.glyphicon.glyphicon-headphones.text-muted
+                span.metro-title Support
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-system.light(href='#')
+                span.glyphicon.glyphicon-facetime-video.text-muted
+                span.metro-title Videos
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-warning.light(href='#')
+                span.fa.fa-gears.text-muted
+                span.metro-title Settings
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-alert.light(href='#')
+                span.glyphicon.glyphicon-picture.text-muted
+                span.metro-title Pictures
+        // Start: Topbar
+        header#topbar.bg-white.alt.br-b-ddd
+          .topbar-left
+            ol.breadcrumb.mt-10
+              li.crumb-active
+                a(href='index.html') Dashboard
+              li.crumb-icon
+                a(href='index.html')
+                  span.glyphicon.glyphicon-home
+              li.crumb-link
+                a(href='index.html') Home
+              li.crumb-trail Dashboard
+          .topbar-right
+            .ib.topbar-dropdown
+              label.control-label.pr10.fs15.text-muted(for='topbar-multiple') Reporting Period
+              select#topbar-multiple.hidden
+                optgroup(label='Filter By:')
+                  option(value='1-1') Last 30 Days
+                  option(value='1-2', selected='selected') Last 60 Days
+                  option(value='1-3') Last Year
+            #toggle_sidemenu_r.ml15.ib.va-m
+              a.pl5(href='#')
+                i.fa.fa-sign-in.fs22.text-primary
+                span.badge.badge-hero.badge-danger 3
+        // Begin: Content
+        section#content.table-layout.animated.fadeIn
+          // begin: .tray-left
+          aside.tray.tray-left.tray250(data-tray-height='match')
+            h4.mt5.mb20
+              | HighCharts.js -
+              small "Your Data..Alive"
+            ul.icon-list
+              li
+                i.fa.fa-exclamation-circle.text-warning.fa-lg.pr10
+                b  Author:
+                = ' '
+                |  www.highcharts.com
+              li
+                i.fa.fa-exclamation-circle.text-warning.fa-lg.pr10
+                b  License:
+                |  CC - NonCommercial 3.0
+              li
+                i.fa.fa-exclamation-circle.text-warning.fa-lg.pr10
+                b  Website:
+                = ' '
+                a(href='http://www.highcharts.com') www.highcharts.com
+            #nav-spy
+              ul.nav.tray-nav(data-smoothscroll='-70', data-spy='affix', data-offset-top='200')
+                li.active
+                  a(href='#pchart1')
+                    span.fa.fa-bar-chart.fa-lg
+                    |  Basic Column Chart
+                li
+                  a(href='#pchart2')
+                    span.fa.fa-bar-chart.fa-lg
+                    |  Synced Spline Chart
+                li
+                  a(href='#pchart3')
+                    span.fa.fa-line-chart.fa-lg
+                    |  Column Chart with Filter
+                li
+                  a(href='#pchart4')
+                    span.fa.fa-line-chart.fa-lg
+                    | Sparklines Table
+                li
+                  a(href='#pchart5')
+                    span.fa.fa-area-chart.fa-lg
+                    |  Pie Chart
+                li
+                  a(href='#pchart5')
+                    span.fa.fa-area-chart.fa-lg
+                    |  Circular Chart
+                li
+                  a(href='#pchart7')
+                    span.fa.fa-bar-chart.fa-lg
+                    |  Spline Chart with Filter
+                li
+                  a(href='#pchart8')
+                    span.fa.fa-bar-chart.fa-lg
+                    |  Column Chart with Filter
+                li
+                  a(href='#pchart9')
+                    span.fa.fa-line-chart.fa-lg
+                    |  Bar Chart with Filter
+                li
+                  a(href='#pchart10')
+                    span.fa.fa-line-chart.fa-lg
+                    |  Area Chart with Filter
+          // begin: .tray-center
+          .tray.tray-center
+            // Basic Column Chart
+            #pchart1.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Basic Column Chart
+              .panel-body.bg-light.dark
+                #high-column2(style='width: 100%; height: 430px; margin: 0 auto')
+            // Synced Line Chart
+            #pchart2.panel
+              .panel-heading
+                span.panel-title.text-info.fw600 Line Chart with Submenu
+              .panel-body.pn.bg-light.dark
+                #high-datamap(style='width: 100%; height: 300px; margin: 0 auto')
+              .panel-footer.bg-light.pn
+                #high-siblingmap(style='width: 100%; height: 140px; margin: 0 auto')
+            // Filterable Column Chart
+            #pchart3.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Filterable Column Chart
+              .panel-menu.hidden
+                .chart-legend(data-chart-id='#high-line')
+                  button.legend-item.btn.btn-sm.btn-primary.mr10(type='button', data-chart-id='0') Data 1
+                  button.legend-item.btn.btn-info.btn-sm(type='button', data-chart-id='1') Data 2
+              .panel-body.pn
+                #high-line(style='width: 100%; height: 275px; margin: 0 auto')
+                .p15.pt5.mt15.bg-light.br-t
+                  .table-responsive
+                    table.table.mbn.admin-form.fs13.table-legend(data-chart-id='#high-line')
+                      thead
+                        tr
+                          th.w30 ID
+                          th.w50 Chart
+                          th Page Source
+                          th.text-right Page Hits
+                      tbody
+                        tr
+                          td.fs15.fw600 1.
+                          td
+                            label.switch.switch-custom.block.mbn
+                              input#s1.legend-switch(type='checkbox', name='features', value='0')
+                              label(for='s1', data-on='ON', data-off='OFF')
+                              span
+                          td.va-m.fw600.text-muted
+                            span.news-sprite.yahoo.mr15
+                            | www.yahoo.com/race-car-rally
+                          td.fs15.fw600.text-right 18,625
+                        tr
+                          td.fs15.fw600 2.
+                          td
+                            label.switch.switch-custom.block.mbn
+                              input#s2.legend-switch(type='checkbox', name='features', value='1')
+                              label(for='s2', data-on='ON', data-off='OFF')
+                              span
+                          td.va-m.fw600.text-muted
+                            span.news-sprite.yahoo.mr15
+                            | www.yahoo.com/sports/soccer/brazil-fans-outcheer
+                          td.fs15.fw600.text-right 11,812
+                        tr
+                          td.fs15.fw600 2.
+                          td
+                            label.switch.switch-custom.block.mbn
+                              input#s3.legend-switch(type='checkbox', name='features', value='2')
+                              label(for='s3', data-on='ON', data-off='OFF')
+                              span
+                          td.va-m.fw600.text-muted
+                            span.news-sprite.fb.mr15
+                            | www.facebook.com/news/actor-bill_thornberry-passes-at-42
+                          td.fs15.fw600.text-right 6,149
+                        tr
+                          td.fs15.fw600 2.
+                          td
+                            label.switch.switch-custom.block.mbn
+                              input#s4.legend-switch(type='checkbox', name='features', value='3')
+                              label(for='s4', data-on='ON', data-off='OFF')
+                              span
+                          td.va-m.fw600.text-muted
+                            span.news-sprite.cnn.mr15
+                            | www.cnn.com/money/stock-market-races-to-glorious-open
+                          td.fs15.fw600.text-right 2,525
+            // Sparklines Table
+            #pchart4.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Sparklines Chart
+              .panel-body.of-a.pn
+                .table-responsive
+                  table.table.mbn.table-bordered
+                    thead
+                      tr.bg-light
+                        th(style='width: 20%') Name
+                        th(style='width: 20%') Count
+                        th(style='width: 20%') Memory
+                        th(style='width: 20%') CPU
+                        th(style='width: 20%') Disk I/O
+                    tbody
+                      tr
+                        td.p15.mnw150
+                          h4.mb15.text-muted Apache
+                          .progress.progress-bar-sm.mb5
+                            .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
+                              span.sr-only 60%
+                          p
+                            b.text-info 95%
+                            span.pull-right.text-muted 1,200 GB left
+                        td.p15
+                          h4.mb25.text-muted 12
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='info', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 200 MB
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='info', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 30%
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='info', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 89 KB/s
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='info', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                      tr
+                        td.p15
+                          h4.mb15.text-muted Postfix
+                          .progress.progress-bar-sm.mb5
+                            .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 45%;')
+                              span.sr-only 45%
+                          p
+                            b.text-primary 45%
+                            span.pull-right.text-muted 2,500 GB left
+                        td.p15
+                          h4.mb25.text-muted 42
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='primary', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 300 MB
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='primary', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 30%
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='primary', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 127 KB/s
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='primary', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                      tr
+                        td.p15
+                          h4.mb15.text-muted MySQL
+                          .progress.progress-bar-sm.mb5
+                            .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='80', aria-valuemin='0', aria-valuemax='100', style='width: 80%;')
+                              span.sr-only 80%
+                          p
+                            b.text-warning 80%
+                            span.pull-right.text-muted 900 GB left
+                        td.p15
+                          h4.mb25.text-muted 26
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='warning', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 150 MB
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='warning', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 30%
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='warning', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+                        td.p15
+                          h4.mb25.text-muted 39 KB/s
+                          span.inlinesparkline(sparkwidth='100%', data-spark-color='warning', values='5,6,7,9,9,5,3,2,2,4,6,7,6,7,9,9,5,3,2,2,4,6,7')
+            // Pie and Circle Stats
+            #pchart5.row
+              .col-lg-5
+                // Pie Chart
+                .panel
+                  .panel-heading
+                    span.panel-title.fw600.text-info Pie Chart
+                  .panel-body.pn.of-h
+                    #high-pie(style='width: 100%; height: 210px; margin: 0 auto')
+              .col-lg-7
+                // Circle Stats
+                .panel
+                  .panel-heading
+                    span.panel-title.fw600.text-info Circulars
+                    .widget-menu.pull-right.mr10.hidden
+                      span.fs11.text-muted
+                        i.fa.fa-circle.text-warning.fs12.pr5
+                        |  Twitter
+                      span.fs11.text-muted.ml10
+                        i.fa.fa-circle.text-info.fs12.pr5
+                        |  Facebook
+                      span.fs11.text-muted.ml10
+                        i.fa.fa-circle.text-primary.fs12.pr5
+                        |  Google+
+                  .panel-body
+                    .mb20.text-right
+                      span.fs11.text-muted
+                        i.fa.fa-circle.text-warning.fs12.pr5
+                        |  Twitter
+                      span.fs11.text-muted.ml10
+                        i.fa.fa-circle.text-info.fs12.pr5
+                        |  Facebook
+                      span.fs11.text-muted.ml10
+                        i.fa.fa-circle.text-primary.fs12.pr5
+                        |  Google+
+                    .row
+                      .col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-0.text-center
+                        #c1.info-circle(title='Twitter', value='80', data-circle-color='primary')
+                      .mt-25.mt-sm-0.col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-0
+                        #c2.info-circle(title='Facebook', value='30', data-circle-color='info')
+                      .mt-25.mt-sm-0.col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-0
+                        #c3.info-circle(title='Behance', value='55', data-circle-color='warning')
+            // Column Graph
+            #pchart7.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Column Graph
+              .panel-body.pn
+                #high-column(style='width: 100%; height: 197px; margin: 0 auto')
+            // Stats Top Graph Bot
+            #pchart8.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Filterable Area Graph
+              .panel-menu
+                .chart-legend(data-chart-id='#high-line3')
+                  a.legend-item.btn.btn-sm.btn-primary.mr10(type='button', data-chart-id='0') Data 1
+                  a.legend-item.btn.btn-info.btn-sm(type='button', data-chart-id='0') Data 2
+              .panel-body.pn
+                #high-line3(style='width: 100%; height: 210px; margin: 0 auto')
+            // Column Graph
+            #pchart9.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Column Graph with alt Filter
+              .panel-menu.pn.bg-white
+                ul.nav.nav-justified.text-center.fw600.chart-legend(data-chart-id='#high-column3')
+                  li
+                    a.legend-item(href='#', data-chart-id='0')  Tech
+                  li.br-l
+                    a.legend-item(href='#', data-chart-id='1')  Support
+                  li.br-l
+                    a.legend-item(href='#', data-chart-id='2')  Service
+                  li.br-l
+                    a.legend-item(href='#', data-chart-id='3')  Another
+              .panel-body.pbn
+                #high-column3(style='width: 100%; height: 400px; margin: 0 auto')
+                p.hidden.br-t.pt15.text-muted.text-center.mh20.fw400
+                  | A percent measure of tickets with
+                  b.text-info first
+                  |  reply time
+              .panel-footer.p15
+                p.text-muted.text-center.mbn
+                  | A percent measure of tickets with
+                  b.text-info first
+                  |  reply time
+            // Bar Graph
+            #pchart10.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Bar Graph with Filter
+              .panel-menu
+                .chart-legend(data-chart-id='#high-bars')
+                  a.legend-item.btn.btn-warning.btn-sm.mr5(data-chart-id='0') Data 1
+                  a.legend-item.btn.btn-primary.btn-sm.mr5(data-chart-id='1') Data 2
+                  a.legend-item.btn.btn-info.btn-sm(data-chart-id='2') Data 3
+              .panel-body.pn
+                #high-bars(style='width: 100%; height: 140px; margin: 0 auto')
+            // Area Graph
+            #pchart11.panel
+              .panel-heading
+                span.panel-title.text-info.fw600
+                  i.fa.fa-pencil.hidden
+                  |  Area Graph with Filter
+              .panel-menu
+                .chart-legend(data-chart-id='#high-area')
+                  a.legend-item.btn.btn-sm.btn-warning.ph20.mr10(data-chart-id='0') Data 1
+                  a.legend-item.btn.btn-sm.btn-primary.mr10(data-chart-id='1') Data 2
+                  a.legend-item.btn.btn-sm.btn-info.mr10(data-chart-id='2') Data 3
+              .panel-body.pn
+                #high-area(style='width: 100%; height: 230px; margin: 0 auto')
+      // Start: Right Sidebar
+      aside#sidebar_right.nano.affix
+        // Start: Sidebar Right Content
+        .sidebar-right-content.nano-content
+          .tab-block.sidebar-block.br-n
+            ul.nav.nav-tabs.tabs-border.nav-justified.hidden
+              li.active
+                a(href='#sidebar-right-tab1', data-toggle='tab') Tab 1
+              li
+                a(href='#sidebar-right-tab2', data-toggle='tab') Tab 2
+              li
+                a(href='#sidebar-right-tab3', data-toggle='tab') Tab 3
+            .tab-content.br-n
+              #sidebar-right-tab1.tab-pane.active
+                h5.title-divider.text-muted.mb20
+                  | Server Statistics
+                  span.pull-right
+                    | 2013
+                    i.fa.fa-caret-down.ml5
+                .progress.mh5
+                  .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 44%')
+                    span.fs11 DB Request
+                .progress.mh5
+                  .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 84%')
+                    span.fs11.text-left Server Load
+                .progress.mh5
+                  .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 61%')
+                    span.fs11.text-left Server Connections
+                h5.title-divider.text-muted.mt30.mb10 Traffic Margins
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 132
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  13.2%
+                h5.title-divider.text-muted.mt25.mb10 Database Request
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 212
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  25.6%
+                h5.title-divider.text-muted.mt25.mb10 Server Response
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 82.5
+                  .col-xs-7.text-right
+                    h3.text-danger.mn
+                      i.fa.fa-caret-down
+                      |  17.9%
+                h5.title-divider.text-muted.mt40.mb20
+                  | Server Statistics
+                  span.pull-right.text-primary.fw600 USA
+              #sidebar-right-tab2.tab-pane
+              #sidebar-right-tab3.tab-pane
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    // Page Javascript
+    script(src='assets/js/demo/charts/highcharts.js')
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        // This page contains more Initilization Javascript than normal.
+        // As a result it has its own js page. See charts.js for more info
+        demoHighCharts.init();
+
+        setTimeout(function(){ $(window).trigger("resize"); }, 200);
+      });

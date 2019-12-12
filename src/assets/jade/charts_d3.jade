@@ -1,0 +1,425 @@
+extends  _skeleton
+include _ui-sidebar
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='plugins/css/c3.min.css')
+
+block body
+  body.charts-d3-page(data-spy='scroll', data-target='#nav-spy', data-offset='260')
+    // Start: Theme Preview Pane
+    #skin-toolbox.bg-white
+      .panel
+        .panel-heading
+          span.panel-icon
+            i.fa.fa-gear.text-primary
+          span.panel-title  Theme Options
+        .panel-body.pn
+          ul.nav.nav-list.nav-list-sm.pl15.pt10(role='tablist')
+            li.active
+              a(href='#toolbox-header', role='tab', data-toggle='tab') Navbar
+            li
+              a(href='#toolbox-sidebar', role='tab', data-toggle='tab') Sidebar
+            li
+              a(href='#toolbox-settings', role='tab', data-toggle='tab') Misc
+          .tab-content.p20.ptn.pb15
+            #toolbox-header.tab-pane.active(role='tabpanel')
+              form#toolbox-header-skin
+                h4.mv20 Header Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.checkbox-disabled.fill.mb5
+                    input#headerSkin8(type='radio', name='headerSkin', checked='', value='')
+                    label(for='headerSkin8') Light
+                  .checkbox-custom.fill.checkbox-primary.mb5
+                    input#headerSkin1(type='radio', name='headerSkin', value='bg-primary')
+                    label(for='headerSkin1') Primary
+                  .checkbox-custom.fill.checkbox-info.mb5
+                    input#headerSkin3(type='radio', name='headerSkin', value='bg-info')
+                    label(for='headerSkin3') Info
+                  .checkbox-custom.fill.checkbox-warning.mb5
+                    input#headerSkin4(type='radio', name='headerSkin', value='bg-warning')
+                    label(for='headerSkin4') Warning
+                  .checkbox-custom.fill.checkbox-danger.mb5
+                    input#headerSkin5(type='radio', name='headerSkin', value='bg-danger')
+                    label(for='headerSkin5') Danger
+                  .checkbox-custom.fill.checkbox-alert.mb5
+                    input#headerSkin6(type='radio', name='headerSkin', value='bg-alert')
+                    label(for='headerSkin6') Alert
+                  .checkbox-custom.fill.checkbox-system.mb5
+                    input#headerSkin7(type='radio', name='headerSkin', value='bg-system')
+                    label(for='headerSkin7') System
+                  .checkbox-custom.fill.checkbox-success.mb5
+                    input#headerSkin2(type='radio', name='headerSkin', value='bg-success')
+                    label(for='headerSkin2') Success
+                  .checkbox-custom.fill.mb5
+                    input#headerSkin9(type='radio', name='headerSkin', value='bg-dark')
+                    label(for='headerSkin9') Dark
+            #toolbox-sidebar.tab-pane(role='tabpanel')
+              form#toolbox-sidebar-skin
+                h4.mv20 Sidebar Skins
+                .skin-toolbox-swatches
+                  .checkbox-custom.fill.mb5
+                    input#sidebarSkin3(type='radio', name='sidebarSkin', checked='', value='')
+                    label(for='sidebarSkin3') Dark
+                  .checkbox-custom.fill.checkbox-disabled.mb5
+                    input#sidebarSkin1(type='radio', name='sidebarSkin', value='sidebar-light')
+                    label(for='sidebarSkin1') Light
+                  .checkbox-custom.fill.checkbox-light.mb5
+                    input#sidebarSkin2(type='radio', name='sidebarSkin', value='sidebar-light light')
+                    label(for='sidebarSkin2') Lighter
+            #toolbox-settings.tab-pane(role='tabpanel')
+              form#toolbox-settings-misc
+                h4.mv20.mtn Layout Options
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#header-option(type='checkbox', checked='')
+                    label(for='header-option') Fixed Header
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#sidebar-option(type='checkbox', checked='')
+                    label(for='sidebar-option') Fixed Sidebar
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-option(type='checkbox')
+                    label(for='breadcrumb-option') Fixed Breadcrumbs
+                .form-group
+                  .checkbox-custom.fill.mb5
+                    input#breadcrumb-hidden(type='checkbox')
+                    label(for='breadcrumb-hidden') Hide Breadcrumbs
+
+          .form-group.mn.br-t.p15
+            a#clearLocalStorage.btn.btn-primary.btn-block.pb10.pt10(href='#') Clear LocalStorage
+    // Start: Main
+    #main
+      // Page Header
+      block header
+        include _header
+      // Start: Sidebar
+      aside#sidebar_left.nano.nano-light.affix
+        // Start: Sidebar Left Content
+        +makeSidebar('charts_d3.html')
+      // Start: Content-Wrapper
+      section#content_wrapper
+        // Start: Topbar-Dropdown
+        #topbar-dropmenu.alt
+          .topbar-menu.row
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-primary.light(href='#')
+                span.glyphicon.glyphicon-inbox.text-muted
+                span.metro-title Messages
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-info.light(href='#')
+                span.glyphicon.glyphicon-user.text-muted
+                span.metro-title Users
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-success.light(href='#')
+                span.glyphicon.glyphicon-headphones.text-muted
+                span.metro-title Support
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-system.light(href='#')
+                span.glyphicon.glyphicon-facetime-video.text-muted
+                span.metro-title Videos
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-warning.light(href='#')
+                span.fa.fa-gears.text-muted
+                span.metro-title Settings
+            .col-xs-4.col-sm-2
+              a.metro-tile.bg-alert.light(href='#')
+                span.glyphicon.glyphicon-picture.text-muted
+                span.metro-title Pictures
+        // Start: Topbar
+        header#topbar.bg-white.br-b-ddd.alt
+          .topbar-left
+            ol.breadcrumb.mt-10
+              li.crumb-active
+                a(href='index.html') Dashboard
+              li.crumb-icon
+                a(href='index.html')
+                  span.glyphicon.glyphicon-home
+              li.crumb-link
+                a(href='index.html') Home
+              li.crumb-trail Dashboard
+          .topbar-right
+            .ib.topbar-dropdown
+              label.control-label.pr10.fs15.text-muted(for='topbar-multiple') Reporting Period
+              select#topbar-multiple.hidden
+                optgroup(label='Filter By:')
+                  option(value='1-1') Last 30 Days
+                  option(value='1-2', selected='selected') Last 60 Days
+                  option(value='1-3') Last Year
+            #toggle_sidemenu_r.ml15.ib.va-m
+              a.pl5(href='#')
+                i.fa.fa-sign-in.fs22.text-primary
+                span.badge.badge-hero.badge-danger 3
+        // Begin: Content
+        section#content.table-layout.animated.fadeIn
+          // begin: .tray-left
+          aside.tray.tray-left.tray320(data-tray-height='match')
+            h4
+              | C3.js -
+              = ' '
+              small "A D3 Graphing Library"
+            ul.icon-list
+              li
+                i.fa.fa-exclamation-circle.text-warning.fa-lg.pr10
+                b  Author:
+                |  Masayuki Tanaka
+              li
+                i.fa.fa-exclamation-circle.text-warning.fa-lg.pr10
+                b  License:
+                |  MIT
+              li
+                i.fa.fa-exclamation-circle.text-warning.fa-lg.pr10
+                b  Website:
+                = ' '
+                a(href='http://www.highcharts.com') http://c3js.org/
+            #nav-spy
+              ul.nav.tray-nav(data-smoothscroll='-80', data-spy='affix', data-offset-top='200')
+                li.active
+                  a(href='#pchart1')
+                    span.fa.fa-bar-chart.fa-lg
+                    |  Bar Chart
+                li
+                  a(href='#pchart2')
+                    span.fa.fa-area-chart.fa-lg
+                    |  Area Chart
+                li
+                  a(href='#pchart3')
+                    span.fa.fa-bar-chart.fa-lg
+                    |  Step Chart
+                li
+                  a(href='#pchart4')
+                    span.fa.fa-line-chart.fa-lg
+                    |  Line Chart
+                li
+                  a(href='#pchart5')
+                    span.fa.fa-line-chart.fa-lg
+                    |  Spline Chart
+                li
+                  a(href='#pchart6')
+                    span.fa.fa-ioxhost.fa-lg
+                    |  Scatter Plot Chart
+                li
+                  a(href='#pchart7')
+                    span.fa.fa-hand-o-down.fa-lg
+                    |  Sub Nav Chart
+                li
+                  a(href='#pchart8')
+                    span.fa.fa-search-plus.fa-lg
+                    |  MouseWheel Zoom Chart
+                li
+                  a(href='#pchart9')
+                    span.fa.fa-circle-o.fa-lg
+                    |  Donut Chart
+                li
+                  a(href='#pchart10')
+                    span.fa.fa-circle.fa-lg
+                    |  Pie Chart
+                li
+                  a(href='#pchart11')
+                    span.fa.fa-history.fa-lg
+                    |  Guage Chart
+                li
+                  a(href='#pchart12')
+                    span.fa.fa-line-chart.fa-lg
+                    |  Combined Chart
+          // begin: .tray-center
+          .tray.tray-center
+            // Bar Chart
+            #pchart1.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Bar Chart
+              .panel-body.bg-light.dark
+                #bar-chart(style='height: 370px; width: 100%;')
+            // Area Chart
+            #pchart2.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Area Chart
+              .panel-body.bg-light.dark
+                #area-chart(style='height: 370px; width: 100%;')
+            // Step Chart
+            #pchart3.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Step Chart
+              .panel-body.bg-light.dark
+                #step-chart(style='height: 370px; width: 100%;')
+            // Line Chart
+            #pchart4.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Line Chart
+              .panel-body.bg-light.dark
+                #line-chart(style='height: 370px; width: 100%;')
+            // Spline Chart
+            #pchart5.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Spline Chart
+              .panel-body.bg-light.dark
+                #spline-chart(style='height: 370px; width: 100%;')
+            // Scatter Chart
+            #pchart6.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Scatter Plot Chart
+              .panel-body.bg-light.dark
+                #scatter-chart(style='height: 370px; width: 100%;')
+            // Sub Navigation Chart
+            #pchart7.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  MouseWheel Zoom Chart
+              .panel-body.bg-light.dark
+                #subnav-chart(style='height: 370px; width: 100%;')
+            // MouseWheel Zoom Chart
+            #pchart8.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  MouseWheel Zoom Chart
+              .panel-body.bg-light.dark
+                #zoom-chart(style='height: 370px; width: 100%;')
+            // Donut Chart
+            #pchart9.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Donut Chart
+              .panel-body.bg-light.dark
+                #donut-chart(style='height: 370px; width: 100%;')
+            // Pie Chart
+            #pchart10.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Pie Chart
+              .panel-body.bg-light.dark
+                #pie-chart(style='height: 370px; width: 100%;')
+            // Guage Chart
+            #pchart11.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Combined Chart
+              .panel-body.bg-light.dark
+                #guage-chart(style='height: 370px; width: 100%;')
+            // Combined Chart
+            #pchart12.panel
+              .panel-heading
+                span.panel-icon
+                  i.fa.fa-pencil
+                span.panel-title  Combined Chart
+              .panel-body.bg-light.dark
+                #combo-chart(style='height: 370px; width: 100%;')
+      // Start: Right Sidebar
+      aside#sidebar_right.nano.affix
+        // Start: Sidebar Right Content
+        .sidebar-right-content.nano-content
+          .tab-block.sidebar-block.br-n
+            ul.nav.nav-tabs.tabs-border.nav-justified.hidden
+              li.active
+                a(href='#sidebar-right-tab1', data-toggle='tab') Tab 1
+              li
+                a(href='#sidebar-right-tab2', data-toggle='tab') Tab 2
+              li
+                a(href='#sidebar-right-tab3', data-toggle='tab') Tab 3
+            .tab-content.br-n
+              #sidebar-right-tab1.tab-pane.active
+                h5.title-divider.text-muted.mb20
+                  | Server Statistics
+                  span.pull-right
+                    | 2013
+                    i.fa.fa-caret-down.ml5
+                .progress.mh5
+                  .progress-bar.progress-bar-primary(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 44%')
+                    span.fs11 DB Request
+                .progress.mh5
+                  .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 84%')
+                    span.fs11.text-left Server Load
+                .progress.mh5
+                  .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 61%')
+                    span.fs11.text-left Server Connections
+                h5.title-divider.text-muted.mt30.mb10 Traffic Margins
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 132
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  13.2%
+                h5.title-divider.text-muted.mt25.mb10 Database Request
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 212
+                  .col-xs-7.text-right
+                    h3.text-success-dark.mn
+                      i.fa.fa-caret-up
+                      |  25.6%
+                h5.title-divider.text-muted.mt25.mb10 Server Response
+                .row
+                  .col-xs-5
+                    h3.text-primary.mn.pl5 82.5
+                  .col-xs-7.text-right
+                    h3.text-danger.mn
+                      i.fa.fa-caret-down
+                      |  17.9%
+                h5.title-divider.text-muted.mt40.mb20
+                  | Server Statistics
+                  span.pull-right.text-primary.fw600 USA
+              #sidebar-right-tab2.tab-pane
+              #sidebar-right-tab3.tab-pane
+    style.
+      /*chart demo styles*/
+      .c3 {
+      }
+
+      /* tick color */
+      .c3 .tick {
+        fill: #AAA;
+      }
+
+      /* axis color */
+      .c3 line,
+      .c3 path {
+        stroke: #BBB;
+      }
+
+      /*axis label color*/
+      .c3 .c3-axis-x-label,
+      .c3 .c3-axis-y-label {
+        fill: #AAA;
+      }
+
+      /*legend label text color*/
+      .c3-legend-item {
+        fill: #888;
+        font-size: 14px;
+      }
+    // core scripts
+    script(src='plugins/core.min.js')
+    // Theme Javascript
+    script(src='assets/js/utility/utility.js')
+    script(src='assets/js/demo/demo.js')
+    script(src='assets/js/main.js')
+    // Page Javascript
+    script(src='assets/js/demo/charts/d3.js')
+    script(type='text/javascript').
+      jQuery(document).ready(function () {
+        "use strict";
+        // Init Theme Core
+        Core.init();
+        // Init Demo JS
+        Demo.init();
+        // This page contains more Initilization Javascript than normal.
+        // As a result it has its own js page. See charts.js for more info
+        D3Charts.init();
+      });

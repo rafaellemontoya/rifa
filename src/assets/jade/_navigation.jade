@@ -1,0 +1,69 @@
+//
+  ---------------------------------------------------------------+
+  ".navbar" Helper Classes:
+  -------------------------------------------------------------------+
+  * Positioning Classes:
+  '.navbar-static-top' - Static top positioned navbar
+  '.navbar-static-top' - Fixed top positioned navbar
+  * Available Skin Classes:
+  .bg-dark    .bg-primary   .bg-success
+  .bg-info    .bg-warning   .bg-danger
+  .bg-alert   .bg-system
+  -------------------------------------------------------------------+
+  Example: <header class="navbar navbar-fixed-top bg-primary">
+  Results: Fixed top navbar with primary background
+  -----------------------------------------------------------------
+// Start: Header
+header.navbar(class="#{navbar_class}")
+  .navbar-branding
+    a.navbar-brand.text-uppercase(href='index.html')
+      | BluefireAdmin
+    span#toggle_sidemenu_l.fa.fa-bars
+  ul.nav.navbar-nav.navbar-left
+  form.navbar-form.navbar-left.navbar-search.alt(role='search')
+    span.hide.visible-md-inline-block.visible-lg-inline-block.fa.fa-search.fs18
+    .form-group
+      input.form-control(type='text', placeholder='Search...')
+  ul.nav.navbar-nav.navbar-right
+    li
+      img(src='assets/img/avatars/1.jpg', alt='avatar')
+    li.dropdown.menu-merge
+      a.dropdown-toggle.fw600.p15(href='#', data-toggle='dropdown')
+        span.fa.fa-angle-down
+        = ' '
+      ul.dropdown-menu.list-group.dropdown-persist.w250(role='menu')
+        li.dropdown-header.clearfix
+          .pull-left.ml10
+            select#user-status
+              optgroup(label='Current Status:')
+                option(value='1-1') Away
+                option(value='1-2') Offline
+                option(value='1-3', selected='selected') Online
+          .pull-right.mr10
+            select#user-role
+              optgroup(label='Logged in As:')
+                option(value='1-1') Client
+                option(value='1-2') Editor
+                option(value='1-3', selected='selected') Admin
+        li.list-group-item
+          a.animated.animated-short.fadeInUp(href='#')
+            span.fa.fa-envelope
+            |  Messages
+            span.label.label-warning 2
+        li.list-group-item
+          a.animated.animated-short.fadeInUp(href='#')
+            span.fa.fa-user
+            |  Friends
+            span.label.label-warning 6
+        li.list-group-item
+          a.animated.animated-short.fadeInUp(href='#')
+            span.fa.fa-bell
+            |  Notifications
+        li.list-group-item
+          a.animated.animated-short.fadeInUp(href='#')
+            span.fa.fa-gear
+            |  Settings
+        li.dropdown-footer
+          a(href='pages_login.html')
+            span.fa.fa-power-off.pr5
+            |  Logout

@@ -1,0 +1,127 @@
+//- makeSidebar - Create sidebar
+//- Param:
+//-    activeLink - current href, to setup active menu item
+//- Sidebar -global object with all menu structure (see _sidebar-config.jade)
+mixin makeSidebar(activeLink)
+  .sidebar-left-content.nano-content
+    // Start: Sidebar Header
+    header.sidebar-header
+      // Sidebar Widget - Search (hidden)
+      .sidebar-widget.search-widget.hidden
+        .input-group
+          span.input-group-addon
+            i.fa.fa-search
+          input#sidebar-search.form-control(type='text', placeholder='Search...')
+
+    //- Start: Sidebar Menu (see _sidebar-config.jade)
+    ul.nav.sidebar-menu
+      //- Top Menu
+      - for (var prop in Sidebar)
+        li.sidebar-label.pt35= Sidebar[prop].groupName
+
+        - for( var i = 0; i < Sidebar[prop].items.length; i++)
+          - var activeClass = ''
+          //- Check if current menu item
+          - if(activeLink == Sidebar[prop].items[i].link)
+            - activeClass = 'active'
+          li(class= activeClass)
+            //- Check if has Submenu
+            - var hasSubMenu = Sidebar[prop].items[i].subMenu != '' && Sidebar[prop].items[i].subMenu != undefined
+            //- if hasSubmenu add class accordion-toggle to link
+            - var accordionClass = ''
+            - if(hasSubMenu)
+              - var subMenuLength = Sidebar[prop].items[i].subMenu.length
+              - accordionClass = 'accordion-toggle'
+
+              //- Check if current link exist in subMenu, and if yes add class menu-open to link
+              - var arrOfLinks = []
+              - var arrOfLinksSubMenuLevel2 = []
+              - for (var j = 0; j < subMenuLength; j++)
+                - arrOfLinks.push( Sidebar[prop].items[i].subMenu[j].link )
+
+                //- Check if has hasSubMenuLevel2
+                - var hasSubMenuLevel2 = Sidebar[prop].items[i].subMenu[j].subMenuLevel2 != '' && Sidebar[prop].items[i].subMenu[j].subMenuLevel2 != undefined
+                - if(hasSubMenuLevel2)
+                  - var subMenuLevel2Length = Sidebar[prop].items[i].subMenu[j].subMenuLevel2.length
+                  //- Check if current link exist in hasSubMenuLevel2, and if yes add class menu-open to link
+                  - for (var k = 0; k < subMenuLevel2Length; k++)
+                    - arrOfLinksSubMenuLevel2.push( Sidebar[prop].items[i].subMenu[j].subMenuLevel2[k].link )
+
+              - if(arrOfLinks.indexOf(activeLink) >= 0 || arrOfLinksSubMenuLevel2.indexOf(activeLink) >= 0 )
+                - accordionClass += ' menu-open'
+
+            a(href=Sidebar[prop].items[i].link, class= accordionClass)
+              span(class= Sidebar[prop].items[i].icon)
+              span.sidebar-title= Sidebar[prop].items[i].name
+
+              //- Submenu level 1
+              - if(hasSubMenu)
+                span.caret
+                -  subMenuLength = Sidebar[prop].items[i].subMenu.length
+
+            - if(hasSubMenu && subMenuLength >= 0)
+                ul.nav.sub-nav
+                  - for (var j = 0; j < subMenuLength; j++)
+                    //- Check if current menu item
+                    - activeClass = ''
+                    - if(activeLink == Sidebar[prop].items[i].subMenu[j].link)
+                     - activeClass = 'active'
+                    li(class= activeClass)
+
+                      //- Check if current menu item in this menu
+                      - accordionClass = ''
+                      - if(hasSubMenuLevel2)
+                        - accordionClass = 'accordion-toggle'
+                        //- If currentMenuItem in this submenu add class ' menu-open' to link
+                        - arrOfLinksSubMenuLevel2 = []
+                        - subMenuLevel2Length = Sidebar[prop].items[i].subMenu[j].subMenuLevel2.length
+                        - for (var k = 0; k < subMenuLevel2Length; k++)
+                          - arrOfLinksSubMenuLevel2.push( Sidebar[prop].items[i].subMenu[j].subMenuLevel2[k].link )
+                        - if(arrOfLinksSubMenuLevel2.indexOf(activeLink) >= 0)
+                          - accordionClass += ' menu-open'
+
+                      a(href= Sidebar[prop].items[i].subMenu[j].link, class= accordionClass)
+                        span(class= Sidebar[prop].items[i].subMenu[j].icon)
+                        = Sidebar[prop].items[i].subMenu[j].name
+
+                        //- Submenu level 2
+                        - if(hasSubMenuLevel2)
+                            span.caret
+
+                      - if(hasSubMenuLevel2 && subMenuLevel2Length >= 0)
+                        ul.nav.sub-nav
+                          - for (var k = 0; k < subMenuLevel2Length; k++)
+                            //- Check if current menu item
+                            - activeClass = ''
+                            - if(activeLink == Sidebar[prop].items[i].subMenu[j].subMenuLevel2[k].link)
+                             - activeClass = 'active'
+                            li(class= activeClass)
+                              a(href= Sidebar[prop].items[i].subMenu[j].subMenuLevel2[k].link)
+                                = Sidebar[prop].items[i].subMenu[j].subMenuLevel2[k].name
+      // sidebar bullets
+      li.sidebar-label.pt35
+      li.sidebar-proj
+        a(href='#projectOne')
+          span.fa.fa-circle-o.text-warning
+          span.sidebar-title Executive Meeting
+      li.sidebar-proj
+        a(href='#projectTwo')
+          span.fa.fa-circle-o.text-danger
+          span.sidebar-title HelpDesk Redesign
+      li.sidebar-proj
+        a(href='#projectTwo')
+          span.fa.fa-circle-o.text-alert
+          span.sidebar-title Sony Board Meeting
+      li.sidebar-proj
+        a(href='#projectThree')
+          span.fa.fa-circle-o.text-info
+          span.sidebar-title Apple Tech Conference
+    // Start: Sidebar Collapse Button
+    .sidebar-toggle-mini
+      a(href='#')
+        span.fa.fa-sign-out
+
+
+
+
+
